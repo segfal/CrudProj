@@ -1,74 +1,91 @@
+
 import React, { useState } from "react";
+import createNewStudentThunk from "../redux/Students.actions";
+import axios from "axios";
 
 const AddStudent = () => {
-    const [state, setState] = useState({
-        name: "",
-        location: "",
-        imageUrl: "",
-        description:"",
-        gpa: ""
-      })
-    
-      const handleChange = (event) => {
-        const value = event.target.value;
-        setState({
-          ...state,
-          [event.target.name]: value
-        });
-      };
-    
-      const handleForm = (event) => {
-        event.preventDefault();
-        // const value = event.target.value;
-        // if(value < 0.00 || value > 4.00){
-        //     alert("Invalid GPA");
-        // }
-        // Handle form submission logic here
-      };
-      // const handleGPAChange = (event) => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
+  const [gpa, setGpa] = useState("");
 
-      // }
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    if (name === "firstName") {
+      setFirstName(value);
+    } else if (name === "lastName") {
+      setLastName(value);
+    } else if (name === "email") {
+      setEmail(value);
+    } else if (name === "imageUrl") {
+      setImageUrl(value);
+    } else if (name === "gpa") {
+      setGpa(value);
+    }
+  };
 
-    return (
-        <div>
-            <h1>Add a new student through this form</h1>
-            <form onSubmit={handleForm}>
-                <label htmlFor="firstName">Student's First Name:</label>
-                <input
-                type="text"
-                placeholder="Name"
-                onChange={handleChange}
-                />
-                <label htmlFor="lastName">Student's Last Name:</label>
-                <input
-                type="text"
-                placeholder="Name"
-                onChange={handleChange}
-                />
-                <label htmlFor="email">Student Email:</label>
-                <input
-                type="text"
-                placeholder="student.name@gmail.com"
-                onChange={handleChange}
-                />
-                <label htmlFor="imageUrl">Student Image URL:</label>
-                <input
-                type="url"
-                placeholder="http://www.image.com/"
-                onChange={handleChange}
-                />
-                <label htmlFor="gpa">Student GPA:</label>
-                <input
-                type="float"
-                name='gpa'
-                placeholder="4.00"
-                // value={state.gpa}
-                onChange={handleChange}
-                />
-                <button type="submit">Submit</button>
-            </form>
-        </div>
-    )
-}
+  const handleForm = (event) => {
+    event.preventDefault();
+    console.log({
+      firstName,
+      lastName,
+      email,
+      imageUrl,
+      gpa
+    });
+    await axios.post("http://localhost:8080/api/students/addstudent", {firstName, lastName, email, imageUrl, gpa });
+    // Handle form submission logic here
+  };
+
+  return (
+    <div>
+      <h1>Add a new student through this form</h1>
+      <form onSubmit={handleForm}>
+        <label htmlFor="firstName">Student's First Name:</label>
+        <input
+          type="text"
+          placeholder="First name"
+          name="firstName"
+          value={firstName}
+          onChange={handleChange}
+        />
+        <label htmlFor="lastName">Student's Last Name:</label>
+        <input
+          type="text"
+          placeholder="Last name"
+          name="lastName"
+          value={lastName}
+          onChange={handleChange}
+        />
+        <label htmlFor="email">Student Email:</label>
+        <input
+          type="text"
+          placeholder="student.name@gmail.com"
+          name="email"
+          value={email}
+          onChange={handleChange}
+        />
+        <label htmlFor="imageUrl">Student Image URL:</label>
+        <input
+          type="url"
+          placeholder="http://www.image.com/"
+          name="imageUrl"
+          value={imageUrl}
+          onChange={handleChange}
+        />
+        <label htmlFor="gpa">Student GPA:</label>
+        <input
+          type="text"
+          placeholder="4.00"
+          name="gpa"
+          value={gpa}
+          onChange={handleChange}
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
 
 export default AddStudent;

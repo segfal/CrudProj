@@ -24,7 +24,7 @@ const createNewStudentThunk = (formData) => {
     return async (dispatch) => {
         try {
             const createNewStudent = await axios.post("http://localhost:8080/api/students/addstudent", formData);
-            dispatch(createNewStudentThunk(res.data));
+            dispatch(createNewStudentThunk(formData));
         } catch (error) {
             console.log("an error has occured", error);
         }

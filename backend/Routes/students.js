@@ -23,6 +23,13 @@ router.get('/', async (req, res,next) => {
 router.post('/addstudent', async (req, res, next) => {
     try{
         console.log(req.body);
+        console.log(req.body.gpa);
+        if(req.body.gpa < 0.00 || req.body.gpa > 4.00){
+            res.status(500);
+            console.log(res.status(500)); //test what's happening
+            // 500 sends to the user :"thats not good"
+            return false;
+        }
         const newStudent = await Student.create(req.body);
     
         res.status(201).json(newStudent);
