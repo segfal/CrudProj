@@ -1,0 +1,21 @@
+[
+    {
+      "name": "Brooklyn College",
+      "imageURL": "https://www.brooklyn.cuny.edu/web/com_socialImages/BrooklynCollegeLibrary_1200x628.jpg",
+      "address": "Bedford Ave 11221",
+      "description": "Brooklyn College is a public university in Brooklyn in New York City. It is part of the City University of New York system and enrolls over 17,000 undergraduate and over 2,800 graduate students on a 35-acre campus as of 2019."
+    },
+    {
+      "name": "Hunter College",
+      "imageURL": "https://s29068.pcdn.co/wp-content/uploads/hunter-campus.jpg",
+      "address": "Some Address",
+      "description": "Brooklyn College is a public university in Brooklyn in New York City. It is part of the City University of New York system and enrolls over 17,000 undergraduate and over 2,800 graduate students on a 35-acre campus as of 2019."
+    },
+    {
+        "name": "John Jay College",
+        "imageURL": "https://new.jjay.cuny.edu/sites/default/files/2023-02/Building%20Streetscape.jpg",
+        "address": "this is JJ's address",
+        "description": "Brooklyn College is a public university in Brooklyn in New York City. It is part of the City University of New York system and enrolls over 17,000 undergraduate and over 2,800 graduate students on a 35-acre campus as of 2019."
+    }
+  ]
+  
