@@ -7,7 +7,7 @@ export default function CampusItem(props) {
         <div key={campus.name}>
           <img src={campus.imageURL} alt={campus.name} />
           <h2>{campus.name}</h2>
-          <h3>{campus.address}</h3>
+          <h3>{campus.location}</h3>
           <p>{campus.description}</p>
         </div>
       ));
