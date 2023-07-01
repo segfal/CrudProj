@@ -25,7 +25,7 @@ const AddStudent = () => {
     }
   };
 
-  const handleForm = (event) => {
+  const handleForm = async (event) => {
     event.preventDefault();
     console.log({
       firstName,
@@ -34,7 +34,7 @@ const AddStudent = () => {
       imageUrl,
       gpa
     });
-    await axios.post("http://localhost:8080/api/students/addstudent", {firstName, lastName, email, imageUrl, gpa });
+    await axios.post("http://localhost:8080/Routes/students/addstudent", {firstName, lastName, email, imageUrl, gpa });
     // Handle form submission logic here
   };
 
