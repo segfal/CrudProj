@@ -38,16 +38,6 @@ router.post('/addstudent', async (req, res, next) => {
     }
 }); 
 
-
-
-
-
-
-
-
-
-
-
 router.delete('/deletestudent/:id', async (req, res, next) => {
     try{
         const studentToDelete = await Student.findByPk(req.params.id);
