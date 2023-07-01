@@ -2,7 +2,7 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db");
 
-//create campus table
+//create campus table and define columns
 const Campus = db.define('campus', {
     name: {
         type: DataTypes.STRING,
@@ -26,6 +26,7 @@ const Campus = db.define('campus', {
 // insert new campus
 Campus.sync({alter:true})
 
+// find all campuses
 const findCampuses = async () => {
     try{
         const allCampuses = await Campus.findAll();
@@ -35,4 +36,4 @@ const findCampuses = async () => {
     }
 }
 
-module.exports = {Campus, findCampuses};
+module.exports = {Campus, findCampuses}; //export campus model and findCampuses function

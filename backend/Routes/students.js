@@ -3,7 +3,7 @@ const router = require('express').Router();
 const {Student, findStudents} = require('../DB/Models/students');
 
 
-
+// Fetch all students DONE
 router.get('/', async (req, res,next) => {
     try{
         //if find all is null, send 404
@@ -18,63 +18,44 @@ router.get('/', async (req, res,next) => {
 });
 
 
-
-
+// add new student DONE
 router.post('/addstudent', async (req, res, next) => {
     try{
-        console.log(req.body);
-        console.log(req.body.gpa);
-        if(req.body.gpa < 0.00 || req.body.gpa > 4.00){
+        //console.log(req.body);
+        //console.log(req.body.gpa);
+
+        if(req.body.gpa < 0.00 || req.body.gpa > 4.00){// if gpa is not between 0 and 4
             res.status(500);
             console.log(res.status(500)); //test what's happening
             // 500 sends to the user :"thats not good"
             return false;
         }
-        const newStudent = await Student.create(req.body);
+        const newStudent = await Student.create(req.body); //create new student
     
-        res.status(201).json(newStudent);
+        res.status(201).json(newStudent); //return json of new student
     } catch (error){
-        console.log("An error occured", error)
+        console.log("An error occured", error); // if error, console log it
     }
-}); 
+});
 
+
+//TODO: delete student 
 router.delete('/deletestudent/:id', async (req, res, next) => {
-    try{
-        const studentToDelete = await Student.findByPk(req.params.id);
-        studentToDelete.destroy();
-        res.status(204).send("Student deleted");
-    }
-    catch(error){
-        next(error);
-    }
+
+
 });
 
-const studentExists = async (studentInput) => {
-    if(!studentInput){
-        return false;
-    }
-    const student = await Student.findByPk(studentInput.id);
-    return student ? true : false;
-
-    
-}
 
 
+
+
+//TODO: update student
 router.put('/updatestudent/:id', async (req, res, next) => {
-    try{
-        const studentToUpdate = await Student.findByPk(req.params.id);
-        if(studentToUpdate){
-            await studentToUpdate.update(req.body);
-            res.status(200).json(studentToUpdate);
-        }
-        else{
-            res.status(404).send("Student not found");
-        }
-    }
-    catch(error){
-        next(error);
-    }
+
 });
+
+
+
 
 
 module.exports = router;

@@ -3,7 +3,7 @@ const router = require('express').Router();
 const {Campus, findCampuses} = require('../DB/Models/campuses');
 
 
-
+// Fetch all campuses DONE
 router.get('/', async (req, res,next) => {
     try{
         const allCampuses = await findCampuses();
@@ -16,7 +16,7 @@ router.get('/', async (req, res,next) => {
 });
 
 
-///insert new campus with params, the params are the same as the model
+///insert new campus with params, the params are the same as the model DONE
 router.post('/addcampus', async (req, res, next) => {
     try{
         console.log(req.body);
@@ -27,6 +27,13 @@ router.post('/addcampus', async (req, res, next) => {
         console.log("An error occured", error)
     }
 }); 
+
+
+//TODO: delete campus
+router.delete('/deletecampus/:id', async (req, res, next) => {
+    
+});
+
 
 
 
