@@ -14,7 +14,8 @@ export const fetchCampusesThunk = () => {
         try{
             const res = await axios.get("http://localhost:8080/routes/campuses");
             console.log("axios call for campuses: " , res.data);
-            dispatch(fetchCampusesThunk(res.data));
+            // dont recall fetchCampusesThunk !!!
+            dispatch(fetchCampuses(res.data));
         } catch (error) {
             console.log("an error has occured", error);
         }
