@@ -27,6 +27,38 @@ router.post("/addcampus", async (req, res, next) => {
   }
 });
 
+//Update campus 
+router.put("/updatecampus/:id", async (req, res, next) => {
+    try {
+      const campusId = req.params.id;
+      console.log(req.body.id);
+  
+      const findCampus = await Campus.findOne({
+        where: {
+          id: campusId,
+        },
+      });
+  
+      if (!findCampus) {
+        console.log("Campus does not exist");
+        res.status(404).json({ error: "Campus not found" });
+      } else {
+        const updateCampus = await findCampus.update({
+          name: req.body.name,
+          imageUrl: req.body.imageUrl,
+          location: req.body.location,
+          description: req.body.description,
+        });
+  
+        console.log("Campus updated successfully");
+        res.status(200).json(updateCampus);
+      }
+    } catch (error) {
+      console.log("Update Failed");
+      res.status(500).json({ error: "Update failed" });
+    }
+  });
+
 //TODO: delete campus
 router.delete("/deletecampus/", async (req, res, next) => {
   try {
