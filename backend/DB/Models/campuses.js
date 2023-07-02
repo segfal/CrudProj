@@ -36,4 +36,7 @@ const findCampuses = async () => {
     }
 }
 
+
+
+
 module.exports = {Campus, findCampuses}; //export campus model and findCampuses function
