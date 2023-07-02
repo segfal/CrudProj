@@ -56,19 +56,23 @@ router.delete("/deletestudent", async (req, res, next) => {
 //TODO: update student
 router.put("/updatestudent/:id", async (req, res, next) => {
   try {
+    //Fetch student id
     const studentId = req.params.id;
     console.log(req.body.id);
 
+    //Await student api call
     const findStudent = await Student.findOne({
       where: {
         id: studentId,
       },
     });
 
+    //if condition to check if data exists for that ID #
     if (!findStudent) {
       console.log("Student does not exist");
       res.status(404).json({ error: "Student not found" });
     } else {
+        //If found, update the student data
       const updateStudent = await findStudent.update({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
