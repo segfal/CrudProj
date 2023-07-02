@@ -41,7 +41,22 @@ router.post('/addstudent', async (req, res, next) => {
 
 //TODO: delete student 
 router.delete('/deletestudent/:id', async (req, res, next) => {
+    try{
+        const user = await user.findStudents({
+            where: {
+                id: req.body,
+            }
+        });
 
+        if (user) {
+            console.log('User exists.');
+          } else {
+            console.log('User does not exist.');
+          }
+
+    } catch(error){
+        console.log("An Error has occured" , error);
+    }
 
 });
 
