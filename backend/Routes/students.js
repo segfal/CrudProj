@@ -54,6 +54,36 @@ router.delete("/deletestudent", async (req, res, next) => {
 });
 
 //TODO: update student
-router.put("/updatestudent/:id", async (req, res, next) => {});
+router.put("/updatestudent/:id", async (req, res, next) => {
+  try {
+    const studentId = req.params.id;
+    console.log(req.body.id);
+
+    const findStudent = await Student.findOne({
+      where: {
+        id: studentId,
+      },
+    });
+
+    if (!findStudent) {
+      console.log("Student does not exist");
+      res.status(404).json({ error: "Student not found" });
+    } else {
+      const updateStudent = await findStudent.update({
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        imageUrl: req.body.imageUrl,
+        gpa: req.body.gpa,
+      });
+
+      console.log("Student updated successfully");
+      res.status(200).json(updateStudent);
+    }
+  } catch (error) {
+    console.log("Update Failed");
+    res.status(500).json({ error: "Update failed" });
+  }
+});
 
 module.exports = router;
