@@ -5,7 +5,6 @@ export default function CampusItem(props) {
     if (props.list && props.list.length > 0) {
       return props.list.map((campus) => (
         <div key={campus.name}>
-          {console.log(campus.imageUrl)}
           <img src={campus.imageUrl} alt={campus.name}/>
           <h2>{campus.name}</h2>
           <h3>{campus.location}</h3>
