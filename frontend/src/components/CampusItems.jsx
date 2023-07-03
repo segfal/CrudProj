@@ -1,8 +1,7 @@
 // CURRENT ISSUE: Need to find a way to pass a singular campus's information into the single campus page and its function
-
 import React,{useState, useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import axios from "axios";
 
 //function component used to display a list of campuses
 function CampusItems(props) {
@@ -26,7 +25,7 @@ function CampusItems(props) {
         try{
           const res = await axios.get('');
           console.log(res);
-          const campuses = await response.json()
+          const campuses = await res.json()
           setCurrentCampus(campuses);
         } catch (error){
           console.log(error)
