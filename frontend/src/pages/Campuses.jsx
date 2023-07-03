@@ -35,7 +35,7 @@ const Campuses = () => {
 
     // Add campus button leads to Add campus page
     const handleAdd = () => {
-        let path = `/addCampus/*`;
+        let path = `/addCampus/`;
         navigate(path);
     };
 
