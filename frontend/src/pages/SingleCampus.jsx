@@ -13,7 +13,7 @@ const SingleCampus = (props) => {
   //what the useParams thing does is basically, since we have the route:
   // <Route path="/SingleCampus/:campusId" component={SingleCampus} />
  //then the params will be referring to the part that says :campusId, aka the tab that this leads to
-
+// backend: req.params
  const campus = fetchCampuses();
 
   return (

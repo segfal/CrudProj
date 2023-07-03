@@ -1,6 +1,6 @@
 const express = require("express");
 const router = require("express").Router();
-const { Student, findStudents } = require("../DB/Models/students");
+const { Student } = require("../db/models");
 
 // Fetch all students DONE
 router.get("/", async (req, res, next) => {
@@ -72,7 +72,7 @@ router.put("/updatestudent/:id", async (req, res, next) => {
       console.log("Student does not exist");
       res.status(404).json({ error: "Student not found" });
     } else {
-        //If found, update the student data
+      //If found, update the student data
       const updateStudent = await findStudent.update({
         firstName: req.body.firstName,
         lastName: req.body.lastName,
