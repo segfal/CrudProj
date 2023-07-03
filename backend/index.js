@@ -9,8 +9,6 @@ app.use(cors());
 
 app.use(express.json());
 
-
-
 // Mount on API
 app.use("/routes", require("./routes"));
 
