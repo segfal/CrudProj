@@ -13,7 +13,7 @@ const SingleStudent = (props) => {
   const dispatch = useDispatch();
   const [allCamp, setAllCamp] = useState([]);
   console.log("allCampuses: ", allCampuses);
-
+  
   const student = fetchStudents();
   const studentUrl = `http://localhost:8080/routes/students/SingleStudent/${studentId}`;
   useEffect(()=>{
@@ -39,7 +39,6 @@ const SingleStudent = (props) => {
 useEffect(() => {
     console.log('FETCH ALL CAMPUSES FIRING IN USEEFFECT')
     setAllCamp(fetchAllCampuses());
-  
   }, []);
 
   const campusRelationship = (campid) => {

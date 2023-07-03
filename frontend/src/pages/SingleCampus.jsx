@@ -1,14 +1,35 @@
 import React, { useState,useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { fetchCampuses } from "../redux/Campus.actions";
 import StudentsOnCampus from "../components/StudentsOnCampus";
+import { fetchStudentsThunk } from "../redux/Students.actions";
+import { useDispatch, useSelector } from "react-redux";
+import studentReducer from "../redux/Students.reducer";
 
 const SingleCampus = (props) => {
   const { campusId } = useParams(); //the params allows u to access the campusId from URL parameters
   const [singleCampus, setSingleCampus] = useState([]); //this is the data that we get from the backend
+  const [allStud, setAllStud] = useState([]);
+  const dispatch = useDispatch();
+  const allStudents = useSelector((state) => state.campuses.allStudents);
 
-  const campus = fetchCampuses();
+  const fetchAllStudents = async () => {
+    try{
+        const res = await dispatch(fetchStudentsThunk());
+        console.log('RUNNING DISPATCH FROM FETCHALLSTUDENTS');
+    } catch (error){
+        console.log("An error occured", error);
+    }
+};
+// trying to access all students from single campus
+
+// Load database campuses upon mount
+useEffect(() => {
+    console.log('FETCH ALL CAMPUSES FIRING IN USEEFFECT')
+    setAllStud(fetchAllStudents());
+  }, []);
+
+  const campuses = fetchCampuses();
   const campusUrl = `http://localhost:8080/routes/campuses/SingleCampus/${campusId}`;
   useEffect(()=>{
     fetch(campusUrl)
@@ -36,7 +57,7 @@ const SingleCampus = (props) => {
       </button>
       <h2>Students on campus</h2>
       <button>Add Student</button>
-      <StudentsOnCampus/>
+      <StudentsOnCampus id = {campusId} allStudents = {allStudents}/>
     </div>
   );
 };
