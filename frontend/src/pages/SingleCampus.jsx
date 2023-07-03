@@ -10,7 +10,7 @@ import { fetchCampuses } from "../redux/Campus.actions";
 const SingleCampus = (props) => {
   //trying this:
   const { campusId } = useParams(); //the params allows u to access the campusId from URL parameters
-  const [singleCampus, setSingleCampus] = useState([]);
+  const [singleCampus, setSingleCampus] = useState([]); //this is the data that we get from the backend
 
   //what the useParams thing does is basically, since we have the route:
   // <Route path="/SingleCampus/:campusId" component={SingleCampus} />
@@ -25,9 +25,9 @@ const SingleCampus = (props) => {
  useEffect(()=>{
     fetch(campusUrl)
     .then((res) => res.json())
-    .then((data) => {
+    .then((data) => { //data is the response from the backend
       console.log(data);
-      setSingleCampus(data);
+      setSingleCampus(data); //this is the data that we get from the backend
     })
     .catch((err) => console.log(err));
  },[]);
