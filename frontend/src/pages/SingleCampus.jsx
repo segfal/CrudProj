@@ -35,7 +35,7 @@ const SingleCampus = (props) => {
       </button>
       <h2>Students on campus</h2>
       <button>Add Student</button>
-      <StudentsOnCampus/>
+      {/* <StudentsOnCampus/> */}
     </div>
   );
 };

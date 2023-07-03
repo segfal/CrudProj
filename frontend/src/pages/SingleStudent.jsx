@@ -19,6 +19,21 @@ const SingleStudent = (props) => {
     .catch((err) => console.log(err));
   },[]);
 
+  const campusRelationship = (campid) => {
+    if (!(campid===null)) {
+      return (
+        <div>
+          <h1>This student is registered to a campus</h1>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <h1>This student is not regisered to a campus</h1>
+        </div>
+      )
+    }
+  }
 
   return (
     <div>
@@ -33,6 +48,7 @@ const SingleStudent = (props) => {
       <button type="button" className="btn btn-danger">
         Delete
       </button>
+      {campusRelationship(singleStudent.campusId)}
     </div>
   );
 };
