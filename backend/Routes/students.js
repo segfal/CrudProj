@@ -7,7 +7,7 @@ router.get("/", async (req, res, next) => {
   try {
     //if find all is null, send 404
 
-    const allStudents = await findStudents();
+    const allStudents = await Student.findAll();
 
     allStudents
       ? res.status(200).json(allStudents)
