@@ -7,12 +7,13 @@ router.get("/", async (req, res, next) => {
   try {
     console.log("getting all campuses");
     const allCampuses = await Campus.findAll();
+    console.log(allCampuses)
 
     allCampuses
       ? res.status(200).json(allCampuses)
       : res.status(404).send("No campuses found");
   } catch (error) {
-    next(error);
+    console.log("the error we're stuck on: ",error);
   }
 });
 

@@ -33,6 +33,9 @@ const SingleCampus = (props) => {
       <button type="button" className="btn btn-danger">
         Delete
       </button>
+      <h2>Students on campus</h2>
+      <button>Add Student</button>
+      {/* <StudentsOnCampus/> */}
     </div>
   );
 };

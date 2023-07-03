@@ -23,9 +23,11 @@ const Student = db.define('student', {
     gpa: {
         type: DataTypes.FLOAT,
         allowNull: false
+    },
+    campusId: {
+        type: DataTypes.INTEGER,
+        allowNull: true
     }
 });
-
-
 
 module.exports = Student;
