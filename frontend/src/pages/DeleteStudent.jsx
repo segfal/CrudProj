@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import createNewStudentThunk from "../redux/Students.actions";
 import axios from "axios";
 
-const AddStudent = () => {
+const DeleteStudent = () => {
   const [firstName, setFirstName] = useState("");
 
   const handleChange = (event) => {
@@ -13,14 +12,22 @@ const AddStudent = () => {
   };
 
   const handleForm = async (event) => {
-    event.preventDefault();
-    console.log({
-      firstName,
-    });
-    //Deleting by first name for testing
-    await axios.delete("http://localhost:8080/Routes/students/deletestudent", {
-      firstName,
-    });
+    try {
+      event.preventDefault();
+      console.log({
+        firstName,
+      });
+      //Deleting by first name for testing
+
+      await axios.delete(
+        "http://localhost:8080/Routes/students/deletestudent",
+        {
+          data: { firstName: "william" },
+        }
+      );
+    } catch (error) {
+      console.log("Error!", error);
+    }
     // Handle form submission logic here
   };
 
@@ -42,4 +49,4 @@ const AddStudent = () => {
   );
 };
 
-export default AddStudent;
+export default DeleteStudent;
