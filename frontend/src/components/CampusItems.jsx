@@ -1,6 +1,5 @@
-// CURRENT ISSUE: Need to find a way to pass a singular campus's information into the single campus page and its function
 import React,{useState, useEffect} from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 //function component used to display a list of campuses
