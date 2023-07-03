@@ -26,17 +26,6 @@ const Student = db.define('student', {
     }
 });
 
-//insert new students
-// Student.sync({alter: true});
 
-//find all students
-// const findStudents = async () => {
-//     try{
-//         const allStudents = await Student.findAll();
-//         return allStudents;
-//     } catch(error) {
-//         next(error);
-//     }
-// }
 
 module.exports = Student;

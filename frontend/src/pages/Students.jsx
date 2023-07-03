@@ -31,7 +31,7 @@ const Students = () => {
     
  
     const handleAdd = () => {
-        let path = `/addStudent/*`;
+        let path = `/addStudent/`;
         navigate(path);
     };
 

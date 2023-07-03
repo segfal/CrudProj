@@ -6,7 +6,7 @@ const SingleStudent = () => {
   const navigate = useNavigate();
   
   const handleAdd = () => {
-    let path = `/deleteStudent/*`;
+    let path = `/deleteStudent/`;
     navigate(path);  
 };
   
