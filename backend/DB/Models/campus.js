@@ -23,18 +23,19 @@ const Campus = db.define('campus', {
 });
 
 // insert new campus
-Campus.sync({alter:true})
+//Campus.sync({alter:true})
 
 // find all campuses
-const findCampuses = async () => {
-    try{
-        const allCampuses = await Campus.findAll();
-        return allCampuses;
-    } catch(error) {
-        next(error);
-    }
-}
+// const findCampuses = async () => {
+//     try{
+//         const allCampuses = await Campus.findAll();
+//         return allCampuses;
+//     } catch(error) {
+//         next(error);
+//     }
+// }
 
 
 
-module.exports = {Campus, findCampuses}; //export campus model and findCampuses function
+module.exports = Campus; 
+//export campus model and findCampuses function

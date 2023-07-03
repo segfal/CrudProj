@@ -1,14 +1,14 @@
 
 
 
-const Students = require('./students');
-const Campuses = require('./campuses');
+const Student = require('./student');
+const Campus = require('./campus');
 
-Students.belongsToMany(Campuses, {through: 'student_campus'}); //many to many relationship between students and campuses
-Campuses.belongsToMany(Students, {through: 'student_campus'}); //many to many relationship between campuses and students
+Student.belongsToMany(Campus, {through: 'student_campus'}); //many to many relationship between students and campuses
+Campus.belongsToMany(Student, {through: 'student_campus'}); //many to many relationship between campuses and students
 
 
 //We need find students and find campus to sync to the database
-module.exports = {Students,findStudents, Campuses, findCampuses};
+module.exports = { Student, Campus };
 // has findStudents in line 4 and 10
 
