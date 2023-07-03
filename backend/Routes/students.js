@@ -17,6 +17,7 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+
 // add new student DONE
 router.post("/addstudent", async (req, res, next) => {
   try {
@@ -37,6 +38,32 @@ router.post("/addstudent", async (req, res, next) => {
     console.log("An error occured", error); // if error, console log it
   }
 });
+
+
+
+// Fetch single campus
+router.get("/SingleStudent/:id", async (req, res, next) => {
+  try {
+    //finds a single id based on the param request
+    const singleStudent = await Student.findByPk(req.params.id);
+    
+    singleCampus
+      ? res.status(200).json(singleStudent)
+      : res.status(404).send("No Campus Found");
+  } catch (error) {
+    next(error);
+    console.log(error);
+  }
+});
+
+
+
+
+
+
+
+
+
 
 //TODO: delete student
 router.delete("/deletestudent", async (req, res, next) => {
