@@ -33,9 +33,8 @@ function App() {
             <Route path = "/" element = {<Home/>} />
             <Route path = "campus/" element= {<Campuses/>} />
             <Route path = "/students/" element = {<Students/>} />
-            <Route path = "/singleCampus/" element= {<SingleCampus/>} />
             <Route path="/singleCampus/:campusId" element={<SingleCampus />} />
-            <Route path = "/singleStudent/" element = {<SingleStudent/>} />
+            <Route path = "/singleStudent/:studentId" element = {<SingleStudent/>} />
             <Route path = "/addCampus/" element = {<AddCampus/>} />
             <Route path = "/addStudent/" element = {<AddStudent />} />
             <Route path = "/deleteStudent/" element = {<DeleteStudent />} />

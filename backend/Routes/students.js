@@ -5,8 +5,7 @@ const { Student } = require("../db/models");
 // Fetch all students DONE
 router.get("/", async (req, res, next) => {
   try {
-    //if find all is null, send 404
-
+    console.log("getting all students");
     const allStudents = await Student.findAll();
 
     allStudents
@@ -17,15 +16,26 @@ router.get("/", async (req, res, next) => {
   }
 });
 
+// Fetch single student
+router.get("/SingleStudent/:id", async (req, res, next) => {
+  try {
+    //finds a single id based on the param request
+    const singleStudent = await Student.findByPk(req.params.id);
+    
+    singleStudent
+      ? res.status(200).json(singleStudent)
+      : res.status(404).send("No Student Found");
+  } catch (error) {
+    next(error);
+    console.log(error);
+  }
+});
+
 
 // add new student DONE
 router.post("/addstudent", async (req, res, next) => {
   try {
-    //console.log(req.body);
-    //console.log(req.body.gpa);
-
     if (req.body.gpa < 0.0 || req.body.gpa > 4.0) {
-      // if gpa is not between 0 and 4
       res.status(500);
       console.log(res.status(500)); //test what's happening
       // 500 sends to the user :"thats not good"
@@ -38,32 +48,6 @@ router.post("/addstudent", async (req, res, next) => {
     console.log("An error occured", error); // if error, console log it
   }
 });
-
-
-
-// Fetch single campus
-router.get("/SingleStudent/:id", async (req, res, next) => {
-  try {
-    //finds a single id based on the param request
-    const singleStudent = await Student.findByPk(req.params.id);
-    
-    singleCampus
-      ? res.status(200).json(singleStudent)
-      : res.status(404).send("No Campus Found");
-  } catch (error) {
-    next(error);
-    console.log(error);
-  }
-});
-
-
-
-
-
-
-
-
-
 
 //TODO: delete student
 router.delete("/deletestudent", async (req, res, next) => {
