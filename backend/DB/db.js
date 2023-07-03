@@ -1,7 +1,7 @@
 const {Sequelize,DataTypes} = require("sequelize");
 
 //access postgress database
-const db = new Sequelize('collegeinfo', 'postgres', '123', {
+const db = new Sequelize('collegeinfo', 'postgres', 'postgres', {
     host: 'localhost', //where is the database
     dialect: 'postgres', //what type of database
     pool: {
