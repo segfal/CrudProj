@@ -2,6 +2,7 @@ import React, { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { fetchCampuses } from "../redux/Campus.actions";
+import StudentsOnCampus from "../components/StudentsOnCampus";
 
 const SingleCampus = (props) => {
   const { campusId } = useParams(); //the params allows u to access the campusId from URL parameters
@@ -35,7 +36,7 @@ const SingleCampus = (props) => {
       </button>
       <h2>Students on campus</h2>
       <button>Add Student</button>
-      {/* <StudentsOnCampus/> */}
+      <StudentsOnCampus/>
     </div>
   );
 };
