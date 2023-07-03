@@ -1,8 +1,8 @@
 import React from "react";
-import StudentsActionType from "./StudentsType";
+import StudentsActionType from "./Students.types";
 
 export const initialStudentState = {
-    allStudents: [], //the inital state is an empty array
+    allStudents: [] //the inital state is an empty array
     //need to put in array since we'll have a list of data
     //where the fetched students data will be stored
 }

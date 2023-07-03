@@ -1,5 +1,5 @@
 import axios from "axios";
-import StudentsActionType from './StudentsType';
+import StudentsActionType from './Students.types';
 
 export const fetchStudents = (payload) => {
     console.log("FETCH ALL STUDENTS ACTION");
@@ -15,6 +15,7 @@ export const fetchStudentsThunk = () => {
             const res = await axios.get("http://localhost:8080/routes/students");
             console.log("axios call for students: " , res.data);
             dispatch(fetchStudents(res.data));
+            console.log("dispatched");
         } catch (error) {
             console.log("an error has occured", error);
         }

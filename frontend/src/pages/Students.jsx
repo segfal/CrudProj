@@ -1,6 +1,6 @@
 import React,{useEffect,useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchStudentsThunk } from "../redux/Students.actions";
+import { fetchStudentsThunk,fetchStudents } from "../redux/Students.actions";
 import studentReducer from "../redux/Students.reducer";
 import StudentItems from "../components/StudentItems";
 import { useNavigate } from "react-router-dom";
@@ -9,9 +9,9 @@ const Students = () => {
     
     const navigate = useNavigate();
  
-    const allStudents = useSelector((state) => state.Student);
+    const allStudents = useSelector((state) => state.students.allStudents);
     
-    console.log('data' + allStudents);
+    console.log('data: ' + allStudents);
     const [everyStudent, setEveryStudent] = useState([])
     const dispatch = useDispatch();
 
@@ -19,7 +19,6 @@ const Students = () => {
         try{
             const res = await dispatch(fetchStudentsThunk());
             console.log('RUNNING DISPATCH FROM FETCHALLSTUDENTS');
-            // return dispatch(fetchStudentsThunk());
         } catch (error){
             console.log("An error occured", error);
         }
