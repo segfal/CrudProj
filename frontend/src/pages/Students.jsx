@@ -1,15 +1,16 @@
 import React,{useEffect,useState} from "react";
-import SingleStudent from "./SingleStudent";
-import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { fetchStudentsThunk } from "../redux/Students.actions";
+import studentReducer from "../redux/Students.reducer";
 import StudentItems from "../components/StudentItems";
-import StudentsActions from "../redux/Students.actions";
-import fetchStudentsThunk from '../redux/Students.actions';
-
+import { useNavigate } from "react-router-dom";
 
 const Students = () => {
+    
     const navigate = useNavigate();
-    const allStudents = useSelector((state => state.Students.allStudents))
+ 
+    const allStudents = useSelector((state) => state.Student);
+    
     console.log('data' + allStudents);
     const [everyStudent, setEveryStudent] = useState([])
     const dispatch = useDispatch();
@@ -17,8 +18,8 @@ const Students = () => {
     const fetchAllStudents = async () => {
         try{
             const res = await dispatch(fetchStudentsThunk());
-            console.log('RUNNING DISPATCH FROM FETCHALLCAMPUSES');
-            // return dispatch(fetchCampusesThunk());
+            console.log('RUNNING DISPATCH FROM FETCHALLSTUDENTS');
+            // return dispatch(fetchStudentsThunk());
         } catch (error){
             console.log("An error occured", error);
         }
@@ -27,7 +28,6 @@ const Students = () => {
     useEffect(() => {
         console.log('FETCH ALL STUDENTS FIRING IN USEEFFECT')
         setEveryStudent(fetchAllStudents());
-
       }, []);
     
  
@@ -40,8 +40,7 @@ const Students = () => {
         <div>
             <h1>Welcome to the Students page</h1>
             <button type="button" class="btn btn-primary" onClick={handleAdd}>Add Student</button>
-            {/*NEEDS TO BE CHANGED !! <StudentItems list={dummyData}/> */}
-            <SingleStudent/>
+            <StudentItems list={allStudents}/>
         </div>
     )
 }
