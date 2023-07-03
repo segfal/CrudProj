@@ -29,7 +29,6 @@ const Campuses = () => {
     useEffect(() => {
         console.log('FETCH ALL CAMPUSES FIRING IN USEEFFECT')
         setAllCamp(fetchAllCampuses());
-
       }, []);
     
 
@@ -44,7 +43,6 @@ const Campuses = () => {
             <h1>Welcome to the Campuses page</h1>
             <button type="button" class="btn btn-primary" onClick={handleAdd}>Add Campus</button>
             <CampusItems list={allCampuses}/>
-            
         </div>
     )
 }
