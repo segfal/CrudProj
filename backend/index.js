@@ -2,14 +2,12 @@ const express = require('express');
 const app = express();
 const PORT = "8080";
 const cors = require('cors');
-const db = require('./DB/db');
+const db = require('./db/db');
 
 //Use Cors to allow cross origin resource sharing
 app.use(cors());
 
 app.use(express.json());
-
-
 
 // Mount on API
 app.use("/routes", require("./routes"));

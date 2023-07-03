@@ -1,14 +1,50 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-export default function StudentItem(props) {
+
+function StudentItems(props) {
+  const navigate = useNavigate();
+  const [currentStudent, setCurrentStudent] = useState(0);
+
+  useEffect(() => {
+      const fetchAllStudents = async () => {
+        try{
+          const res = await axios.get('');
+          console.log(res);
+          const students = await res.json()
+          setCurrentStudent(students);
+        } catch (error){
+          console.log(error)
+        }
+      } 
+
+  })
+
+  //navigate to the single student view
+  const handleAdd = (studentId) => {
+    let path = `/SingleStudent/${studentId}`; 
+    console.log(studentId); 
+    navigate(path); 
+  }
+
+  const handleDelete = (currentStudent) => {
+    
+  } 
   try {
     if (props.list && props.list.length > 0) {
       return props.list.map((student) => (
-        <div key={student.name}>
-          <img src={student.imageURL} alt={student.name} />
-          <h2>{student.name}</h2>
-          <h3>{student.address}</h3>
-          <p>{student.description}</p>
+        <div key={student.firstName}>
+          <img src={student.imageUrl} alt={student.name} />
+          <h2>{student.firstName}</h2>
+          <h2>{student.lastName}</h2>
+          <h2>{student.email}</h2>
+          <h2>{student.gpa}</h2>
+          <button type = 'button' 
+          class='btn btn-primary'
+          id = {currentStudent}
+          onClick = {() => handleAdd(student.id)}>See More
+          </button>
         </div>
       ));
     } else {
@@ -19,3 +55,5 @@ export default function StudentItem(props) {
     return <h1>An error occurred while rendering StudentItem.</h1>;
   }
 }
+
+export default StudentItems;

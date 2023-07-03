@@ -1,14 +1,7 @@
+const Student = require('./student');
+const Campus = require('./campus');
 
+Student.hasOne(Campus, {through: 'student_campus'}); // student must belong to 0 or 1 campus
+Campus.belongsToMany(Student, {through: 'student_campus'}); //many to many relationship between campuses and students
 
-
-const {Students,findStudents} = require('./students');
-const Campuses = require('./campuses');
-
-
-Students.belongsToMany(Campuses, {through: 'student_campus'});
-Campuses.belongsToMany(Students, {through: 'student_campus'});
-
-
-
-module.exports = {Students,findStudents, Campuses};
-
+module.exports = { Student, Campus };

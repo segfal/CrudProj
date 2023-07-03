@@ -1,10 +1,8 @@
 const { DataTypes } = require("sequelize");
 const db = require("../db");
 
-
-///create student table
-
-const Student = db.define('students', {
+///create student table and define columns
+const Student = db.define('student', {
     firstName: {
         type: DataTypes.STRING,
         allowNull: false
@@ -25,24 +23,11 @@ const Student = db.define('students', {
     gpa: {
         type: DataTypes.FLOAT,
         allowNull: false
+    },
+    campusId: {
+        type: DataTypes.INTEGER,
+        allowNull: true
     }
 });
 
-//insert new students
-
-Student.sync({alter: true});
-
-const findStudents = async () => {
-    try{
-        const allStudents = await Students.findAll();
-        return allStudents;
-    } catch(error) {
-        console.log("NO STUDENTS FOUND");
-    }
-}
-
-
-
-
-
-module.exports = {Student,findStudents};
+module.exports = Student;

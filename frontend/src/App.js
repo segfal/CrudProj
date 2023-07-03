@@ -8,6 +8,7 @@ import SingleCampus from './pages/SingleCampus';
 import SingleStudent from './pages/SingleStudent';
 import AddCampus from './pages/AddCampus';
 import AddStudent from './pages/AddStudent';
+import DeleteStudent from './pages/DeleteStudent';
 
 function App() {
   return (
@@ -19,10 +20,10 @@ function App() {
                   <Link to = "/"> Home </Link>
                 </li>
                   <li>
-                    <Link to = "/campus/*"> Campuses </Link>
+                    <Link to = "/campus/"> Campuses </Link>
                   </li>
                     <li>
-                      <Link to = "/students/*"> Students </Link>
+                      <Link to = "/students/"> Students </Link>
                     </li>
               </ul>
           </nav>
@@ -30,12 +31,13 @@ function App() {
           {/* Routes*/}
           <Routes>
             <Route path = "/" element = {<Home/>} />
-            <Route path = "campus/*" element= {<Campuses/>} />
-            <Route path = "/students/*" element = {<Students/>} />
-            <Route path = "/singleCampus/*" element= {<SingleCampus/>} />
-            <Route path = "/singleStudent/*" element = {<SingleStudent/>} />
-            <Route path = "/addCampus/*" element = {<AddCampus/>} />
-            <Route path = "/addStudent/*" element = {<AddStudent />} />
+            <Route path = "campus/" element= {<Campuses/>} />
+            <Route path = "/students/" element = {<Students/>} />
+            <Route path="/singleCampus/:campusId" element={<SingleCampus />} />
+            <Route path = "/singleStudent/:studentId" element = {<SingleStudent/>} />
+            <Route path = "/addCampus/" element = {<AddCampus/>} />
+            <Route path = "/addStudent/" element = {<AddStudent />} />
+            <Route path = "/deleteStudent/" element = {<DeleteStudent />} />
            </Routes>
       </div>
     </Router>
