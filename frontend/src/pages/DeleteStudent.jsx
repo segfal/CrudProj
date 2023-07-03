@@ -22,7 +22,7 @@ const DeleteStudent = () => {
       await axios.delete(
         "http://localhost:8080/Routes/students/deletestudent",
         {
-          data: { firstName: "william" },
+          data: { firstName: firstName },
         }
       );
     } catch (error) {

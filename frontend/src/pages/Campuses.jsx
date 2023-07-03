@@ -31,12 +31,7 @@ const Campuses = () => {
         setAllCamp(fetchAllCampuses());
 
       }, []);
-      /*
-      useEffect(() => {
-        console.log('FETCH ALL CAMPUSES FIRING IN USEEFFECT')
-        fetchAllCampuses();
-      }, [fetchAllCampuses]);
-      */
+    
 
     // Add campus button leads to Add campus page
     const handleAdd = () => {
