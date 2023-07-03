@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { useParams } from "react-router-dom";
+import { fetchCampuses } from "../redux/Campus.actions";
 
 
 //how to pass props from single campus using navigate?
 
 
 const SingleCampus = (props) => {
-//  const navigate =useNavigate();
+  //trying this:
+  const { campusId } = useParams(); //the params allows u to access the campusId from URL parameters
+  //what the useParams thing does is basically, since we have the route:
+  // <Route path="/SingleCampus/:campusId" component={SingleCampus} />
+ //then the params will be referring to the part that says :campusId, aka the tab that this leads to
 
-//  let path = '/SingleCampus/*';
-//  navigate(path, {state.props}); 
+ const campus = fetchCampuses();
 
   return (
     <div>
@@ -21,6 +25,7 @@ const SingleCampus = (props) => {
       <button type="button" className="btn btn-danger">
         Delete
       </button>
+      <h2> Campus ID: {campusId} </h2>
     </div>
   );
 };

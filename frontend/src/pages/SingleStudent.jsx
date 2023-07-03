@@ -2,19 +2,12 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 
-
-
-
-
-
-
-
 const SingleStudent = () => {
   const navigate = useNavigate();
   
   const handleAdd = () => {
     let path = `/deleteStudent/*`;
-    navigate(path);
+    navigate(path);  
 };
   
   return (
