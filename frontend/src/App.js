@@ -9,6 +9,7 @@ import SingleStudent from './pages/SingleStudent';
 import AddCampus from './pages/AddCampus';
 import AddStudent from './pages/AddStudent';
 import DeleteStudent from './pages/DeleteStudent';
+import EditCampus from './components/EditCampus';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path = "/addCampus/" element = {<AddCampus/>} />
             <Route path = "/addStudent/" element = {<AddStudent />} />
             <Route path = "/deleteStudent/" element = {<DeleteStudent />} />
+            <Route path = "/EditCampus/" element =  {<EditCampus/>} />
            </Routes>
       </div>
     </Router>
