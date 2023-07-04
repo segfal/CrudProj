@@ -8,6 +8,7 @@ import { fetchStudentsThunk } from "../redux/Students.actions";
 import { useDispatch, useSelector } from "react-redux";
 import studentReducer from "../redux/Students.reducer";
 import EditCampus from "../components/EditCampus";
+import DeleteCampus from "../components/DeleteCampus";
 
 const SingleCampus = (props) => {
   const navigate = useNavigate();
@@ -23,6 +24,7 @@ const SingleCampus = (props) => {
     return state.students.allStudents;
   });
 
+
   console.log();
   console.log("data: " + allStudents);
   const [everyStudent, setEveryStudent] = useState([]);
@@ -36,6 +38,8 @@ const SingleCampus = (props) => {
       console.log("An error occured", error);
     }
   };
+  
+  
 
   useEffect(() => {
     console.log("FETCH ALL STUDENTS FIRING IN USEEFFECT");
@@ -57,6 +61,15 @@ const SingleCampus = (props) => {
       .catch((err) => console.log(err));
   }, []);
 
+  const handleDelete = async () => {
+    try {
+      await dispatch(DeleteCampus(campusId));
+      navigate("/");
+    } catch (error) {
+      console.log("An error occurred with deletion:", error);
+    }
+  };
+
   //Redirects user to an edit form for the campus
   const handleEdit = () => {
     let path = `/EditCampus`;
@@ -70,6 +83,7 @@ const SingleCampus = (props) => {
     description: singleCampus.description,
   };
 
+  
   return (
     <div>
       <h1>Learn more about {singleCampus.name}</h1>
@@ -82,7 +96,7 @@ const SingleCampus = (props) => {
         Edit
       </button>
       <button type="button" className="btn btn-danger">
-        Delete
+        <Link to='/deleteCampus'> Delete </Link>
       </button>
       <h2>Students on campus</h2>
       <button>Add Student</button>
