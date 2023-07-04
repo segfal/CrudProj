@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { fetchCampuses } from "../redux/Campus.actions";
 import StudentsOnCampus from '../components/StudentsOnCampus';
@@ -7,8 +7,13 @@ import { fetchStudents } from "../redux/Students.actions";
 import { fetchStudentsThunk } from "../redux/Students.actions";
 import { useDispatch, useSelector } from "react-redux";
 import studentReducer from "../redux/Students.reducer";
+import EditCampus from "../components/EditCampus";
+
 
 const SingleCampus = (props) => {
+
+  const navigate = useNavigate();
+
   const { campusId } = useParams(); //the params allows u to access the campusId from URL parameters
   // <Route path = "/singleStudent/:studentId" element = {<SingleStudent/>} />
 // ^^ the params is the studentId part, for example
@@ -54,6 +59,11 @@ const SingleCampus = (props) => {
     .catch((err) => console.log(err));
   },[]);
 
+  //Redirects user to an edit form for the campus
+  const handleEdit = () =>{
+    let path = `/EditCampus`;
+    navigate(path);
+  }
 
   return (
     <div>
@@ -62,8 +72,8 @@ const SingleCampus = (props) => {
       <h2> Campus Name: {singleCampus.name} </h2> 
       <h2> Campus Address: {singleCampus.address} </h2>
       <h2> Campus Description: {singleCampus.description} </h2>
-      <button type="button" className="btn btn-success">
-        Edit
+      <button type="button" className="btn btn-success" onClick = {handleEdit}>
+       Edit
       </button>
       <button type="button" className="btn btn-danger">
         Delete
