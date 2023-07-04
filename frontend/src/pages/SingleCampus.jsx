@@ -6,15 +6,23 @@ import StudentsOnCampus from '../components/StudentsOnCampus';
 import { fetchStudents } from "../redux/Students.actions";
 import { fetchStudentsThunk } from "../redux/Students.actions";
 import { useDispatch, useSelector } from "react-redux";
+import studentReducer from "../redux/Students.reducer";
 
 const SingleCampus = (props) => {
   const { campusId } = useParams(); //the params allows u to access the campusId from URL parameters
+  // <Route path = "/singleStudent/:studentId" element = {<SingleStudent/>} />
+// ^^ the params is the studentId part, for example
   const [singleCampus, setSingleCampus] = useState([]); //this is the data that we get from the backend
+  const [intCampId, setIntCampId] = useState(0);
   // Get all students
-  const allStudents = useSelector((state) => state.students.allStudents);
-    
+  const allStudents = useSelector((state) => {
+    console.log('STATE: ', state);
+    return state.students.allStudents 
+  });
+  
+  console.log()
   console.log('data: ' + allStudents);
-  const [everyStudent, setEveryStudent] = useState([])
+  const [everyStudent, setEveryStudent] = useState([]);
   const dispatch = useDispatch();
 
   const fetchAllStudents = async () => {
@@ -29,10 +37,13 @@ const SingleCampus = (props) => {
   useEffect(() => {
       console.log('FETCH ALL STUDENTS FIRING IN USEEFFECT')
       setEveryStudent(fetchAllStudents());
+      setIntCampId(parseInt(campusId));
     }, []);
 
   // const campuses = fetchCampuses();
   const campusUrl = `http://localhost:8080/routes/campuses/SingleCampus/${campusId}`;
+  
+  
   useEffect(()=>{
     fetch(campusUrl)
     .then((res) => res.json())
@@ -59,7 +70,9 @@ const SingleCampus = (props) => {
       </button>
       <h2>Students on campus</h2>
       <button>Add Student</button>
-      <StudentsOnCampus id={campusId} allStudents={allStudents}/> 
+      {console.log("from single campus all students", allStudents)}
+      {console.log("from single campus, intCampId: ", campusUrl)}
+      <StudentsOnCampus currentCampusId={intCampId} allStudents={allStudents}/> 
     </div>
   );
 };
