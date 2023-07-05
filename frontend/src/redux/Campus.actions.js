@@ -8,6 +8,17 @@ export const fetchCampuses = (payload) => {
         payload: payload,
     };
 };
+
+
+export const deleteCampus = (payload) => {
+    console.log("DELETE CAMPUS ACTION");
+    return {
+        type: CampusesActionType.DELETE_CAMPUS,
+        payload: payload,
+    };
+};
+
+
 // Thunk function for fetching campuses asynchronously
 export const fetchCampusesThunk = () => {
     return async (dispatch) => {
@@ -16,6 +27,21 @@ export const fetchCampusesThunk = () => {
             console.log("axios call for campuses: " , res.data);
             dispatch(fetchCampuses(res.data));
         } catch (error) {
+            console.log("an error has occured", error);
+        }
+    };
+};
+
+
+// Thunk function for deleting a campus asynchronously
+export const deleteCampusThunk = (campusId) => {
+    return async (dispatch) => {
+        try{
+            const res = await axios.delete(`http://localhost:8080/routes/campuses/deletecampus/${campusId}`);
+            console.log("axios call for deleting a campus: " , res.data);
+            dispatch(deleteCampus(res.data));
+        }
+        catch (error) {
             console.log("an error has occured", error);
         }
     };
