@@ -13,6 +13,8 @@ const DeleteCampus = () => {
       ...deleteCampusData,
       [event.target.name]: event.target.value
     });
+    //using the localstorage so that even when a user clicks refresh, their information
+    //does not leave the form. I continue this in useEffect.
     localStorage.setItem('deleteId', event.target.value)
     //this handleChange can also be written as:
     /*

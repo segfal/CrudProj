@@ -9,6 +9,8 @@
 nav ul {
   list-style-type: none;
   padding: 0;
+  padding-top: 1vh;
+  padding-bottom: 5vh;
   margin: 0;
   display: flex;
   justify-content: center;
@@ -29,9 +31,97 @@ nav ul li {
   }
 }
 
-
 ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
+/* HOME PAGE */
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  width: 40px; /* Adjust the width as needed */
+  height: auto;
+  margin-right: 10px; /* Adjust the margin as needed */
+}
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f0f0f0;
+  background-image: url("https://www1.cuny.edu/mu/forum/files/2020/09/WSJ-CCNY-d-S.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 700px;
+  /* width: 1600px; */
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.paragraph {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+}
+.background-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin-bottom: 30vh; /* Adjust the margin as needed */
+  /* font-size: 100px; */
+  font-size: 4rem;
+    line-height: 6.5rem;
+    text-shadow: 1px 1px 2px #000000;
+    color: white;
+    /* opacity: 0.7; */
+    font-weight: 1000;
+}
+#gradient-button {
+  padding:1.5vh;
+  background: rgb(2,0,36);
+background: linear-gradient(  rgba(234,245,249,1) 88%, rgba(0,212,255,1) 100%);
+  /* Adjust the gradient colors as needed */
+  /* You can also adjust the gradient direction by changing 'to right' */
+}
+.Homebutton-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.Homebutton {
+  margin: 0 10px;
+  padding: 10px 20px;
+  background-color: #f0f0f0;
+  color: #333;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .Homebutton-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .Homebutton {
+    margin: 5px 0;
+  }
+}
+
+/* END OF HOME PAGE  */
