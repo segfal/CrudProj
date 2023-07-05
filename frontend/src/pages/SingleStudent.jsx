@@ -6,7 +6,7 @@ import campusReducer from "../redux/Campus.reducer";
 import { fetchCampusesThunk } from "../redux/Campus.actions";
 import axios from "axios";
 
-const SingleStudent = (props) => {
+const SingleStudent = () => {
   const { studentId } = useParams(); //the params allows u to access the campusId from URL parameters
   const [singleStudent, setSingleStudent] = useState([]); //this is the data that we get from the backend
   const allCampuses = useSelector((state) => state.campuses.allCampuses);

@@ -59,7 +59,7 @@ const SingleCampus = (props) => {
 
   //Redirects user to an edit form for the campus
   const handleEdit = () => {
-    let path = `/EditCampus`;
+    let path = `/editCampus/${campusId}`;
     navigate(path);
   };
 
