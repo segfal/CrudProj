@@ -68,19 +68,7 @@ const SingleCampus = (props) => {
   const handleDelete = () => { //Deletes the campus through the backend does not need a compoonent for this just only
     axios.delete(`http://localhost:8080/routes/campuses/deletecampus/${campusId}`);
     navigate('/campus');
-
-
-
   };
-
-
-  const editCampusProps = {
-    name: singleCampus.name,
-    imageUrl: singleCampus.imageUrl,
-    address: singleCampus.address,
-    description: singleCampus.description,
-  };
-
 
   return (
     <div>
@@ -97,7 +85,6 @@ const SingleCampus = (props) => {
         Delete
       </button>
       <h2>Students on campus</h2>
-      <button>Add Student</button>
       {console.log("from single campus all students", allStudents)}
       {console.log("from single campus, intCampId: ", campusUrl)}
       <StudentsOnCampus currentCampusId={intCampId} allStudents={allStudents} />

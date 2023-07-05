@@ -17,7 +17,7 @@ router.get("/", async (req, res, next) => {
 });
 
 // Fetch single student
-router.get("/SingleStudent/:id", async (req, res, next) => {
+router.get("/singleStudent/:studentId", async (req, res, next) => {
   try {
     //finds a single id based on the param request
     const singleStudent = await Student.findByPk(req.params.id);

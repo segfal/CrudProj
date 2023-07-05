@@ -28,9 +28,7 @@ function StudentItems(props) {
     navigate(path); 
   }
 
-  const handleDelete = (currentStudent) => {
-    
-  } 
+  
   try {
     if (props.list && props.list.length > 0) {
       return props.list.map((student) => (
