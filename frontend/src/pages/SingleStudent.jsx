@@ -17,7 +17,7 @@ const SingleStudent = () => {
   console.log("allCampuses: ", allCampuses);
   
   const student = fetchStudents();
-  const studentUrl = `http://localhost:8080/routes/students/${studentId}`;
+  const studentUrl = `http://localhost:8080/routes/students/SingleStudent/${studentId}`;
   useEffect(()=>{
     fetch(studentUrl)
     .then((res) => res.json())
