@@ -77,6 +77,7 @@ router.put("/updatestudent/:id", async (req, res, next) => {
         email: req.body.email,
         imageUrl: req.body.imageUrl,
         gpa: req.body.gpa,
+        campusId: req.body.campusId
       });
 
       console.log("Student updated successfully");

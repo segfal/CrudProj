@@ -24,6 +24,7 @@ const SingleCampus = (props) => {
     console.log("STATE: ", state);
     return state.students.allStudents;
   });
+  console.log("all students from single campus . jsx" , allStudents);
 
   console.log();
   console.log("data: " + allStudents);
@@ -65,9 +66,20 @@ const SingleCampus = (props) => {
     navigate(path);
   };
 
+  const filterStudents = () => {
+    // Assuming students holds all the students 
+    // Filter is like an if-else statement, it will only return the filtered students if the condition is true
+    const filteredStudents = allStudents.filter((student) => student.campusId === campusId);
+    return filteredStudents;
+  }
+
   const handleDelete = () => { //Deletes the campus through the backend does not need a compoonent for this just only
+    console.log("students: " , filterStudents());
     axios.delete(`http://localhost:8080/routes/campuses/deletecampus/${campusId}`);
     navigate('/campus');
+    filterStudents().map((student) => {
+      student.campusId = null;
+    })
   };
 
   return (
