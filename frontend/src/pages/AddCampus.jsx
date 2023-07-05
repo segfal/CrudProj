@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
+import './pages.css';
+
 const AddCampus = () => {
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
@@ -70,6 +72,11 @@ const AddCampus = () => {
         />
         <button type="submit">Submit</button>
       </form>
+      {imageUrl && (
+        <div className="image-container">
+          <img src={imageUrl} alt="Campus" className="uploaded-image" />
+          </div>
+      )}
     </div>
   );
 };
