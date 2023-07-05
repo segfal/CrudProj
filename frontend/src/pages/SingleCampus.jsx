@@ -8,7 +8,8 @@ import { fetchStudentsThunk } from "../redux/Students.actions";
 import { useDispatch, useSelector } from "react-redux";
 import studentReducer from "../redux/Students.reducer";
 import EditCampus from "../components/EditCampus";
-import DeleteCampus from "../components/DeleteCampus";
+import axios from "axios";
+
 
 const SingleCampus = (props) => {
   const navigate = useNavigate();
@@ -24,7 +25,6 @@ const SingleCampus = (props) => {
     return state.students.allStudents;
   });
 
-
   console.log();
   console.log("data: " + allStudents);
   const [everyStudent, setEveryStudent] = useState([]);
@@ -38,8 +38,6 @@ const SingleCampus = (props) => {
       console.log("An error occured", error);
     }
   };
-  
-  
 
   useEffect(() => {
     console.log("FETCH ALL STUDENTS FIRING IN USEEFFECT");
@@ -61,20 +59,20 @@ const SingleCampus = (props) => {
       .catch((err) => console.log(err));
   }, []);
 
-  const handleDelete = async () => {
-    try {
-      await dispatch(DeleteCampus(campusId));
-      navigate("/");
-    } catch (error) {
-      console.log("An error occurred with deletion:", error);
-    }
-  };
-
   //Redirects user to an edit form for the campus
   const handleEdit = () => {
-    let path = `/EditCampus`;
+    let path = `/editCampus/${campusId}`; 
     navigate(path);
   };
+
+  const handleDelete = () => { //Deletes the campus through the backend does not need a compoonent for this just only
+    axios.delete(`http://localhost:8080/routes/campuses/deletecampus/${campusId}`);
+    navigate('/campus');
+
+
+
+  };
+
 
   const editCampusProps = {
     name: singleCampus.name,
@@ -83,7 +81,7 @@ const SingleCampus = (props) => {
     description: singleCampus.description,
   };
 
-  
+
   return (
     <div>
       <h1>Learn more about {singleCampus.name}</h1>
@@ -95,8 +93,8 @@ const SingleCampus = (props) => {
       <button type="button" className="btn btn-success" onClick={handleEdit}>
         Edit
       </button>
-      <button type="button" className="btn btn-danger">
-        <Link to='/deleteCampus'> Delete </Link>
+      <button type="button" className="btn btn-danger" onClick={handleDelete}>
+        Delete
       </button>
       <h2>Students on campus</h2>
       <button>Add Student</button>

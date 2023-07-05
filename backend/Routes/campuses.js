@@ -80,13 +80,13 @@ router.put("/updatecampus/:id", async (req, res, next) => {
   }
 });
 
-//TODO: delete campus
-router.delete("/deletecampus/", async (req, res, next) => {
+//TODO: delete campus by ID 
+router.delete("/deletecampus/:id", async (req, res, next) => {
   try {
     console.log(req.body.id);
     const deletedCampus = await Campus.destroy({
       where: {
-        id: req.body.id,
+        id: req.params.id,
       },
     });
     res.status(200).json(deletedCampus);

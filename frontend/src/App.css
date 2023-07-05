@@ -1,4 +1,3 @@
-
 .App {
   display: flex;
   flex-direction: column;
@@ -123,5 +122,3 @@ background: linear-gradient(  rgba(234,245,249,1) 88%, rgba(0,212,255,1) 100%);
     margin: 5px 0;
   }
 }
-
-/* END OF HOME PAGE  */

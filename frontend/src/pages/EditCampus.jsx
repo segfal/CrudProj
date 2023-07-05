@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import SingleCampus from "../pages/SingleCampus";
-import { useParams,useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
+
 const EditCampus = () => {
 
-  const navigate = useNavigate();
-  const { campusId } = useParams();
-
+ const [SingleCampus, setSingleCampus] = useState("");
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [description, setDescription] = useState("");
-
-  
-  console.log("campusId: ", campusId);
-
+  const campusId = useParams();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,6 +25,10 @@ const EditCampus = () => {
     }
   };
 
+  const onSubmit = () => {
+    
+  }
+
   const handleForm = async (event) => {
     event.preventDefault();
     console.log({
@@ -37,7 +37,8 @@ const EditCampus = () => {
       imageUrl,
       description,
     });
-    await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${campusId}`, {
+    console.log("THE CAMP ID BEING EDITED: " , campusId);
+    await axios.put(`http://localhost:8080/Routes/campuses/updatecampus/${campusId}`, {
       name,
       location,
       imageUrl,
@@ -82,7 +83,7 @@ const EditCampus = () => {
           value={description}
           onChange={handleChange}
         />
-        <button type="submit">Submit</button>
+        <button type="submit" onSubmit = {onSubmit}>Submit</button>
       </form>
     </div>
   );

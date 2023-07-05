@@ -8,9 +8,8 @@ import SingleCampus from './pages/SingleCampus';
 import SingleStudent from './pages/SingleStudent';
 import AddCampus from './pages/AddCampus';
 import AddStudent from './pages/AddStudent';
-import DeleteStudent from './pages/DeleteStudent';
+// import DeleteStudent from './pages/DeleteStudent';
 import EditCampus from './components/EditCampus';
-import DeleteCampus from './components/DeleteCampus';
 
 function App() {
   return (
@@ -95,8 +94,7 @@ function App() {
             <Route path = "/singleStudent/:studentId" element = {<SingleStudent/>} />
             <Route path = "/addCampus/" element = {<AddCampus/>} />
             <Route path = "/addStudent/" element = {<AddStudent />} />
-            <Route path = "/deleteStudent/" element = {<DeleteStudent />} />
-            <Route path = '/deleteCampus/' element = {<DeleteCampus />} />
+            {/* <Route path = "/deleteStudent/" element = {<DeleteStudent />} /> */}
             <Route path = "/EditCampus/" element =  {<EditCampus/>} />
            </Routes>
       </div>
