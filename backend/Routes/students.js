@@ -49,21 +49,8 @@ router.post("/addstudent", async (req, res, next) => {
   }
 });
 
-//TODO: delete student
-router.delete("/deletestudent", async (req, res, next) => {
-  try {
-    console.log(req.body.id);
-    const deleteStudent = await Student.destroy({
-      where: {
-        firstName: req.body.firstName,
-      },
-    });
-    res.status(200).json(deleteStudent);
-  } catch (error) {
-    console.log("Delete Failed");
-  }
-});
 
+///Tashi
 //TODO: update student
 router.put("/updatestudent/:id", async (req, res, next) => {
   try {
@@ -98,6 +85,22 @@ router.put("/updatestudent/:id", async (req, res, next) => {
   } catch (error) {
     console.log("Update Failed");
     res.status(500).json({ error: "Update failed" });
+  }
+});
+
+
+
+router.delete("/deletestudent/:id", async (req, res, next) => {
+  try {
+    console.log(req.body.id);
+    const deletedStudent = await Student.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(deletedStudent);
+  } catch (error) {
+    console.log("Delete Failed");
   }
 });
 
