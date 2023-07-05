@@ -1,14 +1,15 @@
-
-import React, { useState } from "react";
-import createNewStudentThunk from "../redux/Students.actions";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const AddStudent = () => {
- const [firstName, setFirstName] = useState("");
+const EditStudent = () => {
+  const { studentId } = useParams();
+  const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [gpa, setGpa] = useState(""); 
+  const [gpa, setGpa] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -32,15 +33,18 @@ const AddStudent = () => {
       lastName,
       email,
       imageUrl,
-      gpa
+      gpa,
     });
-    await axios.post("http://localhost:8080/Routes/students/addstudent", {firstName, lastName, email, imageUrl, gpa });
+    await axios.put(
+      `http://localhost:8080/Routes/students/updatestudent/${studentId}`,
+      { firstName, lastName, email, imageUrl, gpa }
+    );
     // Handle form submission logic here
   };
 
   return (
     <div>
-      <h1>Add a new student through this form</h1>
+      <h1>Edit a new student through this form</h1>
       <form onSubmit={handleForm}>
         <label htmlFor="firstName">Student's First Name:</label>
         <input
@@ -88,4 +92,4 @@ const AddStudent = () => {
   );
 };
 
-export default AddStudent;
+export default EditStudent;
