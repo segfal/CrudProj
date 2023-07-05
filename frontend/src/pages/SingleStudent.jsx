@@ -11,9 +11,9 @@ const SingleStudent = () => {
   const navigate = useNavigate();
   const { studentId } = useParams(); //the params allows u to access the campusId from URL parameters
   const [singleStudent, setSingleStudent] = useState([]); //this is the data that we get from the backend
-  const allCampuses = useSelector((state) => state.campuses.allCampuses);
-  const dispatch = useDispatch();
-  const [allCamp, setAllCamp] = useState([]);
+  const allCampuses = useSelector((state) => state.campuses.allCampuses); // get all campuses from redux store
+  const dispatch = useDispatch(); // used to dispatch an action to redux store
+  const [allCamp, setAllCamp] = useState([]); // used to store all campuses from redux store
   console.log("allCampuses: ", allCampuses);
   
   const student = fetchStudents();
@@ -74,8 +74,8 @@ useEffect(() => {
 
 
   const handleDelete = () => { //Deletes the campus through the backend does not need a compoonent for this just only onclick
-    axios.delete(`http://localhost:8080/routes/students/deletestudent/${studentId}`);
-    navigate('/students');
+    axios.delete(`http://localhost:8080/routes/students/deletestudent/${studentId}`); //deletes the campus through the backend
+    navigate('/students'); //navigates to the students page
   };
 
 
