@@ -65,7 +65,7 @@ const SingleCampus = (props) => {
     navigate(path);
   };
 
-  const handleDelete = () => {
+  const handleDelete = () => { //Deletes the campus through the backend does not need a compoonent for this just only onclick
     axios.delete(`http://localhost:8080/routes/campuses//deletecampus/${campusId}`);
     navigate('/campuses');
   };
