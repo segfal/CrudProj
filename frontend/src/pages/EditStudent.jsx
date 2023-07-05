@@ -26,6 +26,7 @@ const EditStudent = () => {
     }
   };
 
+  // handle the form submission
   const handleForm = async (event) => {
     event.preventDefault();
     console.log({

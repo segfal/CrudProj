@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+
+
+
+/* -------------- We don't need this anymore because we the handle delete function in singlecampus can take care of this */
+
+
+
+
+
 const DeleteCampus = () => {
   const [deleteCampusData, setDeleteCampusData] = useState({
     name: "",
