@@ -44,9 +44,6 @@ const AddCampus = () => {
     }
   };
 
-  // const newCampusId = allCampuses[allCampuses.length-1].id;
-  
-
   const handleForm = async (event) => {
     event.preventDefault();
     console.log({
@@ -61,7 +58,7 @@ const AddCampus = () => {
       imageUrl,
       description,
     });
-    console.log("new campus from post", newCampus);
+    // Redirect to the new campus's page
     let path = `/SingleCampus/${newCampus.data.id}`; 
     navigate(path); 
     // Handle form submission logic here
