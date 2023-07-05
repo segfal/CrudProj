@@ -7,6 +7,7 @@ import { fetchCampusesThunk } from "../redux/Campus.actions";
 import axios from "axios";
 
 const SingleStudent = () => {
+  const navigate = useNavigate();
   const { studentId } = useParams(); //the params allows u to access the campusId from URL parameters
   const [singleStudent, setSingleStudent] = useState([]); //this is the data that we get from the backend
   const allCampuses = useSelector((state) => state.campuses.allCampuses);
@@ -15,7 +16,7 @@ const SingleStudent = () => {
   console.log("allCampuses: ", allCampuses);
   
   const student = fetchStudents();
-  const studentUrl = `http://localhost:8080/routes/students/SingleStudent/${studentId}`;
+  const studentUrl = `http://localhost:8080/routes/students/deletestudent/${studentId}`;
   useEffect(()=>{
     fetch(studentUrl)
     .then((res) => res.json())
@@ -34,6 +35,8 @@ const SingleStudent = () => {
         console.log("An error occured", error);
     }
 };
+
+
 
 // Load database campuses upon mount
 useEffect(() => {
@@ -61,6 +64,13 @@ useEffect(() => {
       )
     }
   }
+
+
+  const handleDelete = () => { //Deletes the campus through the backend does not need a compoonent for this just only onclick
+    axios.delete(`http://localhost:8080/routes/students//deletestudent/${studentId}`);
+    navigate('/campuses');
+  };
+
 
   return (
     <div>

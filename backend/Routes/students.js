@@ -101,4 +101,20 @@ router.put("/updatestudent/:id", async (req, res, next) => {
   }
 });
 
+
+
+router.delete("/deletestudent/:id", async (req, res, next) => {
+  try {
+    console.log(req.body.id);
+    const deletedStudent = await student.destroy({
+      where: {
+        id: req.params.id,
+      },
+    });
+    res.status(200).json(deletedStudent);
+  } catch (error) {
+    console.log("Delete Failed");
+  }
+});
+
 module.exports = router;
