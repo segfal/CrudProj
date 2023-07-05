@@ -63,12 +63,6 @@ const SingleCampus = (props) => {
     navigate(path);
   };
 
-  const editCampusProps = {
-    name: singleCampus.name,
-    imageUrl: singleCampus.imageUrl,
-    address: singleCampus.address,
-    description: singleCampus.description,
-  };
 
   return (
     <div>

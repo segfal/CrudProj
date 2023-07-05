@@ -10,6 +10,7 @@ import AddCampus from './pages/AddCampus';
 import AddStudent from './pages/AddStudent';
 import DeleteStudent from './pages/DeleteStudent';
 import EditCampus from './components/EditCampus';
+import EditStudent from './pages/EditStudent';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route path = "/addStudent/" element = {<AddStudent />} />
             <Route path = "/deleteStudent/" element = {<DeleteStudent />} />
             <Route path = "/editCampus/:campusId" element =  {<EditCampus/>} />
+            <Route path = "/editStudent/:studentId" element = {<EditStudent/>} />
            </Routes>
       </div>
     </Router>
