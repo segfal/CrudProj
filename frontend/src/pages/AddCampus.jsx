@@ -35,8 +35,9 @@ const AddCampus = () => {
   };
 
   return (
-    <div>
+    <div className="inputs">
       <h1>Add a new campus through this form</h1>
+      <div className="forms">
       <form onSubmit={handleForm}>
         <label htmlFor="name">Campus Name:</label>
         <input
@@ -72,6 +73,7 @@ const AddCampus = () => {
         />
         <button type="submit">Submit</button>
       </form>
+      </div>
       {imageUrl && (
         <div className="image-container">
           <img src={imageUrl} alt="Campus" className="uploaded-image" />

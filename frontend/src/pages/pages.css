@@ -16,4 +16,56 @@
       max-width: 100%;
     }
   }
+  /* this is for where it says add new campus thru this form */
+  .inputs {
+    margin-top: 3vh;
+    max-width: 100%;
+  }
+  /* this is for the image in the form that shows up */
+  .uploaded-image {
+    margin-top: 10vh;
+    max-width: 100%; /* Adjust the max-width value as needed */
+    max-height: 300px; /* Adjust the max-height value as needed */
+    width:60vh;
+  }
+  /* this is for the form */
+  .forms{
+    margin-top: 5vh;
+  }
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"],
+  input[type="url"] {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+  }
+  
+  @media screen and (max-width: 480px) {
+    /* Styles for mobile devices */
+    .container {
+      padding: 10px;
+    }
+  
+    input[type="text"],
+    input[type="url"] {
+      font-size: 14px;
+    }
+  
+    button[type="submit"] {
+      font-size: 14px;
+    }
+  }
   
