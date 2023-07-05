@@ -18,7 +18,6 @@ const StudentsOnCampus = ({ currentCampusId, allStudents }) => {
     const filteredStudents = allStudents.filter((student) => student.campusId === currentCampusId);
     console.log("filtered Students: ", filteredStudents);
     return filteredStudents;
-
     }
 
     const handleSeeMore = (studentId) => {
