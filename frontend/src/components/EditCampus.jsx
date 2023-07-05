@@ -15,21 +15,7 @@ const EditCampus = () => {
   
   console.log("campusId: ", campusId);
 
-  //Get campus info that user is trying to edit
-//   const CampusData = () => {
-//     useEffect(() => {
-//       setName(props.name);
-//       setLocation(props.location);
-//       setImageUrl(props.imageUrl);
-//       setDescription(props.description);
 
-//       console.log("Name: " , name);
-//       console.log("location: " , location);
-//       console.log("imageUrl: " , imageUrl);
-//       console.log("description: " , description);
-//       CampusData();
-//     }, [props]);
-//   };
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "name") {
