@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import campusReducer from "../redux/Campus.reducer";
 import { fetchCampusesThunk } from "../redux/Campus.actions";
 import axios from "axios";
+import EditStudent from "./EditStudent";
 
 const SingleStudent = () => {
   const navigate = useNavigate();
@@ -64,6 +65,12 @@ useEffect(() => {
       )
     }
   }
+  //Navigate to editing student
+  const handleEdit = () => {
+    let path = `/editStudent/${studentId}`;
+    navigate(path);
+  };
+
 
 
   const handleDelete = () => { //Deletes the campus through the backend does not need a compoonent for this just only onclick
@@ -79,7 +86,7 @@ useEffect(() => {
       <h2> Student Name: {singleStudent.firstName} {singleStudent.lastName}</h2> 
       <h2> Student E-mail: {singleStudent.email} </h2>
       <h2> Student GPA: {singleStudent.gpa} </h2>
-      <button type="button" className="btn btn-success">
+      <button type="button" className="btn btn-success" onClick={handleEdit}>
         Edit
       </button>
       <button type="button" className="btn btn-danger" onClick={handleDelete}>
