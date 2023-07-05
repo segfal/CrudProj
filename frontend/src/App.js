@@ -39,7 +39,7 @@ function App() {
             <Route path = "/addCampus/" element = {<AddCampus/>} />
             <Route path = "/addStudent/" element = {<AddStudent />} />
             <Route path = "/deleteStudent/" element = {<DeleteStudent />} />
-            <Route path = "/EditCampus/" element =  {<EditCampus/>} />
+            <Route path = "/editCampus/:campusId" element =  {<EditCampus/>} />
            </Routes>
       </div>
     </Router>

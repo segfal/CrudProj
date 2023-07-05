@@ -1,13 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SingleCampus from "../pages/SingleCampus";
+import { useParams,useNavigate } from "react-router-dom";
+const EditCampus = () => {
 
-const EditCampus = (props) => {
+  const navigate = useNavigate();
+  const { campusId } = useParams();
+
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [description, setDescription] = useState("");
-  const campusId = 1;
+
+  
+  console.log("campusId: ", campusId);
 
   //Get campus info that user is trying to edit
 //   const CampusData = () => {
@@ -45,7 +51,7 @@ const EditCampus = (props) => {
       imageUrl,
       description,
     });
-    await axios.put(`http://localhost:8080/Routes/campuses/updatecampus/${campusId}`, {
+    await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${campusId}`, {
       name,
       location,
       imageUrl,
@@ -63,7 +69,7 @@ const EditCampus = (props) => {
           type="text"
           placeholder="Campus Name"
           name="name"
-          value={props.name}
+          value={name}
           onChange={handleChange}
         />
         <label htmlFor="location">Campus Address:</label>
