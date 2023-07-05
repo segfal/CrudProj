@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import './pages.css';
+import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const AddCampus = () => {
+const EditCampus = () => {
+
+ const [SingleCampus, setSingleCampus] = useState("");
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [description, setDescription] = useState("");
-
+  const campusId = useParams();
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -19,8 +22,12 @@ const AddCampus = () => {
       setImageUrl(value);
     } else if (name === "description") {
       setDescription(value);
-    } 
+    }
   };
+
+  const onSubmit = () => {
+    
+  }
 
   const handleForm = async (event) => {
     event.preventDefault();
@@ -28,16 +35,21 @@ const AddCampus = () => {
       name,
       location,
       imageUrl,
-      description
+      description,
     });
-    await axios.post("http://localhost:8080/Routes/campuses/addcampus", { name, location, imageUrl, description });
+    console.log("THE CAMP ID BEING EDITED: " , campusId);
+    await axios.put(`http://localhost:8080/Routes/campuses/updatecampus/${campusId}`, {
+      name,
+      location,
+      imageUrl,
+      description,
+    });
     // Handle form submission logic here
   };
 
   return (
-    <div className="inputs">
-      <h1>Add a new campus through this form</h1>
-      <div className="forms">
+    <div>
+      <h1>Edit Campus</h1>
       <form onSubmit={handleForm}>
         <label htmlFor="name">Campus Name:</label>
         <input
@@ -71,16 +83,10 @@ const AddCampus = () => {
           value={description}
           onChange={handleChange}
         />
-        <button type="submit">Submit</button>
+        <button type="submit" onSubmit = {onSubmit}>Submit</button>
       </form>
-      </div>
-      {imageUrl && (
-        <div className="image-container">
-          <img src={imageUrl} alt="Campus" className="uploaded-image" />
-          </div>
-      )}
     </div>
   );
 };
-    
-export default AddCampus;
+
+export default EditCampus;

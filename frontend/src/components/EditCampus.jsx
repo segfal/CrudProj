@@ -1,12 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
-import './pages.css';
+import SingleCampus from "../pages/SingleCampus";
+import { useParams,useNavigate } from "react-router-dom";
+const EditCampus = () => {
 
-const AddCampus = () => {
+  const navigate = useNavigate();
+  const { campusId } = useParams();
+
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [description, setDescription] = useState("");
+
+  
+  console.log("campusId: ", campusId);
 
 
   const handleChange = (event) => {
@@ -19,7 +26,7 @@ const AddCampus = () => {
       setImageUrl(value);
     } else if (name === "description") {
       setDescription(value);
-    } 
+    }
   };
 
   const handleForm = async (event) => {
@@ -28,16 +35,20 @@ const AddCampus = () => {
       name,
       location,
       imageUrl,
-      description
+      description,
     });
-    await axios.post("http://localhost:8080/Routes/campuses/addcampus", { name, location, imageUrl, description });
+    await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${campusId}`, {
+      name,
+      location,
+      imageUrl,
+      description,
+    });
     // Handle form submission logic here
   };
 
   return (
-    <div className="inputs">
-      <h1>Add a new campus through this form</h1>
-      <div className="forms">
+    <div>
+      <h1>Edit Campus</h1>
       <form onSubmit={handleForm}>
         <label htmlFor="name">Campus Name:</label>
         <input
@@ -73,14 +84,8 @@ const AddCampus = () => {
         />
         <button type="submit">Submit</button>
       </form>
-      </div>
-      {imageUrl && (
-        <div className="image-container">
-          <img src={imageUrl} alt="Campus" className="uploaded-image" />
-          </div>
-      )}
     </div>
   );
 };
-    
-export default AddCampus;
+
+export default EditCampus;

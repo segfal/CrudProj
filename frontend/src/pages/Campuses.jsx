@@ -5,10 +5,11 @@ import campusReducer from "../redux/Campus.reducer";
 import SingleCampus from "./SingleCampus";
 import CampusItems from "../components/CampusItems";
 import { useNavigate } from "react-router-dom";
+import './pages.css'
 
 
 const Campuses = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
     const allCampuses = useSelector((state) => state.campuses.allCampuses);
     console.log("data: " + allCampuses);
     const [allCamp, setAllCamp] = useState([]);
@@ -39,7 +40,7 @@ const Campuses = () => {
     };
 
     return (
-        <div>
+        <div className="campus-item">
             <h1>Welcome to the Campuses page</h1>
             <button type="button" class="btn btn-primary" onClick={handleAdd}>Add Campus</button>
             <CampusItems list={allCampuses}/>
