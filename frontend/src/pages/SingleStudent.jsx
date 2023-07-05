@@ -65,6 +65,10 @@ useEffect(() => {
       )
     }
   }
+
+
+
+
   //Navigate to editing student
   const handleEdit = () => {
     let path = `/editStudent/${studentId}`;
@@ -84,6 +88,7 @@ useEffect(() => {
       <h1>Learn more about {singleStudent.firstName} {singleStudent.lastName}</h1>
       <img src={singleStudent.imageUrl} alt="student image" />
       <h2> Student Name: {singleStudent.firstName} {singleStudent.lastName}</h2> 
+      
       <h2> Student E-mail: {singleStudent.email} </h2>
       <h2> Student GPA: {singleStudent.gpa} </h2>
       <button type="button" className="btn btn-success" onClick={handleEdit}>

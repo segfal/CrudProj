@@ -58,8 +58,6 @@ ul {
   background-repeat: no-repeat;
   background-position: center;
   height: 700px;
-  /* width: 1600px; */
-  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -112,7 +110,7 @@ background: linear-gradient(  rgba(234,245,249,1) 88%, rgba(0,212,255,1) 100%);
   border-radius: 5px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen {
   .Homebutton-container {
     flex-direction: column;
     align-items: center;

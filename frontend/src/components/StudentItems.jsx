@@ -28,14 +28,12 @@ function StudentItems(props) {
     navigate(path); 
   }
 
-  const handleDelete = (currentStudent) => {
-    
-  } 
+  
   try {
     if (props.list && props.list.length > 0) {
       return props.list.map((student) => (
         <div key={student.firstName}>
-          <img src={student.imageUrl} alt={student.name} />
+          <img src={student.imageUrl} alt={student.name} width="200" height="200"/>
           <h2>{student.firstName}</h2>
           <h2>{student.lastName}</h2>
           <h2>{student.email}</h2>

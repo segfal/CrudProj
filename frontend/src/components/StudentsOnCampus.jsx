@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import SingleCampus from "../pages/SingleCampus";
+import { useNavigate } from "react-router-dom";
 
 const StudentsOnCampus = ({ currentCampusId, allStudents }) => {
   const [id, setId] = useState([]);
+
+  const navigate = useNavigate();
   
   console.log("students: ", allStudents);
 //   console.log("parsed campus id", parseInt(currentCampusId));
@@ -16,6 +19,12 @@ const StudentsOnCampus = ({ currentCampusId, allStudents }) => {
     console.log("filtered Students: ", filteredStudents);
     return filteredStudents;
 
+    }
+
+    const handleSeeMore = (studentId) => {
+      let path = `/SingleStudent/${studentId}`; 
+      console.log(studentId); 
+      navigate(path); 
     }
 
   const studentsRelationship = () => {
@@ -32,6 +41,10 @@ const StudentsOnCampus = ({ currentCampusId, allStudents }) => {
                 Student Name: {studentOnCampus.firstName} {studentOnCampus.lastName}
               </h3>
               <img src={studentOnCampus.imageUrl} alt={studentOnCampus.firstName} />
+              <button type = 'button' 
+              class='btn btn-primary'
+              onClick = {() => handleSeeMore(studentOnCampus.id)}>See More
+              </button>
             </div>
           ))}
         </div>

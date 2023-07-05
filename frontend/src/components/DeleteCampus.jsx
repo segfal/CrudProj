@@ -91,7 +91,7 @@ const DeleteCampus = () => {
           onChange={handleChange}
         />
 
-        <button type="submit">Delete</button>
+        <button type="submit" onClick = {handleDeletion}>Delete</button>
       </form>
     </div>
   );

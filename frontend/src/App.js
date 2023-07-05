@@ -94,8 +94,7 @@ function App() {
             <Route path = "/singleStudent/:studentId" element = {<SingleStudent/>} />
             <Route path = "/addCampus/" element = {<AddCampus/>} />
             <Route path = "/addStudent/" element = {<AddStudent />} />
-            {/* <Route path = "/deleteStudent/" element = {<DeleteStudent />} /> */}
-            <Route path = "/EditCampus/" element =  {<EditCampus/>} />
+            <Route path = "/editCampus/:studentid" element =  {<EditCampus/>} />
            </Routes>
       </div>
     </Router>
