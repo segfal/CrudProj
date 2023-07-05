@@ -8,6 +8,8 @@ import { fetchStudentsThunk } from "../redux/Students.actions";
 import { useDispatch, useSelector } from "react-redux";
 import studentReducer from "../redux/Students.reducer";
 import EditCampus from "../components/EditCampus";
+import axios from "axios";
+
 
 const SingleCampus = (props) => {
   const navigate = useNavigate();
@@ -63,6 +65,12 @@ const SingleCampus = (props) => {
     navigate(path);
   };
 
+  const handleDelete = () => {
+    axios.delete(`http://localhost:8080/routes/campuses//deletecampus/${campusId}`);
+    navigate('/campuses');
+  };
+
+
   const editCampusProps = {
     name: singleCampus.name,
     imageUrl: singleCampus.imageUrl,
@@ -81,7 +89,7 @@ const SingleCampus = (props) => {
       <button type="button" className="btn btn-success" onClick={handleEdit}>
         Edit
       </button>
-      <button type="button" className="btn btn-danger">
+      <button type="button" className="btn btn-danger" onClick={handleDelete}>
         Delete
       </button>
       <h2>Students on campus</h2>
