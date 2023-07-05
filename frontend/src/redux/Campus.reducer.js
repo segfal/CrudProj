@@ -13,7 +13,7 @@ const campusReducer = (state = initialCampusState, action) => {
         case CampusesActionType.FETCH_CAMPUS:
             //copy the existing state, then update allCampuses which replaces previous 
             //campuses data with the newly fetched data
-            return {...state, allCampuses: action.payload}
+            return {...state, allCampuses: action.payload} //payload is the data
 
         default:
             return state;
@@ -21,6 +21,7 @@ const campusReducer = (state = initialCampusState, action) => {
 
          }
     } catch(error){
+        
         console.log(error)
         return state; //return the current state in case of error
         

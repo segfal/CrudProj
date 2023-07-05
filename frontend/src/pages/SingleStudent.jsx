@@ -16,7 +16,7 @@ const SingleStudent = () => {
   console.log("allCampuses: ", allCampuses);
   
   const student = fetchStudents();
-  const studentUrl = `http://localhost:8080/routes/students/deletestudent/${studentId}`;
+  const studentUrl = `http://localhost:8080/routes/students/${studentId}`;
   useEffect(()=>{
     fetch(studentUrl)
     .then((res) => res.json())
@@ -67,8 +67,8 @@ useEffect(() => {
 
 
   const handleDelete = () => { //Deletes the campus through the backend does not need a compoonent for this just only onclick
-    axios.delete(`http://localhost:8080/routes/students//deletestudent/${studentId}`);
-    navigate('/campuses');
+    axios.delete(`http://localhost:8080/routes/students/deletestudent/${studentId}`);
+    navigate('/students');
   };
 
 
@@ -82,7 +82,7 @@ useEffect(() => {
       <button type="button" className="btn btn-success">
         Edit
       </button>
-      <button type="button" className="btn btn-danger">
+      <button type="button" className="btn btn-danger" onClick={handleDelete}>
         Delete
       </button>
       {campusRelationship(singleStudent.campusId)}
