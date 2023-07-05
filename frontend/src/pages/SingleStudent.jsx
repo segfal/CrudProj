@@ -11,13 +11,13 @@ const SingleStudent = () => {
   const navigate = useNavigate();
   const { studentId } = useParams(); //the params allows u to access the campusId from URL parameters
   const [singleStudent, setSingleStudent] = useState([]); //this is the data that we get from the backend
-  const allCampuses = useSelector((state) => state.campuses.allCampuses);
-  const dispatch = useDispatch();
-  const [allCamp, setAllCamp] = useState([]);
+  const allCampuses = useSelector((state) => state.campuses.allCampuses); // get all campuses from redux store
+  const dispatch = useDispatch(); // used to dispatch an action to redux store
+  const [allCamp, setAllCamp] = useState([]); // used to store all campuses from redux store
   console.log("allCampuses: ", allCampuses);
   
   const student = fetchStudents();
-  const studentUrl = `http://localhost:8080/routes/students/SingleStudent/${studentId}`;
+  const studentUrl = `http://localhost:8080/routes/students/${studentId}`;
   useEffect(()=>{
     fetch(studentUrl)
     .then((res) => res.json())
@@ -36,6 +36,8 @@ const SingleStudent = () => {
         console.log("An error occured", error);
     }
 };
+
+
 
 // Load database campuses upon mount
 useEffect(() => {
@@ -70,6 +72,13 @@ useEffect(() => {
   };
 
 
+
+  const handleDelete = () => { //Deletes the campus through the backend does not need a compoonent for this just only onclick
+    axios.delete(`http://localhost:8080/routes/students/deletestudent/${studentId}`); //deletes the campus through the backend
+    navigate('/students'); //navigates to the students page
+  };
+
+
   return (
     <div>
       <h1>Learn more about {singleStudent.firstName} {singleStudent.lastName}</h1>
@@ -80,7 +89,7 @@ useEffect(() => {
       <button type="button" className="btn btn-success" onClick={handleEdit}>
         Edit
       </button>
-      <button type="button" className="btn btn-danger">
+      <button type="button" className="btn btn-danger" onClick={handleDelete}>
         Delete
       </button>
       {campusRelationship(singleStudent.campusId)}

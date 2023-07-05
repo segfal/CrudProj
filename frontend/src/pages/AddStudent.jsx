@@ -4,13 +4,13 @@ import createNewStudentThunk from "../redux/Students.actions";
 import axios from "axios";
 
 const AddStudent = () => {
- const [firstName, setFirstName] = useState("");
+ const [firstName, setFirstName] = useState(""); 
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [gpa, setGpa] = useState(""); 
 
-  const handleChange = (event) => {
+  const handleChange = (event) => { //this is the event handler for the form
     const { name, value } = event.target;
     if (name === "firstName") {
       setFirstName(value);
@@ -25,7 +25,7 @@ const AddStudent = () => {
     }
   };
 
-  const handleForm = async (event) => {
+  const handleForm = async (event) => { //this is the event handler for the form
     event.preventDefault();
     console.log({
       firstName,

@@ -1,13 +1,26 @@
-import React, {useEffect}from "react";
-import axios from 'axios';
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
+import "../App.css";
 
 const Home = () => {
+  return (
+    <>
+    <p>
+        <h1 className="heading">Welcome to the homepage</h1>
+            <p className="paragraph">Write more here.</p>
+        </p>
+        <div className="container"> 
 
-    return(
-        <div>
-            <h1>Welcome to the homepage</h1>
+        {/* <p className="background-text">We salute the students</p> */}
+
+            <div className="button-container" style={{marginTop:"40vh", borderRadius:"10px", backgroundColor:""}}>
+            <Link to="/campus" className="Homebutton" id="gradient-button">Campus Page</Link>
+            <Link to="/" className="Homebutton" id="gradient-button">Home Page</Link>
+            </div>
         </div>
-    )
-}
+        
+    </>
+  );
+};
 
 export default Home;
