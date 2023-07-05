@@ -35,7 +35,7 @@ router.get("/SingleCampus/:id", async (req, res, next) => {
 ///insert new campus with params, the params are the same as the model DONE
 router.post("/addcampus", async (req, res, next) => {
   try {
-    console.log(req.body);
+    console.log("add campus route: ", req.body);
     const newCampus = await Campus.create(req.body);
 
     res.status(201).json(newCampus);

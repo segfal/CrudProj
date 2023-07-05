@@ -87,7 +87,7 @@ const SingleCampus = (props) => {
       <h1>Learn more about {singleCampus.name}</h1>
       <img src={singleCampus.imageUrl} alt="campus image" />
       <h2> Campus Name: {singleCampus.name} </h2>
-      <h2> Campus Address: {singleCampus.address} </h2>
+      <h2> Campus Address: {singleCampus.location} </h2>
       <h2> Campus Description: {singleCampus.description} </h2>
 
       <button type="button" className="btn btn-success" onClick={handleEdit}>
