@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Campuses = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
     const allCampuses = useSelector((state) => state.campuses.allCampuses);
     console.log("data: " + allCampuses);
     const [allCamp, setAllCamp] = useState([]);
