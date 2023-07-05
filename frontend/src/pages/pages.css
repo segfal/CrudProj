@@ -1,18 +1,19 @@
-.image-container {
+.campus-item {
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
   }
   
-  .uploaded-image {
-    width: 100%; /* Adjust the desired width for the image */
-    max-width: 500px; /* Limit the maximum width of the image */
+  .campus-item img {
+    width: 100%;
+    max-width: 500px;
     height: auto;
   }
   
   @media screen and (max-width: 600px) {
-    .uploaded-image {
-      max-width: 100%; /* Adjust the maximum width for smaller screens */
+    .campus-item img {
+      max-width: 100%;
     }
   }
   

@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import '../pages/pages.css'
 
 //function component used to display a list of campuses
 function CampusItems(props) {
