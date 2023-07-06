@@ -15,6 +15,13 @@ const AddCampus = () => {
   const navigate = useNavigate();
   const allCampuses = useSelector((state) => state.campuses.allCampuses);
   const [allCamp, setAllCamp] = useState([]);
+
+  const [nameError, setNameError] = useState("");
+  const [locationError, setLocationError] = useState("");
+  const [imageUrlError, setImageUrlError] = useState("");
+  const [descriptionError, setDescriptionError] = useState("");
+
+
   const dispatch = useDispatch();
   
   const fetchAllCampuses = async () => {
@@ -53,6 +60,24 @@ const AddCampus = () => {
       imageUrl,
       description,
     });
+
+    if (name.trim() === "") {
+      setNameError("Please enter a campus name.");
+      return;
+    }
+    if (location.trim() === "") {
+      setLocationError("Please enter a campus location.");
+      return;
+    }
+    if (imageUrl.trim() === "") {
+      setImageUrlError("Please enter a campus image URL.");
+      return;
+    }
+    if (description.trim() === "") {
+      setDescriptionError("Please enter a campus description.");
+      return;
+    }
+    
     const newCampus = await axios.post("http://localhost:8080/Routes/campuses/addcampus", {
       name,
       location,
@@ -80,6 +105,9 @@ const AddCampus = () => {
             onChange={handleChange}
             className="form-input"
           />
+          {nameError && (
+              <div className="alert alert-danger"> {nameError} </div>
+            )}
         </div>
         <div className="form-group">
           <label htmlFor="location" className="labels">Campus Address:</label>
@@ -91,6 +119,9 @@ const AddCampus = () => {
             onChange={handleChange}
             className="form-input"
           />
+           {locationError && (
+              <div className="alert alert-danger"> {locationError} </div>
+            )}
         </div>
         <div className="form-group">
           <label htmlFor="imageUrl" className="labels">Campus Image URL:</label>
@@ -101,7 +132,12 @@ const AddCampus = () => {
             value={imageUrl}
             onChange={handleChange}
             className="form-input"
+           
           />
+           {imageUrlError && (
+              <div className="alert alert-danger"> {imageUrlError} </div>
+            )}
+
         </div>
         <div className="form-group">
           <label htmlFor="description" className="labels">Campus Description:</label>
@@ -112,7 +148,11 @@ const AddCampus = () => {
             value={description}
             onChange={handleChange}
             className="form-input"
+            
           />
+          {descriptionError && (
+              <div className="alert alert-danger"> {descriptionError} </div>
+            )}
         </div>
         <button type="submit" className="submit-button">
           Submit
