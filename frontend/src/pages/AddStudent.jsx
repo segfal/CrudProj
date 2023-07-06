@@ -12,6 +12,8 @@ const AddStudent = () => {
   const [email, setEmail] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [gpa, setGpa] = useState(""); 
+  const [emailError, setEmailError] = useState(""); // Error state for email validation
+
 
   const navigate = useNavigate(); // used to navigate to other pages
   const allStudents = useSelector((state) => state.students.allStudents); // get all students from redux store
@@ -49,8 +51,21 @@ const AddStudent = () => {
     }
   };
 
-  const handleForm = async (event) => { //this is the event handler for the form
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleForm = async (event) => {
     event.preventDefault();
+    if (!validateEmail(email)) {
+      setEmailError("Invalid email"); // Set the email error message
+      return;
+    }
+
+    // Clear the email error if it's valid
+    setEmailError("");
+
     console.log({
       firstName,
       lastName,
@@ -58,12 +73,22 @@ const AddStudent = () => {
       imageUrl,
       gpa
     });
-    const newStudent = await axios.post("http://localhost:8080/Routes/students/addstudent", {firstName, lastName, email, imageUrl, gpa });
+
+
+    const newStudent = await axios.post("http://localhost:8080/Routes/students/addstudent", {
+      firstName,
+      lastName,
+      email,
+      imageUrl,
+      gpa
+    });
+
     // Redirect to the new student's page
-    let path = `/SingleStudent/${newStudent.data.id}`; 
-    navigate(path); 
-    // Handle form submission logic here
+    let path = `/SingleStudent/${newStudent.data.id}`;
+    navigate(path);
   };
+
+
 
   return (
     <div className="card-container">
@@ -102,6 +127,7 @@ const AddStudent = () => {
                         onChange={handleChange}
                         className="form-input"
                     />
+                    {emailError && <p className="error">{emailError}</p>} {/* Display the email error */}
                 </div>
                 <div className="form-group">
                     <label htmlFor="imageUrl" className="labels">Student Image URL:</label>
