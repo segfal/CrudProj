@@ -5,6 +5,7 @@ import Campuses from "./Campuses";
 
 const Home = () => {
   return (
+
     <div className="bg-img">
       <div className="overlay">
         <div className="landing__container">
@@ -18,6 +19,7 @@ const Home = () => {
         </div>
       </div>
     </div>
+
   );
 };
 

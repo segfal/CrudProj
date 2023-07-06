@@ -12,6 +12,8 @@
   text-align: center;
 }
 
+
+
 nav ul {
   list-style-type: none;
   display: flex;
@@ -86,6 +88,7 @@ button:active {
 }
 
 .landing__container {
+
   margin: 0 auto;
   display: flex;
   flex-direction: column;

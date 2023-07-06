@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Link, Route, Routes } from 'react-router-dom'
 
 import Home from './pages/Home'
 import Campuses from './pages/Campuses'
@@ -8,13 +8,14 @@ import SingleCampus from './pages/SingleCampus';
 import SingleStudent from './pages/SingleStudent';
 import AddCampus from './pages/AddCampus';
 import AddStudent from './pages/AddStudent';
+// import DeleteStudent from './pages/DeleteStudent';
 import EditCampus from './components/EditCampus';
-import EditStudent from './components/EditStudent';
 
 function App() {
   return (
     <Router>
       <div className="App">
+
       <nav className="navbar navbar-expand-lg navbar-light ">
       <div className="logo-container">
         <ul>
@@ -39,6 +40,7 @@ function App() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse nav__container" id="navbarNavDropdown">
+
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link className="nav-link" to="/">
@@ -56,9 +58,21 @@ function App() {
               </Link>
             </li>
           </ul>
-        </div>
-      </nav>
+        </nav>
 
+{/* <<<<<<< HEAD */}
+        {/* Routes*/}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="campus/" element={<Campuses />} />
+          <Route path="/students/" element={<Students />} />
+          <Route path="/singleCampus/:campusId" element={<SingleCampus />} />
+          <Route path="/singleStudent/:studentId" element={<SingleStudent />} />
+          <Route path="/addCampus/" element={<AddCampus />} />
+          <Route path="/addStudent/" element={<AddStudent />} />
+          <Route path="/editCampus/:studentid" element={<EditCampus />} />
+        </Routes>
+{/* ======= */}
           {/* Routes*/}
           <Routes>
             <Route path = "/" element = {<Home/>} />
@@ -69,7 +83,7 @@ function App() {
             <Route path = "/addCampus/" element = {<AddCampus/>} />
             <Route path = "/addStudent/" element = {<AddStudent />} />
             <Route path = "/editCampus/:id" element =  {<EditCampus/>} />
-            <Route path = "/editStudent/:id" element = {<EditStudent/>} />
+            {/* <Route path = "/editStudent/:id" element = {<EditStudent/>} /> */}
            </Routes>
       </div>
     </Router>

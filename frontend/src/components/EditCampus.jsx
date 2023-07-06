@@ -1,34 +1,60 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import SingleCampus from "../pages/SingleCampus";
 import { useParams,useNavigate } from "react-router-dom";
+import { editCampusThunk } from "../redux/Campus.actions";
+import { useDispatch } from "react-redux";
+import SingleCampus from "../pages/SingleCampus";
+import axios from "axios";
+
+
+
+
 const EditCampus = () => {
 
   const navigate = useNavigate();
   const campusId  = useParams();
+  const dispatch = useDispatch();
 
-  const [name, setName] = useState("");
-  const [location, setLocation] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
-  const [description, setDescription] = useState("");
+ 
+  const [state, setState] = useState({
+    name: "",
+    location: "",
+    imageUrl: "",
+    description: "",
+
+  });
 
   
   
-
-
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (name === "name") {
-      setName(value);
-    } else if (name === "location") {
-      setLocation(value);
-    } else if (name === "imageUrl") {
-      setImageUrl(value);
-    } else if (name === "description") {
-      setDescription(value);
+    if(name === "name"){
+      setState({
+        ...state,
+        name: value,
+      });
+    }
+    if(name === "location"){
+      setState({
+        ...state,
+        location: value,
+      });
+    }
+    if(name === "imageUrl"){
+      setState({
+        ...state,
+        imageUrl: value,
+      });
+    }
+    if(name === "description"){
+      setState({
+        ...state,
+        description: value,
+      });
     }
   };
-  
+
+
+
   
   //takes campus id and updates the campus
   ///I wanna reduxify it
@@ -36,57 +62,65 @@ const EditCampus = () => {
     event.preventDefault();
     console.log(campusId);
     const id = campusId.id;
-    const response = await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${id}`, {
-      name: name,
-      location: location,
-      imageUrl: imageUrl,
-      description: description,
-    });
-    console.log("response", response);
 
 
-   
+
+    // const response = await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${id}`, {
+    //   name: name,
+    //   location: location,
+    //   imageUrl: imageUrl,
+    //   description: description,
+    // });
+    
+    dispatch(
+      editCampusThunk(campusId.id,{
+        id: id,
+        name: state.name,
+        location: state.location,
+        imageUrl: state.imageUrl,
+        description: state.description,
+      })
+    );
+    navigate(`/campuses/${id}`);
     
   }
 
   return (
     <div>
+   
       <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name</label>
-        <input
-          name="name"
-          type="text"
-          value={name}
-          onChange={handleChange}
-          placeholder="Enter name"
-        />
-        <label htmlFor="location">Location</label>
-        <input  
-          name="location"
-          type="text"
-          value={location}
-          onChange={handleChange}
-          placeholder="Enter location"
-        />
-        <label htmlFor="imageUrl">Image Url</label>
-        <input
-
-          name="imageUrl"
-          type="text"
-          value={imageUrl}
-          onChange={handleChange}
-          placeholder="Enter imageUrl"
-        />
-        <label htmlFor="description">Description</label>
-        <input
-          name="description"
-          type="text"
-          value={description}
-          onChange={handleChange}
-          placeholder="Enter description"
-        />
-        <button type="submit">Submit</button>
-      </form>
+        <div>
+          <label htmlFor="name">Name</label>
+          <input
+            name="name"
+            type="text"
+            value={state.name}
+            onChange={handleChange}
+          />
+          <label htmlFor="location">Location</label>
+          <input
+            name="location"
+            type="text"
+            value={state.location}
+            onChange={handleChange}
+          />
+          <label htmlFor="imageUrl">Image Url</label>
+          <input
+            name="imageUrl"
+            type="text"
+            value={state.imageUrl}
+            onChange={handleChange}
+          />
+          <label htmlFor="description">Description</label>
+          <input
+            name="description"
+            type="text"
+            value={state.description}
+            onChange={handleChange}
+          />
+          </div>
+          <button type="submit">Submit</button>
+        </form>
     </div>
   );
 
