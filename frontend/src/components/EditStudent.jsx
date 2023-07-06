@@ -53,8 +53,8 @@ const EditStudent = () => {
   //takes student id and updates the student
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(studentId.id);
-    const response = await axios.put(`http://localhost:8080/routes/students/updatestudent/${studentId}`, {
+    console.log(studentId);
+    const response = await axios.put(`http://localhost:8080/routes/students/updatestudent/${studentId.id}`, {
         firstName: state.firstName,
         lastName: state.lastName,
         email: state.email,
@@ -65,7 +65,7 @@ const EditStudent = () => {
     
     console.log("response", response);
 
-    navigate(`/SingleStudent/${studentId}`);
+    navigate(`/SingleStudent/${studentId.id}`);
 
   }
 
