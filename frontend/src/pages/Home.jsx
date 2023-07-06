@@ -20,7 +20,6 @@ const Home = () => {
             <Link to="/" className="Homebutton" id="gradient-button">Home Page</Link>
             </div>
         </div>
-        
     </>
   );
 };
