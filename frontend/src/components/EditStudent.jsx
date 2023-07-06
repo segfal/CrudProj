@@ -20,6 +20,11 @@ const EditStudent = () => {
   });
   const [emailError, setEmailError] = useState("");
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setState({
@@ -38,8 +43,6 @@ const EditStudent = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-
     if (!validateEmail(state.email)) {
       setEmailError("Invalid email address");
       return;
@@ -47,12 +50,15 @@ const EditStudent = () => {
 
     console.log(studentId);
 
-
-    dispatch(editSingleStudentThunk(studentId.id,{
+    dispatch(editSingleStudentThunk(studentId.id, {
       firstName: state.firstName,
       lastName: state.lastName,
       email: state.email,
       imageUrl: state.imageUrl,
       gpa: state.gpa,
       campusId: state.campusId,
-  }));
+    }))
+  }
+}
+
+export default EditStudent;
