@@ -17,8 +17,6 @@ const syncDB = async () => await db.sync();
 
 // Run server function
 const serverRun = () => {
-
-
   app.listen(PORT, () => {
     console.log(`Live on port: ${PORT}`);
   });

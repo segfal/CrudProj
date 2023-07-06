@@ -1,6 +1,6 @@
 const express = require("express");
 const router = require("express").Router();
-const { Student } = require("../db/models");
+const { Student, Campus } = require("../db/models");
 
 // Fetch all students DONE
 router.get("/", async (req, res, next) => {
@@ -19,9 +19,14 @@ router.get("/", async (req, res, next) => {
 // Fetch single student
 router.get("/SingleStudent/:id", async (req, res, next) => {
   try {
-    //finds a single id based on the param request
-    const singleStudent = await Student.findByPk(req.params.id);
-    
+    console.log("hit route");
+    // finds a single id based on the param request
+    // const singleStudent = await Student.findByPk(req.params.id);
+    const singleStudent = await Student.findByPk(req.params.id, {
+      include: {
+        model: Campus,
+      },
+    });
     singleStudent
       ? res.status(200).json(singleStudent)
       : res.status(404).send("No Student Found");
