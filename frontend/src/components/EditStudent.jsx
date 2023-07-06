@@ -58,16 +58,7 @@ const EditStudent = () => {
   //takes student id and updates the student
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(studentId);
-    // const response = await axios.put(`http://localhost:8080/routes/students/updatestudent/${studentId.id}`, {
-    //     firstName: state.firstName,
-    //     lastName: state.lastName,
-    //     email: state.email,
-    //     imageUrl: state.imageUrl,
-    //     gpa: state.gpa,
-    //     campusId: state.campusId,
-    // });
-
+    
     dispatch(editSingleStudentThunk(studentId.id,{
       firstName: state.firstName,
       lastName: state.lastName,
