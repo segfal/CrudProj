@@ -29,11 +29,14 @@ const EditCampus = () => {
     }
   };
   
-  console.log("campusId", campusId)
+  
   //takes campus id and updates the campus
+  ///I wanna reduxify it
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const response = await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${campusId.studentid}`, {
+    console.log(campusId);
+    const id = campusId.id;
+    const response = await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${id}`, {
       name: name,
       location: location,
       imageUrl: imageUrl,
@@ -42,7 +45,7 @@ const EditCampus = () => {
     });
     console.log("response", response);
 
-    navigate(`/SingleCampus/${campusId.studentid}`);
+    navigate(`/SingleCampus/${id}`);
 
    
     

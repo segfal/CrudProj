@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import SingleCampus from "../pages/SingleCampus";
-import { useNavigate } from "react-router-dom";
+import { useNavigate,useParams } from "react-router-dom";
 
 const StudentsOnCampus = ({ currentCampusId, allStudents }) => {
   const [id, setId] = useState([]);
 
   const navigate = useNavigate();
+  //useparams
+  ///console log current campusid and all students
+  console.log("current campus id", currentCampusId);
+
+  
   
   console.log("students: ", allStudents);
 //   console.log("parsed campus id", parseInt(currentCampusId));
