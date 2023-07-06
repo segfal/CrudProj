@@ -2,20 +2,20 @@ import React, { useState,useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-import EditStudent from "./EditStudent";
+import EditStudent from "../components/EditStudent";
 import { fetchSingleStudentThunk } from "../redux/Students.actions";
 import { fetchStudents } from "../redux/Students.actions";
 import { fetchCampusesThunk } from "../redux/Campus.actions";
 
 const SingleStudent = () => {
   const navigate = useNavigate();
-  const { studentId } = useParams(); //the params allows u to access the campusId from URL parameters
+  const studentId  = useParams(); //the params allows u to access the campusId from URL parameters
   const dispatch = useDispatch(); // used to dispatch an action to redux store
   const studentInfo = useSelector((state) => state.students.singleStudent);
-  ;
+  
   
   const student = fetchSingleStudentThunk();
-  const studentUrl = `http://localhost:8080/routes/students/SingleStudent/${studentId}`;
+  //const studentUrl = `http://localhost:8080/routes/students/SingleStudent/${studentInfo.id}`;
   
   // Added fetch single student thunk
   useEffect(()=>{
@@ -112,6 +112,9 @@ const NoCampus = ({studentInfo}) => {
   const handleSelectChange = (event) => {
     setNewCampusId(event.target.value);
   }
+
+
+
 
   const handleAddCampus = async () => {
     // assign student's campusId the newCampusId and refresh/redirect page
