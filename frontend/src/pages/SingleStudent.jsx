@@ -46,11 +46,15 @@ const SingleStudent = () => {
     );
   }
 
+  const handleImageError = (event) => {
+    event.target.src = "https://i.stack.imgur.com/l60Hf.png";
+  }
+
   // if (studentInfo.campus.id) {
   return (
     <div>
       <h1>Learn more about {studentInfo.firstName} {studentInfo.lastName}</h1>
-      <img src={studentInfo.imageUrl} alt="student image" />
+      <img src={studentInfo.imageUrl} onError={handleImageError} alt="student image" />
       <h2> Student Name: {studentInfo.firstName} {studentInfo.lastName}</h2> 
       <h2> Student E-mail: {studentInfo.email} </h2>
       <h2> Student GPA: {studentInfo.gpa} </h2>
