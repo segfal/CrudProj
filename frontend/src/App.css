@@ -42,9 +42,10 @@ ul {
 }
 
 .logo {
-  width: 40px; /* Adjust the width as needed */
+  width: 40px;
   height: auto;
-  margin-right: 10px; /* Adjust the margin as needed */
+  margin-right: 10px; 
+  max-width: 100%;
 }
 .container {
   position: relative;
@@ -58,6 +59,8 @@ ul {
   background-repeat: no-repeat;
   background-position: center;
   height: 700px;
+   width: 100%;
+  max-width: 100%;
   margin: 0 auto;
 }
 
@@ -79,7 +82,7 @@ ul {
   left: 0;
   right: 0;
   text-align: center;
-  margin-bottom: 30vh; /* Adjust the margin as needed */
+  margin-bottom: 30vh; 
   /* font-size: 100px; */
   font-size: 4rem;
     line-height: 6.5rem;
@@ -92,7 +95,6 @@ ul {
   padding:1.5vh;
   background: rgb(2,0,36);
 background: linear-gradient(  rgba(234,245,249,1) 88%, rgba(0,212,255,1) 100%);
-  /* Adjust the gradient colors as needed */
   /* You can also adjust the gradient direction by changing 'to right' */
 }
 .Homebutton-container {
@@ -110,7 +112,7 @@ background: linear-gradient(  rgba(234,245,249,1) 88%, rgba(0,212,255,1) 100%);
   border-radius: 5px;
 }
 
-@media screen {
+@media screen and (max-width: 600px) {
   .Homebutton-container {
     flex-direction: column;
     align-items: center;

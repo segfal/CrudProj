@@ -39,18 +39,18 @@ const EditCampus = () => {
     event.preventDefault();
     console.log(campusId);
     const id = campusId.id;
-    // const response = await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${id}`, {
-    //   name: name,
-    //   location: location,
-    //   imageUrl: imageUrl,
-    //   description: description,
 
-    // });
-    // console.log("response", response);
 
-    
 
-    navigate(`/SingleCampus/${id}`);
+    const response = await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${id}`, {
+      name: name,
+      location: location,
+      imageUrl: imageUrl,
+      description: description,
+    });
+    console.log("response", response);
+
+
 
    
     

@@ -23,28 +23,28 @@ function CampusItems(props) {
   })
 
   //navigate to the single campus view
-  const handleAdd = (campusId) => {
-    let path = `/SingleCampus/${campusId.id}`; 
-    console.log(campusId); 
+  const handleSeeMore = (campusId) => {
+    let path = `/SingleCampus/${campusId}`; 
+    console.log("the campus id: " , campusId); 
     navigate(path); 
   }
 
-  const handleDelete = (currentCampus) => {
-    
-  } 
+  const handleImageError = (event) =>{
+    event.target.src = "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png";
+  }
 
   try {
     if (props.list && props.list.length > 0) {
       return props.list.map((campus) => (
         <div key={campus.name}>
-          <img src={campus.imageUrl} alt={campus.name} width="300" height="300"/>
+          <img src={campus.imageUrl} onError={handleImageError} alt={campus.name} width="300" height="300"/>
           <h2>{campus.name}</h2>
           <h3>{campus.location}</h3>
           <p>{campus.description}</p>
           <button type = 'button' 
           class='btn btn-primary'
           id = {currentCampus}
-          onClick = {() => handleAdd(campus.id)}>See More
+          onClick = {() => handleSeeMore(campus.id)}>See More
           </button>
         </div>
       ));

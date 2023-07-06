@@ -30,9 +30,10 @@ const SingleStudent = () => {
   };
 
   // Delete this student
-  const handleDelete = () => { //Deletes the campus through the backend does not need a compoonent for this just only onclick
-    axios.delete(`http://localhost:8080/routes/students/deletestudent/${studentId}`); //deletes the campus through the backend
+  const handleDelete = () => { //Deletes the campus through the backend does not need a component for this just only onclick
+    axios.delete(`http://localhost:8080/routes/students/deletestudent/${studentId.id}`); //deletes the campus through the backend
     navigate('/students'); //navigates to the students page
+    navigate(0);
   };
 
   // Loading page to allow for eager loading to have the time to occur before displaying full page
@@ -45,11 +46,17 @@ const SingleStudent = () => {
     );
   }
 
+  const handleImageError = (event) => {
+    event.target.src = "https://i.stack.imgur.com/l60Hf.png";
+  }
+
+  console.log("data for studentid: " , studentId);
+
   // if (studentInfo.campus.id) {
   return (
     <div>
       <h1>Learn more about {studentInfo.firstName} {studentInfo.lastName}</h1>
-      <img src={studentInfo.imageUrl} alt="student image" />
+      <img src={studentInfo.imageUrl} onError={handleImageError} alt="student image" />
       <h2> Student Name: {studentInfo.firstName} {studentInfo.lastName}</h2> 
       <h2> Student E-mail: {studentInfo.email} </h2>
       <h2> Student GPA: {studentInfo.gpa} </h2>

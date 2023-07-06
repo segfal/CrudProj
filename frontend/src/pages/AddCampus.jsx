@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCampusesThunk } from "../redux/Campus.actions";
 import campusReducer from "../redux/Campus.reducer";
+import './pages.css'
 
 const AddCampus = () => {
   const [name, setName] = useState("");
@@ -65,46 +66,60 @@ const AddCampus = () => {
   };
 
   return (
-    <div className="inputs">
-      <h1>Add a new campus through this form</h1>
-      <div className="forms">
-        <form onSubmit={handleForm}>
-          <label htmlFor="name">Campus Name:</label>
+    <div className="card-container">
+    <div className="card">
+      <h1 className="card-heading">Add a new campus through this form</h1>
+      <form onSubmit={handleForm} className="form">
+        <div className="form-group">
+          <label htmlFor="name" className="labels"> Campus Name:</label>
           <input
             type="text"
             placeholder="Campus Name"
             name="name"
             value={name}
             onChange={handleChange}
+            className="form-input"
           />
-          <label htmlFor="location">Campus Address:</label>
+        </div>
+        <div className="form-group">
+          <label htmlFor="location" className="labels">Campus Address:</label>
           <input
             type="text"
             placeholder="100 Campus Rd"
             name="location"
             value={location}
             onChange={handleChange}
+            className="form-input"
           />
-          <label htmlFor="imageUrl">Campus Image URL:</label>
+        </div>
+        <div className="form-group">
+          <label htmlFor="imageUrl" className="labels">Campus Image URL:</label>
           <input
             type="url"
             placeholder="http://www.image.com/"
             name="imageUrl"
             value={imageUrl}
             onChange={handleChange}
+            className="form-input"
           />
-          <label htmlFor="description">Campus Description:</label>
+        </div>
+        <div className="form-group">
+          <label htmlFor="description" className="labels">Campus Description:</label>
           <input
             type="text"
             placeholder="Describe this campus"
             name="description"
             value={description}
             onChange={handleChange}
+            className="form-input"
           />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
+        </div>
+        <button type="submit" className="submit-button">
+          Submit
+        </button>
+      </form>
     </div>
+  </div>
   );
 };
 
