@@ -27,7 +27,10 @@ const studentReducer = (state = initialStudentState, action) => {
                 console.log("targetStudentIdx: ", targetStudentIdx)
                 allStudents[targetStudentIdx] = action.payload;
                 console.log("FIRING EDIT SINGLE STUDENT REDUCER");
+                
+                
                 return {...state, allStudents: allStudents}
+
             
             default:
                 return state; 
