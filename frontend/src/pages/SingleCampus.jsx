@@ -100,8 +100,6 @@ const SingleCampus = (props) => {
       {console.log("from single campus all students", allStudents)}
       {console.log("from single campus, intCampId: ", campusUrl)}
       <StudentsOnCampus currentCampusId={intCampId} allStudents={allStudents} />
-
-      
     </div>
   );
 };

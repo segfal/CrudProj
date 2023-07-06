@@ -5,16 +5,18 @@ import axios from "axios";
 import EditStudent from "./EditStudent";
 import { fetchSingleStudentThunk } from "../redux/Students.actions";
 import { fetchStudents } from "../redux/Students.actions";
+import { fetchCampusesThunk } from "../redux/Campus.actions";
 
 const SingleStudent = () => {
   const navigate = useNavigate();
   const { studentId } = useParams(); //the params allows u to access the campusId from URL parameters
   const dispatch = useDispatch(); // used to dispatch an action to redux store
   const studentInfo = useSelector((state) => state.students.singleStudent);
+  ;
   
   const student = fetchSingleStudentThunk();
   const studentUrl = `http://localhost:8080/routes/students/SingleStudent/${studentId}`;
-
+  
   // Added fetch single student thunk
   useEffect(()=>{
     dispatch(fetchSingleStudentThunk(studentId));
@@ -31,16 +33,18 @@ const SingleStudent = () => {
     axios.delete(`http://localhost:8080/routes/students/deletestudent/${studentId}`); //deletes the campus through the backend
     navigate('/students'); //navigates to the students page
   };
-  console.log("student info: ", studentInfo);
-  console.log("t/f", studentInfo == true);
-  if (!studentInfo.campus) { // if studentInfo exists -> studentInfo is truthy
+
+  // Loading page to allow for eager loading to have the time to occur before displaying full page
+  if (!studentInfo.firstName) { // if studentInfo exists -> studentInfo is truthy
     return (
       <div>
         <h1>Loading</h1>
-        <h1>Woah there you're refreshing too fast </h1>
+        <h1>Woah there you're refreshing too fast</h1>
       </div>
     );
   }
+
+  // if (studentInfo.campus.id) {
   return (
     <div>
       <h1>Learn more about {studentInfo.firstName} {studentInfo.lastName}</h1>
@@ -54,9 +58,70 @@ const SingleStudent = () => {
       <button type="button" className="btn btn-danger" onClick={handleDelete}>
         Delete
       </button>
+      {studentInfo.campus ? <Campus campus={studentInfo.campus}/> : <NoCampus/>}
+    </div>
+  )
+  // } 
+};
+
+const Campus = ({campus}) => {
+  const navigate = useNavigate();
+
+  // Redirect to single campus page on click of See More button
+  const handleSeeMore = (campusId) => {
+    let path = `/SingleCampus/${campusId}`; 
+    navigate(path); 
+  }
+  return (
+    <div>
       <h1>This student is registered to a campus</h1>
-      <h1>{studentInfo.campus.name}</h1>
-      <img src={studentInfo.campus.imageUrl} alt="student image"></img>
+      <h1>{campus.name}</h1>
+      <img src={campus.imageUrl} alt="student image"></img>
+      <button type = 'button' 
+        class='btn btn-primary'
+        onClick = {() => handleSeeMore(campus.id)}>See More
+      </button>
+    </div>
+  )
+};
+
+const NoCampus = () => {
+  const allCampuses = useSelector((state) => state.campuses.allCampuses)
+  const [allCamp, setAllCamp] = useState([]);
+  const dispatch = useDispatch();
+
+  // Fetch all campuses
+  const fetchAllCampuses = async () => {
+    try{
+        const res = await dispatch(fetchCampusesThunk());
+        console.log('RUNNING DISPATCH FROM FETCHALLCAMPUSES');
+        // return dispatch(fetchCampusesThunk());
+    } catch (error){
+        console.log("An error occured", error);
+    }
+  };
+
+  // Load database campuses upon mount
+  useEffect(() => {
+      console.log('FETCH ALL CAMPUSES FIRING IN USEEFFECT')
+      setAllCamp(fetchAllCampuses());
+    }, []);
+console.log("single student's all campuses", allCampuses);
+  return (
+    <div>
+      <h1>This student is not registered to a campus</h1>
+      <select>
+        <option>Choose a campus</option>
+        {allCampuses.map((campus) => {
+          {console.log("campus in map", campus)}
+          return (
+            <option value={campus.id} key={campus.id}>{campus.name}</option>
+          )
+        })}
+      </select>
+      <button type = 'button' 
+        class='btn btn-primary'>Add to campus
+      </button>
     </div>
   )
 };
