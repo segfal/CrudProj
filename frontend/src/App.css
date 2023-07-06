@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .App {
@@ -67,37 +68,60 @@ button:active {
   max-width: 100%;
 }
 
-.container {
+.overlay {
+  background-color: rgba(51, 51, 51, 0.742);
+  background-size: 100% cover;
+  width: 100%;
+  max-width: 100%;
+  height: calc(100vh - 80px);
+}
+
+.bg-img {
   background-size: 100%;
   background-image: url("https://www1.cuny.edu/mu/forum/files/2020/09/WSJ-CCNY-d-S.jpg");
   height: calc(100vh - 80px);
-  /* position: relative; */
+  background-repeat: no-repeat;
+  width: 100%;
+  max-width: 100%; 
+}
+
+.landing__container {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* padding: 20px; */
-  /* background-color: #f0f0f0;*/
-  background-size: cover; 
-  background-repeat: no-repeat;
-  /* background-position: center; */
-  /* width: 100%;
-  height: 100%;
-  max-width: 100%; */
-  /* margin: 0 auto; */
+  justify-content: center;
+  height: calc(100vh - 80px);
+  width: 33.333vw;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.button-container {
+  margin-top: 50px;
+}
+
+a:active {
+  transform: translateY(1px);
 }
 
 
 .heading {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
   margin-bottom: 10px;
+  color: white;
 }
 
 .paragraph {
   font-size: 16px;
-  color: #333;
+  color: white;
   line-height: 1.5;
+  margin-top: 30px;
 }
+
 .background-text {
   position: absolute;
   bottom: 0;
