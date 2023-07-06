@@ -1,3 +1,10 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
 .App {
   display: flex;
   flex-direction: column;
@@ -9,10 +16,6 @@
 
 nav ul {
   list-style-type: none;
-  padding: 0;
-  padding-top: 1vh;
-  padding-bottom: 5vh;
-  margin: 0;
   display: flex;
   justify-content: center;
 }
@@ -21,7 +24,7 @@ nav ul li {
   margin: 0 10px;
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   nav ul {
     flex-wrap: wrap;
     justify-content: center;
@@ -30,17 +33,34 @@ nav ul li {
   nav ul li {
     margin: 5px;
   }
-}
+} */
 
 ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
+
 /* HOME PAGE */
 .navbar {
   display: flex;
   align-items: center;
+  height: 80px;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+.nav__container {
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  font-weight: bold;
 }
 
 .logo {
@@ -49,35 +69,62 @@ ul {
   margin-right: 10px; 
   max-width: 100%;
 }
-.container {
-  position: relative;
+
+.overlay {
+  background-color: rgba(51, 51, 51, 0.742);
+  background-size: 100% cover;
+  width: 100%;
+  max-width: 100%;
+  height: calc(100vh - 80px);
+}
+
+.bg-img {
+  background-size: 100%;
+  background-image: url("https://www1.cuny.edu/mu/forum/files/2020/09/WSJ-CCNY-d-S.jpg");
+  height: calc(100vh - 80px);
+  background-repeat: no-repeat;
+  width: 100%;
+  max-width: 100%; 
+}
+
+.landing__container {
+
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
-  background-color: #f0f0f0;
-  background-image: url("https://www1.cuny.edu/mu/forum/files/2020/09/WSJ-CCNY-d-S.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 750px;
-   width: 100%;
-  max-width: 100%;
-  margin: 0 auto;
+  justify-content: center;
+  height: calc(100vh - 80px);
+  width: 33.333vw;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+.button-container {
+  margin-top: 50px;
+}
+
+a:active {
+  transform: translateY(1px);
 }
 
 
 .heading {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
   margin-bottom: 10px;
+  color: white;
 }
 
 .paragraph {
   font-size: 16px;
-  color: #333;
+  color: white;
   line-height: 1.5;
+  margin-top: 30px;
 }
+
 .background-text {
   position: absolute;
   bottom: 0;
@@ -93,10 +140,11 @@ ul {
     /* opacity: 0.7; */
     font-weight: 1000;
 }
+
 #gradient-button {
   padding:1.5vh;
   background: rgb(2,0,36);
-background: linear-gradient(  rgba(234,245,249,1) 88%, rgba(0,212,255,1) 100%);
+  background: linear-gradient(  rgba(234,245,249,1) 88%, rgba(0,212,255,1) 100%);
   /* You can also adjust the gradient direction by changing 'to right' */
 }
 .Homebutton-container {
@@ -114,7 +162,7 @@ background: linear-gradient(  rgba(234,245,249,1) 88%, rgba(0,212,255,1) 100%);
   border-radius: 5px;
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   .Homebutton-container {
     flex-direction: column;
     align-items: center;
@@ -123,7 +171,8 @@ background: linear-gradient(  rgba(234,245,249,1) 88%, rgba(0,212,255,1) 100%);
   .Homebutton {
     margin: 5px 0;
   }
-}
+} */
+
 /* END OF HOME  */
 
 /* START OF ADD CAMPUS CSS */
