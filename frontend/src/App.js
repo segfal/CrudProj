@@ -46,7 +46,7 @@ function App() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/campus">
+              <Link className="nav-link" to="/campuses">
                 Campuses
               </Link>
             </li>
@@ -62,7 +62,7 @@ function App() {
           {/* Routes*/}
           <Routes>
             <Route path = "/" element = {<Home/>} />
-            <Route path = "campus/" element= {<Campuses/>} />
+            <Route path = "campuses/" element= {<Campuses/>} />
             <Route path = "/students/" element = {<Students/>} />
             <Route path="/singleCampus/:id" element={<SingleCampus />} />
             <Route path = "/singleStudent/:id" element = {<SingleStudent/>} />
