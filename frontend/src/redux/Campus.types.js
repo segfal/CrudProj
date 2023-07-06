@@ -1,5 +1,9 @@
 const CampusesActionType = {
     FETCH_CAMPUS: "FETCH_CAMPUS",
-    DELETE_CAMPUS: "DELETE_CAMPUS"
+    DELETE_CAMPUS: "DELETE_CAMPUS",
+    EDIT_CAMPUS: "EDIT_CAMPUS",
+    ADD_CAMPUS: "ADD_CAMPUS",
+    FETCH_SINGLE_CAMPUS: "FETCH_SINGLE_CAMPUS"
 }
+
 export default CampusesActionType;

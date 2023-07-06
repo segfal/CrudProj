@@ -18,6 +18,15 @@ export const deleteCampus = (payload) => {
     };
 };
 
+export const editCampus = (payload) => {
+    console.log("EDIT CAMPUS ACTION");
+    return {
+        type: CampusesActionType.EDIT_CAMPUS,
+        payload: payload,
+    };
+};
+
+
 
 // Thunk function for fetching campuses asynchronously
 export const fetchCampusesThunk = () => {
@@ -31,6 +40,28 @@ export const fetchCampusesThunk = () => {
         }
     };
 };
+
+
+
+
+
+
+export const editCampusThunk = (id,campus) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${id}`,campus);
+            dispatch(editCampus(res.data)); // send argument straight to the reducer of the store
+        }   catch (error) {
+            console.log("an error has occured", error)
+        }
+
+    }
+    
+}
+
+
+
+
 
 
 // Thunk function for deleting a campus asynchronously

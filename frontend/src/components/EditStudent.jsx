@@ -42,6 +42,7 @@ const EditStudent = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
+
     if (!validateEmail(state.email)) {
       setEmailError("Invalid email address");
       return;
