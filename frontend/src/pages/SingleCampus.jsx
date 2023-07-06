@@ -98,8 +98,10 @@ const SingleCampus = (props) => {
         Delete
       </button>
       <h2>Students on campus</h2>
-      {console.log("from single campus all students", allStudents)}
-      {console.log("from single campus, intCampId: ", campusUrl)}
+      {/* <button type = 'button' 
+        class='btn btn-primary'
+        onClick = {(event) => handleAddCampus(event)}>Add students
+      </button> */}
       <StudentsOnCampus currentCampusId={intCampId} allStudents={allStudents} />
     </div>
   );
