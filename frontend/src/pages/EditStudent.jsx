@@ -53,7 +53,7 @@ const EditStudent = () => {
       { firstName, lastName, email, imageUrl, gpa }
     );
   };
-  //this function is supposed to validate email format
+  //this is supposed to validate email form
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);

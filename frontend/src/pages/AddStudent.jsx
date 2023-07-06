@@ -44,6 +44,7 @@ const AddStudent = () => {
       setLastName(value);
     } else if (name === "email") {
       setEmail(value);
+      setEmailError(""); // Clear the email error when the email value changes
     } else if (name === "imageUrl") {
       setImageUrl(value);
     } else if (name === "gpa") {
@@ -127,7 +128,9 @@ const AddStudent = () => {
                         onChange={handleChange}
                         className="form-input"
                     />
-                    {emailError && <p className="error">{emailError}</p>} {/* Display the email error */}
+                    {emailError && 
+                        (<div className="alert alert-danger">{emailError}</div> )} {/* Display the email error */}
+                        
                 </div>
                 <div className="form-group">
                     <label htmlFor="imageUrl" className="labels">Student Image URL:</label>
