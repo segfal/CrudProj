@@ -77,6 +77,7 @@ const SingleCampus = (props) => {
     console.log("students: " , filterStudents());
     axios.delete(`http://localhost:8080/routes/campuses/deletecampus/${campusId}`);
     navigate('/campus');
+    navigate(0);
     filterStudents().map((student) => {
       student.campusId = null;
     })

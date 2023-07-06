@@ -32,6 +32,7 @@ const SingleStudent = () => {
   const handleDelete = () => { //Deletes the campus through the backend does not need a compoonent for this just only onclick
     axios.delete(`http://localhost:8080/routes/students/deletestudent/${studentId}`); //deletes the campus through the backend
     navigate('/students'); //navigates to the students page
+    navigate(0);
   };
 
   // Loading page to allow for eager loading to have the time to occur before displaying full page
