@@ -17,24 +17,44 @@ const EditStudent = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if (name === "firstName") {
-      state.setFirstName(value);
-    } else if (name === "lastName") {
-      state.setlastName(value);
-    } else if (name === "email") {
-      state.setImageUrl(value);
-    } else if (name === "imageUrl") {
-      state.setDescription(value);
-    } else if (name === "gpa") {
-      state.setGpa(value);
+    if(name === "firstName"){
+      setState({
+        ...state,
+        firstName: value,
+      });
     }
+    if(name === "lastName"){
+      setState({
+        ...state,
+        lastName: value,
+      });
+    }
+    if(name === "email"){
+      setState({
+        ...state,
+        email: value,
+      });
+    }
+    if(name === "imageUrl"){
+      setState({
+        ...state,
+        imageUrl: value,
+      });
+    }
+    if(name === "gpa"){
+      setState({
+        ...state,
+        gpa: value,
+      });
+    }
+
   };
  
   //takes student id and updates the student
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(studentId);
-    const response = await axios.put(`http://localhost:8080/routes/students/updatestudent/${studentId}`, {
+    const response = await axios.put(`http://localhost:8080/routes/students/updatestudent/${studentId.id}`, {
         firstName: state.firstName,
         lastName: state.lastName,
         email: state.email,
@@ -45,7 +65,7 @@ const EditStudent = () => {
     
     console.log("response", response);
 
-    navigate(`/SingleStudent/${studentId}`);
+    navigate(`/SingleStudent/${studentId.id}`);
 
   }
 

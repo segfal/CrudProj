@@ -24,7 +24,8 @@ const SingleStudent = () => {
 
   // Navigate to editing student
   const handleEdit = () => {
-    let path = `/editStudent/${studentId}`;
+    console.log(studentId.id);
+    let path = `/editStudent/${studentId.id}`;
     navigate(path);
   };
 
