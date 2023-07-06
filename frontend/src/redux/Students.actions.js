@@ -34,7 +34,9 @@ export const fetchSingleStudent = (payload) => {
 export const fetchSingleStudentThunk = (id) => {
     return async (dispatch) => {
         try {
-            const res = await axios.get(`http://localhost:8080/routes/students/SingleStudent/${id}`);
+            console.log(id)
+            const res = await axios.get(`http://localhost:8080/routes/students/SingleStudent/${id.id}`);
+
             dispatch(fetchSingleStudent(res.data));
         } catch (error) {
             console.log("an error has occured", error)

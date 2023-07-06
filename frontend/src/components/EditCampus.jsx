@@ -5,7 +5,7 @@ import { useParams,useNavigate } from "react-router-dom";
 const EditCampus = () => {
 
   const navigate = useNavigate();
-  const { campusId } = useParams();
+  const campusId  = useParams();
 
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
@@ -13,7 +13,7 @@ const EditCampus = () => {
   const [description, setDescription] = useState("");
 
   
-  console.log("campusId: ", campusId);
+  
 
 
   const handleChange = (event) => {
@@ -28,64 +28,67 @@ const EditCampus = () => {
       setDescription(value);
     }
   };
-
-  const handleForm = async (event) => {
+  
+  console.log("campusId", campusId)
+  //takes campus id and updates the campus
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log({
-      name,
-      location,
-      imageUrl,
-      description,
+    const response = await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${campusId.studentid}`, {
+      name: name,
+      location: location,
+      imageUrl: imageUrl,
+      description: description,
+
     });
-    await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${campusId}`, {
-      name,
-      location,
-      imageUrl,
-      description,
-    });
-    // Handle form submission logic here
-  };
+    console.log("response", response);
+
+    navigate(`/SingleCampus/${campusId.studentid}`);
+
+   
+    
+  }
 
   return (
     <div>
-      <h1>Edit Campus</h1>
-      <form onSubmit={handleForm}>
-        <label htmlFor="name">Campus Name:</label>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Name</label>
         <input
-          type="text"
-          placeholder="Campus Name"
           name="name"
+          type="text"
           value={name}
           onChange={handleChange}
+          placeholder="Enter name"
         />
-        <label htmlFor="location">Campus Address:</label>
-        <input
-          type="text"
-          placeholder="100 Campus Rd"
+        <label htmlFor="location">Location</label>
+        <input  
           name="location"
+          type="text"
           value={location}
           onChange={handleChange}
+          placeholder="Enter location"
         />
-        <label htmlFor="imageUrl">Campus Image URL:</label>
+        <label htmlFor="imageUrl">Image Url</label>
         <input
-          type="url"
-          placeholder="http://www.image.com/"
+
           name="imageUrl"
+          type="text"
           value={imageUrl}
           onChange={handleChange}
+          placeholder="Enter imageUrl"
         />
-        <label htmlFor="description">Campus Description:</label>
+        <label htmlFor="description">Description</label>
         <input
-          type="text"
-          placeholder="Describe this campus"
           name="description"
+          type="text"
           value={description}
           onChange={handleChange}
+          placeholder="Enter description"
         />
         <button type="submit">Submit</button>
       </form>
     </div>
   );
+
 };
 
 export default EditCampus;
