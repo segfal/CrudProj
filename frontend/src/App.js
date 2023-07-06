@@ -20,7 +20,7 @@ function App() {
         <ul>
           <li>
             <img
-              src="https://www.ccny.cuny.edu/sites/default/files/CUNY%20LOGO%20JPEG.jpg"
+              src="https://img.icons8.com/?size=512&id=111497&format=png"
               alt="Logo"
               className="logo"
             />
@@ -38,7 +38,7 @@ function App() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNavDropdown">
+        <div className="collapse navbar-collapse nav__container" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
               <Link className="nav-link" to="/">
