@@ -8,6 +8,29 @@ export const fetchStudents = (payload) => {
         payload: payload
     };
 };
+
+// Action Creator
+export const editSingleStudent = (payload) => {
+    //Action
+    return {
+        type: StudentsActionType.EDIT_SINGLE_STUDENT,
+        payload: payload
+    }
+}
+
+export const editSingleStudentThunk = (id,student) => {
+    return async (dispatch) => {
+        try {
+            const res = await axios.put(`http://localhost:8080/routes/students/updatestudent/${id}`,student);
+            dispatch(editSingleStudent(res.data)); // send argument straight to the reducer of the store
+        }   catch (error) {
+            console.log("an error has occured", error)
+        }
+
+    }
+
+}
+
 // Thunk function for fetching students asynchronously
 export const fetchStudentsThunk = () => {
     return async (dispatch) => {
