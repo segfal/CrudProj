@@ -74,8 +74,8 @@ const SingleCampus = (props) => {
 
   const handleDelete = () => { //Deletes the campus through the backend does not need a compoonent for this just only
     console.log("students: " , filterStudents());
-    axios.delete(`http://localhost:8080/routes/campuses/deletecampus/${campusId}`);
-    navigate('/campus');
+    axios.delete(`http://localhost:8080/routes/campuses/deletecampus/${campusId.id}`);
+    navigate('/campuses');
     navigate(0);
     filterStudents().map((student) => {
       student.campusId = null;

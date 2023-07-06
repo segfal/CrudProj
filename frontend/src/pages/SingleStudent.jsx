@@ -30,8 +30,8 @@ const SingleStudent = () => {
   };
 
   // Delete this student
-  const handleDelete = () => { //Deletes the campus through the backend does not need a compoonent for this just only onclick
-    axios.delete(`http://localhost:8080/routes/students/deletestudent/${studentId}`); //deletes the campus through the backend
+  const handleDelete = () => { //Deletes the campus through the backend does not need a component for this just only onclick
+    axios.delete(`http://localhost:8080/routes/students/deletestudent/${studentId.id}`); //deletes the campus through the backend
     navigate('/students'); //navigates to the students page
     navigate(0);
   };
@@ -49,6 +49,8 @@ const SingleStudent = () => {
   const handleImageError = (event) => {
     event.target.src = "https://i.stack.imgur.com/l60Hf.png";
   }
+
+  console.log("data for studentid: " , studentId);
 
   // if (studentInfo.campus.id) {
   return (
