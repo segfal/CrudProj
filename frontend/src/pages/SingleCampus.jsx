@@ -84,6 +84,7 @@ const SingleCampus = (props) => {
 
   return (
     <div>
+      {console.log("campusId is :" ,  campusId)}
       <h1>Learn more about {singleCampus.name}</h1>
       <img src={singleCampus.imageUrl} alt="campus image" />
       <h2> Campus Name: {singleCampus.name} </h2>

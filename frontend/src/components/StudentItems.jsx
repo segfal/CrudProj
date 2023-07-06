@@ -28,12 +28,17 @@ function StudentItems(props) {
     navigate(path); 
   }
 
+  //The alternate image to be displayed if original src img is broken
+  const handleImageError = (event) => {
+    event.target.src = "https://i.stack.imgur.com/l60Hf.png";
+  }
+
   
   try {
     if (props.list && props.list.length > 0) {
       return props.list.map((student) => (
         <div key={student.firstName}>
-          <img src={student.imageUrl} alt={student.name} width="200" height="200"/>
+          <img src={student.imageUrl} onError={handleImageError} alt={student.firstName} width="200" height="200"/>
           <h2>{student.firstName}</h2>
           <h2>{student.lastName}</h2>
           <h2>{student.email}</h2>
