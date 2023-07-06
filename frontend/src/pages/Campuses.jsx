@@ -40,10 +40,17 @@ const Campuses = () => {
     };
 
     return (
-        <div className="campus-item">
+        
+        <div className="campus-item" >
             <h1>Welcome to the Campuses page</h1>
-            <button type="button" class="btn btn-primary" onClick={handleAdd}>Add Campus</button>
+            <button type="button" 
+            class="btn btn-primary" 
+            onClick={handleAdd}
+            style = {{marginBottom:"5vh"}}>Add Campus</button>
+            
+            <section style={{border:"solid 5px", padding:"15vh"}}>
             <CampusItems list={allCampuses}/>
+            </section>
         </div>
     )
 }

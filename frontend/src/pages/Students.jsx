@@ -4,6 +4,7 @@ import { fetchStudentsThunk,fetchStudents } from "../redux/Students.actions";
 import studentReducer from "../redux/Students.reducer";
 import StudentItems from "../components/StudentItems";
 import { useNavigate } from "react-router-dom";
+import './pages.css'
 
 const Students = () => {
     
@@ -36,12 +37,14 @@ const Students = () => {
     };
 
     return (
-        <div>
-            <h1>Welcome to the Students page</h1>
-            <button type="button" class="btn btn-primary" onClick={handleAdd}>Add Student</button>
-            <StudentItems list={allStudents}/>
-        </div>
-    )
+        <div className="campus-item">
+        <h1>Welcome to the Students page</h1>
+        <button type="button" className="btn btn-primary" onClick={handleAdd}>Add Student</button>
+        <section className="campus-items">
+            <StudentItems list={allStudents} />
+        </section>
+    </div>
+);
 }
 
 export default Students;
