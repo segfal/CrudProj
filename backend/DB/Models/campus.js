@@ -19,10 +19,6 @@ const Campus = db.define('campus', {
     description: {
         type: DataTypes.STRING,
         allowNull: false
-    },
-    studentid : {
-        type: DataTypes.ARRAY(DataTypes.INTEGER),
-        allowNull: true
     }
 });
 

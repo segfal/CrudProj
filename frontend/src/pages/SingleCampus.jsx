@@ -77,6 +77,7 @@ const SingleCampus = (props) => {
     console.log("students: " , filterStudents());
     axios.delete(`http://localhost:8080/routes/campuses/deletecampus/${campusId}`);
     navigate('/campus');
+    navigate(0);
     filterStudents().map((student) => {
       student.campusId = null;
     })
@@ -97,11 +98,11 @@ const SingleCampus = (props) => {
         Delete
       </button>
       <h2>Students on campus</h2>
-      {console.log("from single campus all students", allStudents)}
-      {console.log("from single campus, intCampId: ", campusUrl)}
+      {/* <button type = 'button' 
+        class='btn btn-primary'
+        onClick = {(event) => handleAddCampus(event)}>Add students
+      </button> */}
       <StudentsOnCampus currentCampusId={intCampId} allStudents={allStudents} />
-
-      
     </div>
   );
 };
