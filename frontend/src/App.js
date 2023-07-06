@@ -8,7 +8,8 @@ import SingleCampus from './pages/SingleCampus';
 import SingleStudent from './pages/SingleStudent';
 import AddCampus from './pages/AddCampus';
 import AddStudent from './pages/AddStudent';
-
+import EditCampus from './components/EditCampus';
+import EditStudent from './components/EditStudent';
 function App() {
   return (
     <Router>
@@ -68,6 +69,8 @@ function App() {
         <Route path = "/singleStudent/:id" element = {<SingleStudent/>} />
         <Route path = "/addCampus/" element = {<AddCampus/>} />
         <Route path = "/addStudent/" element = {<AddStudent />} />
+        <Route path = "/editCampus/:id" element = {<EditCampus/>} />
+        <Route path = "/editStudent/:id" element = {<EditStudent/>} />
       </Routes>
     </Router>
   );
