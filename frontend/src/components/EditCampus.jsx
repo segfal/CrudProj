@@ -42,7 +42,7 @@ const EditCampus = () => {
     });
     console.log("response", response);
 
-    navigate(`/SingleCampus/${campusId.studentid}`);
+    //navigate(`/SingleCampus/${campusId.studentid}`);
 
    
     

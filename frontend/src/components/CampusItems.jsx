@@ -29,15 +29,15 @@ function CampusItems(props) {
     navigate(path); 
   }
 
-  const handleDelete = (currentCampus) => {
-    
-  } 
+  const handleImageError = (event) =>{
+    event.target.src = "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png";
+  }
 
   try {
     if (props.list && props.list.length > 0) {
       return props.list.map((campus) => (
         <div key={campus.name}>
-          <img src={campus.imageUrl} alt={campus.name} width="300" height="300"/>
+          <img src={campus.imageUrl} onError={handleImageError} alt={campus.name} width="300" height="300"/>
           <h2>{campus.name}</h2>
           <h3>{campus.location}</h3>
           <p>{campus.description}</p>
