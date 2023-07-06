@@ -31,8 +31,8 @@ const SingleStudent = () => {
     axios.delete(`http://localhost:8080/routes/students/deletestudent/${studentId}`); //deletes the campus through the backend
     navigate('/students'); //navigates to the students page
   };
-  console.log("student info: ", studentInfo);
-  console.log("t/f", studentInfo == true);
+
+  // Loading page to allow for eager loading to have the time to occur before displaying full page
   if (!studentInfo.campus) { // if studentInfo exists -> studentInfo is truthy
     return (
       <div>
@@ -41,6 +41,13 @@ const SingleStudent = () => {
       </div>
     );
   }
+
+  // Redirect to single campus page on click of See More button
+  const handleSeeMore = (campusId) => {
+    let path = `/SingleCampus/${campusId}`; 
+    navigate(path); 
+  }
+
   return (
     <div>
       <h1>Learn more about {studentInfo.firstName} {studentInfo.lastName}</h1>
@@ -57,6 +64,10 @@ const SingleStudent = () => {
       <h1>This student is registered to a campus</h1>
       <h1>{studentInfo.campus.name}</h1>
       <img src={studentInfo.campus.imageUrl} alt="student image"></img>
+      <button type = 'button' 
+        class='btn btn-primary'
+        onClick = {() => handleSeeMore(studentInfo.campus.id)}>See More
+      </button>
     </div>
   )
 };
