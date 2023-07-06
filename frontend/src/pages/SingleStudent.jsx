@@ -58,7 +58,7 @@ const SingleStudent = () => {
       <button type="button" className="btn btn-danger" onClick={handleDelete}>
         Delete
       </button>
-      {studentInfo.campus ? <Campus campus={studentInfo.campus}/> : <NoCampus/>}
+      {studentInfo.campus ? <Campus campus={studentInfo.campus}/> : <NoCampus studentInfo={studentInfo}/>}
     </div>
   )
   // } 
@@ -85,10 +85,12 @@ const Campus = ({campus}) => {
   )
 };
 
-const NoCampus = () => {
+const NoCampus = ({studentInfo}) => {
   const allCampuses = useSelector((state) => state.campuses.allCampuses)
   const [allCamp, setAllCamp] = useState([]);
   const dispatch = useDispatch();
+  const [newCampusId, setNewCampusId] = useState(0);
+  const navigate = useNavigate();
 
   // Fetch all campuses
   const fetchAllCampuses = async () => {
@@ -106,11 +108,21 @@ const NoCampus = () => {
       console.log('FETCH ALL CAMPUSES FIRING IN USEEFFECT')
       setAllCamp(fetchAllCampuses());
     }, []);
-console.log("single student's all campuses", allCampuses);
+
+  const handleSelectChange = (event) => {
+    setNewCampusId(event.target.value);
+  }
+
+  const handleAddCampus = async () => {
+    // assign student's campusId the newCampusId and refresh/redirect page
+    const res = await axios.put(`http://localhost:8080/routes/students/updatestudent/${studentInfo.id}`, {campusId: newCampusId});
+    navigate(0);
+  }
+
   return (
     <div>
       <h1>This student is not registered to a campus</h1>
-      <select>
+      <select onChange= {(event) => handleSelectChange(event)}>
         <option>Choose a campus</option>
         {allCampuses.map((campus) => {
           {console.log("campus in map", campus)}
@@ -120,7 +132,8 @@ console.log("single student's all campuses", allCampuses);
         })}
       </select>
       <button type = 'button' 
-        class='btn btn-primary'>Add to campus
+        class='btn btn-primary'
+        onClick = {(event) => handleAddCampus(event)}>Add to campus
       </button>
     </div>
   )
