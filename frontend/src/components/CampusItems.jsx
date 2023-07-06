@@ -24,7 +24,7 @@ function CampusItems(props) {
 
   //navigate to the single campus view
   const handleAdd = (campusId) => {
-    let path = `/SingleCampus/${campusId}`; 
+    let path = `/SingleCampus/${campusId.id}`; 
     console.log(campusId); 
     navigate(path); 
   }
