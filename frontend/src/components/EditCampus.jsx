@@ -41,11 +41,9 @@ const EditCampus = () => {
       location: location,
       imageUrl: imageUrl,
       description: description,
-
     });
     console.log("response", response);
 
-    navigate(`/SingleCampus/${id}`);
 
    
     

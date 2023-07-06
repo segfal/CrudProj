@@ -34,7 +34,7 @@ function App() {
               </Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/campus">
+              <Link className="nav-link" to="/campuses">
                 Campuses
               </Link>
             </li>
@@ -46,6 +46,7 @@ function App() {
           </ul>
         </nav>
 
+{/* <<<<<<< HEAD */}
         {/* Routes*/}
         <Routes>
           <Route path="/" element={<Home />} />
@@ -57,6 +58,19 @@ function App() {
           <Route path="/addStudent/" element={<AddStudent />} />
           <Route path="/editCampus/:studentid" element={<EditCampus />} />
         </Routes>
+{/* ======= */}
+          {/* Routes*/}
+          <Routes>
+            <Route path = "/" element = {<Home/>} />
+            <Route path = "campuses/" element= {<Campuses/>} />
+            <Route path = "/students/" element = {<Students/>} />
+            <Route path="/singleCampus/:id" element={<SingleCampus />} />
+            <Route path = "/singleStudent/:id" element = {<SingleStudent/>} />
+            <Route path = "/addCampus/" element = {<AddCampus/>} />
+            <Route path = "/addStudent/" element = {<AddStudent />} />
+            <Route path = "/editCampus/:id" element =  {<EditCampus/>} />
+            {/* <Route path = "/editStudent/:id" element = {<EditStudent/>} /> */}
+           </Routes>
       </div>
     </Router>
   );

@@ -60,7 +60,7 @@ const AddStudent = () => {
   const handleForm = async (event) => {
     event.preventDefault();
     if (!validateEmail(email)) {
-      setEmailError("Invalid email"); // Set the email error message
+      setEmailError("Invalid input. Please enter a valid email."); // Set the email error message
       return;
     }
 
