@@ -58,21 +58,10 @@ function App() {
               </Link>
             </li>
           </ul>
+          </div>
         </nav>
 
-{/* <<<<<<< HEAD */}
-        {/* Routes*/}
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="campus/" element={<Campuses />} />
-          <Route path="/students/" element={<Students />} />
-          <Route path="/singleCampus/:campusId" element={<SingleCampus />} />
-          <Route path="/singleStudent/:studentId" element={<SingleStudent />} />
-          <Route path="/addCampus/" element={<AddCampus />} />
-          <Route path="/addStudent/" element={<AddStudent />} />
-          <Route path="/editCampus/:studentid" element={<EditCampus />} />
-        </Routes>
-{/* ======= */}
+
           {/* Routes*/}
           <Routes>
             <Route path = "/" element = {<Home/>} />

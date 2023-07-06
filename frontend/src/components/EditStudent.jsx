@@ -6,6 +6,9 @@ import { editSingleStudentThunk } from "../redux/Students.actions";
 import { useDispatch } from "react-redux";
 
 
+
+
+
 const EditStudent = () => {
   const navigate = useNavigate();
   const studentId = useParams();
@@ -56,3 +59,68 @@ const EditStudent = () => {
       gpa: state.gpa,
       campusId: state.campusId,
   }));
+
+
+
+    
+    //console.log("response", response);
+
+    navigate(`/SingleStudent/${studentId.id}`);
+  };
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="firstName">First Name</label>
+        <input
+          name="firstName"
+          type="text"
+          value={state.firstName}
+          onChange={handleChange}
+          placeholder="Enter first name"
+        />
+        <label htmlFor="lastName">Last Name</label>
+        <input
+          name="lastName"
+          type="text"
+          value={state.lastName}
+          onChange={handleChange}
+          placeholder="Enter last name"
+        />
+        <label htmlFor="email">E-mail</label>
+        <input
+          name="email"
+          type="text"
+          value={state.email}
+          onChange={handleChange}
+          placeholder="Enter student e-mail"
+        />
+        {emailError && <p className="error">{emailError}</p>}
+        <label htmlFor="gpa">GPA</label>
+        <input
+          name="gpa"
+          type="text"
+          value={state.gpa}
+          onChange={handleChange}
+          placeholder="Enter student gpa"
+        />
+        <label htmlFor="imageUrl">Image Url</label>
+        <input
+          name="imageUrl"
+          type="text"
+          value={state.imageUrl}
+          onChange={handleChange}
+          placeholder="Enter image URL"
+        />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default EditStudent;
