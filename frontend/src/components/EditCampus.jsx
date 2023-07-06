@@ -65,13 +65,6 @@ const EditCampus = () => {
 
 
 
-    // const response = await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${id}`, {
-    //   name: name,
-    //   location: location,
-    //   imageUrl: imageUrl,
-    //   description: description,
-    // });
-    
     dispatch(
       editCampusThunk(campusId.id,{
         id: id,
