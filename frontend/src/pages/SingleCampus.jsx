@@ -14,9 +14,7 @@ import axios from "axios";
 const SingleCampus = (props) => {
   const navigate = useNavigate();
 
-  const { campusId } = useParams(); //the params allows u to access the campusId from URL parameters
-  // <Route path = "/singleStudent/:studentId" element = {<SingleStudent/>} />
-  // ^^ the params is the studentId part, for example
+  const campusId = useParams(); //the params allows u to access the campusId from URL parameters
   const [singleCampus, setSingleCampus] = useState([]); //this is the data that we get from the backend
   const [intCampId, setIntCampId] = useState(0);
   // Get all students
@@ -47,7 +45,7 @@ const SingleCampus = (props) => {
   }, []);
 
   // const campuses = fetchCampuses();
-  const campusUrl = `http://localhost:8080/routes/campuses/SingleCampus/${campusId}`;
+  const campusUrl = `http://localhost:8080/routes/campuses/SingleCampus/${campusId.id}`;
 
   useEffect(() => {
     fetch(campusUrl)
@@ -62,7 +60,8 @@ const SingleCampus = (props) => {
 
   //Redirects user to an edit form for the campus
   const handleEdit = () => {
-    let path = `/editCampus/${campusId}`; 
+    let path = `/editCampus/${campusId.id}`; 
+    
     navigate(path);
   };
 
