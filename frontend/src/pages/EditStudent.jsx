@@ -10,6 +10,7 @@ const EditStudent = () => {
   const [email, setEmail] = useState("");
   const [imageUrl, setImageUrl] = useState("");
   const [gpa, setGpa] = useState("");
+  const [emailError, setEmailError] = useState('')
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -29,6 +30,16 @@ const EditStudent = () => {
   // handle the form submission
   const handleForm = async (event) => {
     event.preventDefault();
+
+    if(!validateEmail(email)){
+       setEmailError('Email is required')
+    } setEmailError('')
+    console.log({firstName, lastName, email, imageUrl, gpa})
+
+    // await axios.put(`http://localhost:8080/Routes/students/updatestudent/${studentId}`,
+    // firstName, lastName, email, imageUrl, gpa
+    // )
+
     console.log({
       firstName,
       lastName,
@@ -36,12 +47,19 @@ const EditStudent = () => {
       imageUrl,
       gpa,
     });
+        // Make a PUT request to update the student data
     await axios.put(
       `http://localhost:8080/Routes/students/updatestudent/${studentId}`,
       { firstName, lastName, email, imageUrl, gpa }
     );
-    // Handle form submission logic here
   };
+  //this function is supposed to validate email format
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+
 
   return (
     <div>
@@ -63,7 +81,7 @@ const EditStudent = () => {
           value={lastName}
           onChange={handleChange}
         />
-        <label htmlFor="email">Student Email:</label>
+         <label htmlFor="email">Student Email:</label>
         <input
           type="text"
           placeholder="student.name@gmail.com"
@@ -71,6 +89,16 @@ const EditStudent = () => {
           value={email}
           onChange={handleChange}
         />
+        {emailError && <p className="error">{emailError}</p>}
+        <label htmlFor="imageUrl">Student Image URL:</label>
+        <input
+          type="url"
+          placeholder="http://www.image.com/"
+          name="imageUrl"
+          value={imageUrl}
+          onChange={handleChange}
+        />
+
         <label htmlFor="imageUrl">Student Image URL:</label>
         <input
           type="url"
