@@ -1,10 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useParams,useNavigate } from "react-router-dom";
 import { editCampusThunk } from "../redux/Campus.actions";
 import { useDispatch } from "react-redux";
-import SingleCampus from "../pages/SingleCampus";
-import axios from "axios";
-
 
 
 
@@ -13,8 +10,6 @@ const EditCampus = () => {
   const navigate = useNavigate();
   const campusId  = useParams();
   const dispatch = useDispatch();
-
- 
   const [state, setState] = useState({
     name: "",
     location: "",
@@ -65,12 +60,6 @@ const EditCampus = () => {
 
 
 
-    // const response = await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${id}`, {
-    //   name: name,
-    //   location: location,
-    //   imageUrl: imageUrl,
-    //   description: description,
-    // });
     
     dispatch(
       editCampusThunk(campusId.id,{
