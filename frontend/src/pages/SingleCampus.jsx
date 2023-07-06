@@ -81,12 +81,15 @@ const SingleCampus = (props) => {
       student.campusId = null;
     })
   };
+  const handleImageError = (event) =>{
+    event.target.src = "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png";
+  }
 
   return (
     <div>
       {console.log("campusId is :" ,  campusId)}
       <h1>Learn more about {singleCampus.name}</h1>
-      <img src={singleCampus.imageUrl} alt="campus image" />
+      <img src={singleCampus.imageUrl} onError= {handleImageError} alt="campus image" />
       <h2> Campus Name: {singleCampus.name} </h2>
       <h2> Campus Address: {singleCampus.location} </h2>
       <h2> Campus Description: {singleCampus.description} </h2>
