@@ -23,7 +23,7 @@ function CampusItems(props) {
   })
 
   //navigate to the single campus view
-  const handleAdd = (campusId) => {
+  const handleSeeMore = (campusId) => {
     let path = `/SingleCampus/${campusId}`; 
     console.log("the campus id: " , campusId); 
     navigate(path); 
@@ -44,7 +44,7 @@ function CampusItems(props) {
           <button type = 'button' 
           class='btn btn-primary'
           id = {currentCampus}
-          onClick = {() => handleAdd(campus.id)}>See More
+          onClick = {() => handleSeeMore(campus.id)}>See More
           </button>
         </div>
       ));
