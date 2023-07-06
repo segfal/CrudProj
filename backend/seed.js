@@ -1,11 +1,12 @@
 const { Student, Campus } = require("./db/models");
+const db = require('./db/db');
 
 const tempStudentImgURL =
   "https://i.stack.imgur.com/l60Hf.png";
 const tempCampusImgURl =
   "https://www.nbmchealth.com/wp-content/uploads/2018/04/default-placeholder.png";
 
-const seedStudent = [
+const seedStudents = [
     {
         firstName: "John",
         lastName: "Doe",
@@ -40,7 +41,7 @@ const seedStudent = [
     }
 ]
 
-const seedCampus = [
+const seedCampuses = [
     {
         name: "Brooklyn College",
         imageUrl: tempCampusImgURl,
@@ -62,8 +63,9 @@ const seedCampus = [
 ]
 
 const seed = async () => {
+    await db.sync({force: true});
     await Campus.bulkCreate(seedCampuses);
-    await Student.bulkCreate(seedStudent);
-  };
-  
-  seed().then(() => process.exit());
+    await Student.bulkCreate(seedStudents);
+};
+
+seed().then(() => process.exit());
