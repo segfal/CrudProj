@@ -116,6 +116,7 @@ const NoCampus = ({studentInfo}) => {
   const handleAddCampus = async () => {
     // assign student's campusId the newCampusId and refresh/redirect page
     const res = await axios.put(`http://localhost:8080/routes/students/updatestudent/${studentInfo.id}`, {campusId: newCampusId});
+    navigate(0);
   }
 
   return (
