@@ -1,4 +1,3 @@
-import React from "react";
 import CampusesActionType from "./Campus.types";
 
 export const initialCampusState = {
