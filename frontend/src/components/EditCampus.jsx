@@ -2,10 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SingleCampus from "../pages/SingleCampus";
 import { useParams,useNavigate } from "react-router-dom";
+
+import { useDispatch } from "react-redux";
 const EditCampus = () => {
 
   const navigate = useNavigate();
   const campusId  = useParams();
+  const dispatch = useDispatch();
 
   const [name, setName] = useState("");
   const [location, setLocation] = useState("");
@@ -36,6 +39,9 @@ const EditCampus = () => {
     event.preventDefault();
     console.log(campusId);
     const id = campusId.id;
+
+
+
     const response = await axios.put(`http://localhost:8080/routes/campuses/updatecampus/${id}`, {
       name: name,
       location: location,
@@ -43,6 +49,7 @@ const EditCampus = () => {
       description: description,
     });
     console.log("response", response);
+
 
 
    

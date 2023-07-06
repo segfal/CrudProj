@@ -2,10 +2,15 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SingleStudent from "../pages/SingleStudent";
 import { useParams,useNavigate } from "react-router-dom";
+import { editSingleStudentThunk } from "../redux/Students.actions";
+import { useDispatch } from "react-redux";
+
+
 const EditStudent = () => {
 
   const navigate = useNavigate();
   const studentId = useParams();
+  const dispatch = useDispatch();
   const [state, setState] = useState({
     firstName: "",
     lastName: "",
@@ -54,16 +59,28 @@ const EditStudent = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(studentId);
-    const response = await axios.put(`http://localhost:8080/routes/students/updatestudent/${studentId.id}`, {
-        firstName: state.firstName,
-        lastName: state.lastName,
-        email: state.email,
-        imageUrl: state.imageUrl,
-        gpa: state.gpa,
-        campusId: state.campusId,
-    });
+    // const response = await axios.put(`http://localhost:8080/routes/students/updatestudent/${studentId.id}`, {
+    //     firstName: state.firstName,
+    //     lastName: state.lastName,
+    //     email: state.email,
+    //     imageUrl: state.imageUrl,
+    //     gpa: state.gpa,
+    //     campusId: state.campusId,
+    // });
+
+    dispatch(editSingleStudentThunk(studentId.id,{
+      firstName: state.firstName,
+      lastName: state.lastName,
+      email: state.email,
+      imageUrl: state.imageUrl,
+      gpa: state.gpa,
+      campusId: state.campusId,
+  }));
+
+
+
     
-    console.log("response", response);
+    //console.log("response", response);
 
     navigate(`/SingleStudent/${studentId.id}`);
 

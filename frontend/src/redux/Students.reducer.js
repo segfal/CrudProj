@@ -9,6 +9,7 @@ export const initialStudentState = {
 }
 
 const studentReducer = (state = initialStudentState, action) => {
+    console.log("ACTION",action);
     try{
         switch(action.type){
             case StudentsActionType.FETCH_STUDENTS:
@@ -17,6 +18,17 @@ const studentReducer = (state = initialStudentState, action) => {
                 return {...state, allStudents: action.payload}
             case StudentsActionType.FETCH_SINGLE_STUDENT:
                 return {...state, singleStudent: action.payload}
+            case StudentsActionType.EDIT_SINGLE_STUDENT:
+                // Find the student in all students that needs to be substituted with the incoming edits and replace the stale one
+                const allStudents = [...state.allStudents];
+                console.log("action payload: ", action.payload.id);
+                const matchId = (student) => student.id === action.payload.id;
+                const targetStudentIdx = state.allStudents.findIndex(matchId);
+                console.log("targetStudentIdx: ", targetStudentIdx)
+                allStudents[targetStudentIdx] = action.payload;
+                console.log("FIRING EDIT SINGLE STUDENT REDUCER");
+                return {...state, allStudents: allStudents}
+            
             default:
                 return state; 
                 //returns the empty array (the initial state, allStudents [])
