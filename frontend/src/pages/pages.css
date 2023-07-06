@@ -68,4 +68,129 @@
       font-size: 14px;
     }
   }
-  
+  .campus-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.campus-item h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Style the CampusItems component */
+
+
+/* Style each campus item */
+.campus-item-card {
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.campus-item-card h2 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.campus-item-card p {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 10px;
+}
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding:10vh;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  margin-bottom: 5vh;
+}
+.card-heading{
+  margin-bottom: 6vh;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.form-input{
+  text-align: left;
+}
+.labels{
+  text-align: left;
+  padding-bottom: 15px;
+}
+.submit-button {
+  margin-top: 2vh;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(3, 187, 245, 1) 88%,
+    rgba(0, 254, 232, 1) 96%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  letter-spacing: 6px; 
+  font-weight: 1000;
+  transition: background 0.9s;
+}
+
+.submit-button:hover {
+  background: rgb(155, 225, 255);
+}
+
+.submit-button:not(:hover) {
+  transition: background 1.5s;
+  background: rgb(26, 15, 232);
+  background: linear-gradient(
+    90deg,
+    rgb(170, 169, 196) 0%,
+    rgb(96, 201, 233) 88%,
+    rgba(0, 254, 232, 1) 96%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.labels {
+  text-align: center;
+  padding-bottom: 1px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.form-input {
+  border: 1px solid #ccc;
+  border-radius: 40px;
+  padding: 8px;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+  outline: none;
+}

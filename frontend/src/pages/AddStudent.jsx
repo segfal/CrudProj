@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchStudentsThunk,fetchStudents } from "../redux/Students.actions";
 import studentReducer from "../redux/Students.reducer";
 import { useNavigate } from "react-router-dom";
+import './pages.css'
 
 const AddStudent = () => {
   const [firstName, setFirstName] = useState(""); 
@@ -65,51 +66,68 @@ const AddStudent = () => {
   };
 
   return (
-    <div>
-      <h1>Add a new student through this form</h1>
-      <form onSubmit={handleForm}>
-        <label htmlFor="firstName">Student's First Name:</label>
-        <input
-          type="text"
-          placeholder="First name"
-          name="firstName"
-          value={firstName}
-          onChange={handleChange}
-        />
-        <label htmlFor="lastName">Student's Last Name:</label>
-        <input
-          type="text"
-          placeholder="Last name"
-          name="lastName"
-          value={lastName}
-          onChange={handleChange}
-        />
-        <label htmlFor="email">Student Email:</label>
-        <input
-          type="text"
-          placeholder="student.name@gmail.com"
-          name="email"
-          value={email}
-          onChange={handleChange}
-        />
-        <label htmlFor="imageUrl">Student Image URL:</label>
-        <input
-          type="url"
-          placeholder="http://www.image.com/"
-          name="imageUrl"
-          value={imageUrl}
-          onChange={handleChange}
-        />
-        <label htmlFor="gpa">Student GPA:</label>
-        <input
-          type="text"
-          placeholder="4.00"
-          name="gpa"
-          value={gpa}
-          onChange={handleChange}
-        />
-        <button type="submit">Submit</button>
-      </form>
+    <div className="card-container">
+        <div className="card">
+            <h1 className="card-heading">Add a new student through this form</h1>
+            <form onSubmit={handleForm} className="form">
+                <div className="form-group">
+                    <label htmlFor="firstName" className="labels">Student's First Name:</label>
+                    <input
+                        type="text"
+                        placeholder="First name"
+                        name="firstName"
+                        value={firstName}
+                        onChange={handleChange}
+                        className="form-input"
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="lastName" className="labels">Student's Last Name:</label>
+                    <input
+                        type="text"
+                        placeholder="Last name"
+                        name="lastName"
+                        value={lastName}
+                        onChange={handleChange}
+                        className="form-input"
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="email" className="labels">Student Email:</label>
+                    <input
+                        type="text"
+                        placeholder="student.name@gmail.com"
+                        name="email"
+                        value={email}
+                        onChange={handleChange}
+                        className="form-input"
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="imageUrl" className="labels">Student Image URL:</label>
+                    <input
+                        type="url"
+                        placeholder="http://www.image.com/"
+                        name="imageUrl"
+                        value={imageUrl}
+                        onChange={handleChange}
+                        className="form-input"
+                    />
+                </div>
+                <div className="form-group">
+                    <label htmlFor="gpa" className="labels">Student GPA:</label>
+                    <input
+                        type="text"
+                        placeholder="4.00"
+                        name="gpa"
+                        value={gpa}
+                        onChange={handleChange}
+                        className="form-input"
+                    />
+                </div>
+                <button type="submit" className="submit-button">Submit</button>
+            </form>
+        </div>
     </div>
   );
 };
