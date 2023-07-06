@@ -7,7 +7,7 @@ const Home = () => {
   return (
     <>
     <p>
-        <h1 className="heading">Welcome to the homepage</h1>
+        <h1 className="heading" style={{marginTop:"1vh"}}>Welcome to the homepage</h1>
             <p className="paragraph">Write more here.</p>
         </p>
         <div className="container"> 

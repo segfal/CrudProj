@@ -152,7 +152,7 @@
   );
   letter-spacing: 6px; 
   font-weight: 1000;
-  transition: background 0.9s;
+  transition: background 1.9s;
 }
 
 .submit-button:hover {
@@ -193,4 +193,16 @@
 .form-input:focus {
   border-color: #007bff;
   outline: none;
+}
+.alert {
+  background-color: white;
+  color: red;
+  /* padding: 5px 10px; */
+  font-size: 15px;
+  font-weight: 700px;
+  margin-top: 5px;
+  width: 400px;
+  text-align: left;
+  border-radius: 2px;
+  border: none;
 }

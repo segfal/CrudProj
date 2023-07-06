@@ -8,6 +8,8 @@ import { useDispatch } from "react-redux";
 
 const EditStudent = () => {
 
+
+const EditStudent = () => {
   const navigate = useNavigate();
   const studentId = useParams();
   const dispatch = useDispatch();
@@ -19,54 +21,34 @@ const EditStudent = () => {
     gpa: 0.0,
     campusId: null,
   });
+  const [emailError, setEmailError] = useState("");
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if(name === "firstName"){
-      setState({
-        ...state,
-        firstName: value,
-      });
-    }
-    if(name === "lastName"){
-      setState({
-        ...state,
-        lastName: value,
-      });
-    }
-    if(name === "email"){
-      setState({
-        ...state,
-        email: value,
-      });
-    }
-    if(name === "imageUrl"){
-      setState({
-        ...state,
-        imageUrl: value,
-      });
-    }
-    if(name === "gpa"){
-      setState({
-        ...state,
-        gpa: value,
-      });
-    }
+    setState({
+      ...state,
+      [name]: value,
+    });
 
+    if (name === "email") {
+      if (!validateEmail(value)) {
+        setEmailError("Invalid email address");
+      } else {
+        setEmailError("");
+      }
+    }
   };
- 
-  //takes student id and updates the student
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!validateEmail(state.email)) {
+      setEmailError("Invalid email address");
+      return;
+    }
+
     console.log(studentId);
-    // const response = await axios.put(`http://localhost:8080/routes/students/updatestudent/${studentId.id}`, {
-    //     firstName: state.firstName,
-    //     lastName: state.lastName,
-    //     email: state.email,
-    //     imageUrl: state.imageUrl,
-    //     gpa: state.gpa,
-    //     campusId: state.campusId,
-    // });
+
 
     dispatch(editSingleStudentThunk(studentId.id,{
       firstName: state.firstName,
@@ -83,8 +65,12 @@ const EditStudent = () => {
     //console.log("response", response);
 
     navigate(`/SingleStudent/${studentId.id}`);
+  };
 
-  }
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   return (
     <div>
@@ -113,10 +99,11 @@ const EditStudent = () => {
           onChange={handleChange}
           placeholder="Enter student e-mail"
         />
+        {emailError && <p className="error">{emailError}</p>}
         <label htmlFor="gpa">GPA</label>
-        <input  
+        <input
           name="gpa"
-          type=""
+          type="text"
           value={state.gpa}
           onChange={handleChange}
           placeholder="Enter student gpa"
@@ -133,7 +120,6 @@ const EditStudent = () => {
       </form>
     </div>
   );
-
 };
 
 export default EditStudent;

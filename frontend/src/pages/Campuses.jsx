@@ -48,7 +48,7 @@ const Campuses = () => {
             onClick={handleAdd}
             style = {{marginBottom:"5vh"}}>Add Campus</button>
             
-            <section style={{border:"solid 5px", padding:"15vh"}}>
+            <section style={{}}>
             <CampusItems list={allCampuses}/>
             </section>
         </div>
