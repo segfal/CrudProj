@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const PORT = "8080";
 const cors = require('cors');
-const db = require('./db/db.js');
+const db = require('./db/db');
 
 //Use Cors to allow cross origin resource sharing
 app.use(cors());
