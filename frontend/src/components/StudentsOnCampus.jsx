@@ -30,6 +30,10 @@ const StudentsOnCampus = ({ currentCampusId, allStudents }) => {
       navigate(path); 
     }
 
+    const handleImageError = (event) => {
+      event.target.src = "https://i.stack.imgur.com/l60Hf.png";
+    }
+
   const studentsRelationship = () => {
     // Check if students have the same campus ID
     // Each campus will have a list of student IDs that contain the same ID as the campus
@@ -43,7 +47,7 @@ const StudentsOnCampus = ({ currentCampusId, allStudents }) => {
               <h3>
                 Student Name: {studentOnCampus.firstName} {studentOnCampus.lastName}
               </h3>
-              <img src={studentOnCampus.imageUrl} alt={studentOnCampus.firstName} />
+              <img src={studentOnCampus.imageUrl} onError={handleImageError} alt={studentOnCampus.firstName} width="200" height ="150" />
               <button type = 'button' 
               class='btn btn-primary'
               onClick = {() => handleSeeMore(studentOnCampus.id)}>See More
