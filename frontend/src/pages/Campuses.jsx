@@ -5,6 +5,8 @@ import campusReducer from "../redux/Campus.reducer";
 import SingleCampus from "./SingleCampus";
 import CampusItems from "../components/CampusItems";
 import { useNavigate } from "react-router-dom";
+import { Card } from "react-bootstrap"; // Assuming you're using react-bootstrap
+
 import './pages.css'
 
 

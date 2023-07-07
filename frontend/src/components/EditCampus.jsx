@@ -7,14 +7,13 @@ import { useDispatch } from "react-redux";
 
 const EditCampus = () => {
   const navigate = useNavigate();
-  const campusId  = useParams();
+  const campusId = useParams();
   const dispatch = useDispatch();
   const [state, setState] = useState({
     name: "",
     location: "",
     imageUrl: "",
     description: "",
-
   });
   const [nameError, setNameError] = useState("");
   const [locationError, setLocationError] = useState("");
@@ -24,25 +23,25 @@ const EditCampus = () => {
   
   const handleChange = (event) => {
     const { name, value } = event.target;
-    if(name === "name"){
+    if (name === "name") {
       setState({
         ...state,
         name: value,
       });
     }
-    if(name === "location"){
+    if (name === "location") {
       setState({
         ...state,
         location: value,
       });
     }
-    if(name === "imageUrl"){
+    if (name === "imageUrl") {
       setState({
         ...state,
         imageUrl: value,
       });
     }
-    if(name === "description"){
+    if (name === "description") {
       setState({
         ...state,
         description: value,
@@ -52,7 +51,6 @@ const EditCampus = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(campusId);
     const id = campusId.id;
 
     if (state.name.trim() === "") {
@@ -153,7 +151,6 @@ const EditCampus = () => {
       </div>
     </div>
   );
-
 };
 
 export default EditCampus;

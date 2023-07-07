@@ -37,16 +37,26 @@ function StudentItems(props) {
   try {
     if (props.list && props.list.length > 0) {
       return props.list.map((student) => (
-        <div key={student.firstName}>
-          <img src={student.imageUrl} onError={handleImageError} alt={student.firstName} width="200" height="200"/>
-          <h2>{student.firstName}</h2>
-          <h2>{student.lastName}</h2>
-          <h2>{student.email}</h2>
-          <h2>{student.gpa}</h2>
-          <button type = 'button' 
-          class='btn btn-primary'
-          id = {currentStudent}
-          onClick = {() => handleAdd(student.id)}>See More
+        <div className="student-item" key={student.firstName}>
+          <img
+            className="student-item__img"
+            src={student.imageUrl}
+            onError={handleImageError}
+            alt={student.firstName}
+            width="200"
+            height="200"
+          />
+          <h2 className="student-item__name">{student.firstName}</h2>
+          <h2 className="student-item__name">{student.lastName}</h2>
+          <h2 className="student-item__email">{student.email}</h2>
+          <h2 className="student-item__gpa">{student.gpa}</h2>
+          <button
+            type="button"
+            className="seeMore"
+            id={currentStudent}
+            onClick={() => handleAdd(student.id)}
+          >
+            See More
           </button>
         </div>
       ));
