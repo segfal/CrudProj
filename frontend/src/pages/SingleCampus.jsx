@@ -41,7 +41,7 @@ const SingleCampus = (props) => {
   useEffect(() => {
     console.log("FETCH ALL STUDENTS FIRING IN USEEFFECT");
     setEveryStudent(fetchAllStudents());
-    setIntCampId(parseInt(campusId));
+    setIntCampId(parseInt(campusId.id));
   }, []);
 
   // const campuses = fetchCampuses();
@@ -68,6 +68,7 @@ const SingleCampus = (props) => {
   const filterStudents = () => {
     // Assuming students holds all the students 
     // Filter is like an if-else statement, it will only return the filtered students if the condition is true
+    console.log("all students HELLO WORLD: " , allStudents)
     const filteredStudents = allStudents.filter((student) => student.campusId === campusId);
     return filteredStudents;
   }
