@@ -95,23 +95,12 @@ const AddStudent = () => {
     setEmailError("");
 
     const parsedGpa = parseFloat(gpa);
-  if (!validateGpa(gpa) || isNaN(parsedGpa)) {
-    setGpaError("Invalid input. Please enter a valid GPA (e.g., 4.00).");
-    return;
-  }
-
-    console.log({
-      firstName,
-      lastName,
-      email,
-      imageUrl,
-      gpa
-    });
+    if (!validateGpa(gpa) || isNaN(parsedGpa)) {
+      setGpaError("Invalid input. Please enter a valid GPA (e.g., 4.00).");
+      return;
+    }
 
     //this will make the user HAVE to fill out the first name and last name inputs
-
-    
-
 
     const newStudent = await axios.post("http://localhost:8080/Routes/students/addstudent", {
       firstName,
@@ -125,8 +114,6 @@ const AddStudent = () => {
     let path = `/SingleStudent/${newStudent.data.id}`;
     navigate(path);
   };
-
-
 
   return (
     <div className="card-container">
@@ -146,7 +133,7 @@ const AddStudent = () => {
                     />
                      {firstNameError && (
                           <div className="alert alert-danger"> {firstNameError} </div>
-                        )}
+                      )}
                 </div>
                 <div className="form-group">
                     <label htmlFor="lastName" className="labels">Student's Last Name:</label>
@@ -163,7 +150,7 @@ const AddStudent = () => {
                         )}
                 </div>
                 <div className="form-group">
-                    <label htmlFor="email" className="labels">Student Email:</label>
+                    <label htmlFor="email" className="labels">Student's Email:</label>
                     <input
                         type="text"
                         placeholder="student.name@gmail.com"
@@ -177,7 +164,7 @@ const AddStudent = () => {
                         
                 </div>
                 <div className="form-group">
-                    <label htmlFor="imageUrl" className="labels">Student Image URL:</label>
+                    <label htmlFor="imageUrl" className="labels">Student's Image URL:</label>
                     <input
                         type="url"
                         placeholder="http://www.image.com/"
@@ -188,7 +175,7 @@ const AddStudent = () => {
                     />
                 </div>
                 <div className="form-group">
-                    <label htmlFor="gpa" className="labels">Student GPA:</label>
+                    <label htmlFor="gpa" className="labels">Student's GPA:</label>
                     <input
                         type="text"
                         placeholder="4.00"
