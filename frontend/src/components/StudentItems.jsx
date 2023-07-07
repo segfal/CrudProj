@@ -46,10 +46,10 @@ function StudentItems(props) {
             width="200"
             height="200"
           />
-          <h2 className="student-item__name">{student.firstName}</h2>
-          <h2 className="student-item__name">{student.lastName}</h2>
-          <h2 className="student-item__email">{student.email}</h2>
-          <h2 className="student-item__gpa">{student.gpa}</h2>
+          <h2 className="student-item__name">{student.firstName} {student.lastName}</h2>
+          {/* <h2 className="student-item__name"></h2> */}
+          {/* <h2 className="student-item__email">{student.email}</h2> */}
+          {/* <h2 className="student-item__gpa">{student.gpa}</h2> */}
           <button
             type="button"
             className="seeMore"
