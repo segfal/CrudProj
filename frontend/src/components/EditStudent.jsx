@@ -13,6 +13,7 @@ const EditStudent = () => {
   const navigate = useNavigate();
   const studentId = useParams();
   const dispatch = useDispatch();
+  const [emailError, setEmailError] = useState("");
   const [state, setState] = useState({
     firstName: "",
     lastName: "",
@@ -21,7 +22,16 @@ const EditStudent = () => {
     gpa: 0.0,
     campusId: null,
   });
-  const [emailError, setEmailError] = useState("");
+
+
+  
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -37,12 +47,35 @@ const EditStudent = () => {
         setEmailError("");
       }
     }
+    if(name === "firstName"){
+      setState({
+        ...state,
+        firstName: value,
+      });
+    }
+    if(name === "lastName"){
+      setState({
+        ...state,
+        lastName: value,
+      });
+    }
+    if(name === "imageUrl"){
+      setState({
+        ...state,
+        imageUrl: value,
+      });
+    }
+    if(name === "gpa"){
+      setState({
+        ...state,
+        gpa: value,
+      });
+    }
+
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
-
     if (!validateEmail(state.email)) {
       setEmailError("Invalid email address");
       return;
@@ -50,77 +83,74 @@ const EditStudent = () => {
 
     console.log(studentId);
 
-
-    dispatch(editSingleStudentThunk(studentId.id,{
+    dispatch(editSingleStudentThunk(studentId.id, {
       firstName: state.firstName,
       lastName: state.lastName,
       email: state.email,
       imageUrl: state.imageUrl,
       gpa: state.gpa,
       campusId: state.campusId,
-  }));
-
-
-
-    
-    //console.log("response", response);
-
-    navigate(`/SingleStudent/${studentId.id}`);
-  };
-
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+    }))
+    navigate('/')
+  }
 
   return (
     <div>
+      <h1>Edit Student</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="firstName">First Name</label>
-        <input
-          name="firstName"
-          type="text"
-          value={state.firstName}
-          onChange={handleChange}
-          placeholder="Enter first name"
-        />
-        <label htmlFor="lastName">Last Name</label>
-        <input
-          name="lastName"
-          type="text"
-          value={state.lastName}
-          onChange={handleChange}
-          placeholder="Enter last name"
-        />
-        <label htmlFor="email">E-mail</label>
-        <input
-          name="email"
-          type="text"
-          value={state.email}
-          onChange={handleChange}
-          placeholder="Enter student e-mail"
-        />
-        {emailError && <p className="error">{emailError}</p>}
-        <label htmlFor="gpa">GPA</label>
-        <input
-          name="gpa"
-          type="text"
-          value={state.gpa}
-          onChange={handleChange}
-          placeholder="Enter student gpa"
-        />
-        <label htmlFor="imageUrl">Image Url</label>
-        <input
-          name="imageUrl"
-          type="text"
-          value={state.imageUrl}
-          onChange={handleChange}
-          placeholder="Enter image URL"
-        />
-        <button type="submit">Submit</button>
+        <div>
+          <label>First Name</label>
+          <input
+            type="text"
+            name="firstName"
+            value={state.firstName}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Last Name</label>
+          <input
+            type="text"
+            name="lastName"
+            value={state.lastName}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>Email</label>
+          <input
+            type="text"
+            name="email"  
+            value={state.email}
+            onChange={handleChange}
+          />
+          {emailError && <p style={{ color: "red" }}>{emailError}</p>}
+        </div>
+        <div>
+          <label>Image URL</label>
+          <input
+            type="text"
+            name="imageUrl"
+            value={state.imageUrl}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label>GPA</label>
+          <input
+            type="text"
+            name="gpa"
+            value={state.gpa}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
       </form>
     </div>
-  );
-};
+    
+  )
+}
 
 export default EditStudent;

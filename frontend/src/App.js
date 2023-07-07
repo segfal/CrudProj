@@ -8,9 +8,8 @@ import SingleCampus from './pages/SingleCampus';
 import SingleStudent from './pages/SingleStudent';
 import AddCampus from './pages/AddCampus';
 import AddStudent from './pages/AddStudent';
-// import DeleteStudent from './pages/DeleteStudent';
 import EditCampus from './components/EditCampus';
-
+import EditStudent from './components/EditStudent';
 function App() {
   return (
     <Router>
@@ -60,6 +59,8 @@ function App() {
           </ul>
           </div>
         </nav>
+      
+
 
 
           {/* Routes*/}
