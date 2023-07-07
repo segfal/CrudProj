@@ -13,8 +13,6 @@ const StudentsOnCampus = ({ currentCampusId, allStudents }) => {
   
   
   console.log("students: ", allStudents);
-//   console.log("parsed campus id", parseInt(currentCampusId));
-  console.log("from students on camps, not parsed campus id", currentCampusId);
 
   const filterStudents = () => {
     // Assuming students holds all the students 
@@ -22,12 +20,13 @@ const StudentsOnCampus = ({ currentCampusId, allStudents }) => {
     console.log("current campus id: ", currentCampusId);
     const filteredStudents = allStudents.filter((student) => student.campusId === currentCampusId);
     console.log("filtered Students: ", filteredStudents);
+    console.log(allStudents);
     return filteredStudents;
     }
 
     const handleSeeMore = (studentId) => {
       let path = `/SingleStudent/${studentId}`; 
-      console.log(studentId); 
+    
       navigate(path); 
     }
 
