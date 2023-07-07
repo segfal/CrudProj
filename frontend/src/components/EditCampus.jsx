@@ -6,7 +6,6 @@ import { useDispatch } from "react-redux";
 
 
 const EditCampus = () => {
-
   const navigate = useNavigate();
   const campusId  = useParams();
   const dispatch = useDispatch();
@@ -51,11 +50,6 @@ const EditCampus = () => {
     }
   };
 
-
-
-  
-  //takes campus id and updates the campus
-  ///I wanna reduxify it
   const handleSubmit = async (event) => {
     event.preventDefault();
     console.log(campusId);
@@ -87,8 +81,8 @@ const EditCampus = () => {
         description: state.description,
       })
     );
-    navigate(`/campuses/${id}`);
-    
+    navigate(`/SingleCampus/${id}`);
+    navigate(0);
   }
 
   return (

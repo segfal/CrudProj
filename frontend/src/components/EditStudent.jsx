@@ -10,7 +10,7 @@ const EditStudent = () => {
   const navigate = useNavigate();
   const studentId = useParams();
   const dispatch = useDispatch();
-  const [emailError, setEmailError] = useState("");
+  
   const [state, setState] = useState({
     firstName: "",
     lastName: "",
@@ -19,16 +19,20 @@ const EditStudent = () => {
     gpa: 0.0,
     campusId: null,
   });
+  const [emailError, setEmailError] = useState("");
+  const [gpaError, setGpaError] = useState('');
+  const [firstNameError, setFirstNameError] = useState('');
+  const [lastNameError, setLastNameError] = useState('');
 
-
-  
+  const validateGpa = (gpa) => {
+    const gpaRegex = /^\d+(\.\d+)?$/;
+    return gpaRegex.test(gpa);
+  };
 
   const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+.[^\s@]+$/;
     return emailRegex.test(email);
   };
-
-
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -73,8 +77,23 @@ const EditStudent = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if(state.firstName.trim() == ''){
+      setFirstNameError('Please enter a first name.')
+    }
+    if(state.lastName.trim() == ''){
+      setLastNameError('Please enter a last name.')
+    }
     if (!validateEmail(state.email)) {
       setEmailError("Invalid email address");
+      return;
+    }
+
+    setEmailError("");
+
+    const parsedGpa = parseFloat(state.gpa);
+    if (!validateGpa(state.gpa) || isNaN(parsedGpa)) {
+      setGpaError("Invalid input. Please enter a valid GPA (e.g., 4.00).");
       return;
     }
 
@@ -88,63 +107,86 @@ const EditStudent = () => {
       gpa: state.gpa,
       campusId: state.campusId,
     }))
-    navigate('/')
+    navigate('/students');
+    navigate(0);
   }
 
   return (
-    <div>
-      <h1>Edit Student</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>First Name</label>
-          <input
-            type="text"
-            name="firstName"
-            value={state.firstName}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Last Name</label>
-          <input
-            type="text"
-            name="lastName"
-            value={state.lastName}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>Email</label>
-          <input
-            type="text"
-            name="email"  
-            value={state.email}
-            onChange={handleChange}
-          />
-          {emailError && <p style={{ color: "red" }}>{emailError}</p>}
-        </div>
-        <div>
-          <label>Image URL</label>
-          <input
-            type="text"
-            name="imageUrl"
-            value={state.imageUrl}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <label>GPA</label>
-          <input
-            type="text"
-            name="gpa"
-            value={state.gpa}
-            onChange={handleChange}
-          />
-        </div>
-        <div>
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+    <div className="card-container">
+      <div className="card">
+        <h1 className="card-heading">Edit the student through this form</h1>
+        <form onSubmit={handleSubmit} className="form">
+          <div className="form-group">
+            <label htmlFor="firstName" className="labels">Student's First Name:</label>
+            <input
+              type="text"
+              placeholder="First name"
+              name="firstName"
+              value={state.firstName}
+              onChange={handleChange}
+              className="form-input"
+            />
+            {firstNameError && (
+              <div className="alert alert-danger"> {firstNameError} </div>
+            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="lastName" className="labels">Student's Last Name:</label>
+            <input
+              type="text"
+              placeholder="Last name"
+              name="lastName"
+              value={state.lastName}
+              onChange={handleChange}
+              className="form-input"
+            />
+            {lastNameError && (
+              <div className="alert alert-danger"> {lastNameError} </div>
+            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="email" className="labels">Student's Email:</label>
+            <input
+              type="text"
+              placeholder="student.name@gmail.com"
+              name="email"
+              value={state.email}
+              onChange={handleChange}
+              className="form-input"
+            />
+            {emailError && 
+              (<div className="alert alert-danger">{emailError}</div> )} {/* Display the email error */}
+          </div>
+          <div className="form-group">
+            <label htmlFor="imageUrl" className="labels">Student's Image URL:</label>
+            <input
+              type="url"
+              placeholder="http://www.image.com/"
+              name="imageUrl"
+              value={state.imageUrl}
+              onChange={handleChange}
+              className="form-input"
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="gpa" className="labels">Student's GPA:</label>
+            <input
+              type="text"
+              placeholder="4.00"
+              name="gpa"
+              value={state.gpa}
+              onChange={handleChange}
+              className="form-input"
+            />
+            {gpaError && (
+              <div className="alert alert-danger">{gpaError}</div> )} 
+              <p style= {{textAlign:"left", color:"blue"}}>You cannot type unless you enter a number. </p>
+          </div>
+          <div>
+            <button className="submit-button" type="submit">SUBMIT</button>
+          </div>
+        </form>
+      </div>
     </div>
     
   )

@@ -9,7 +9,6 @@ export const fetchCampuses = (payload) => {
     };
 };
 
-
 export const deleteCampus = (payload) => {
     console.log("DELETE CAMPUS ACTION");
     return {
@@ -26,8 +25,6 @@ export const editCampus = (payload) => {
     };
 };
 
-
-
 // Thunk function for fetching campuses asynchronously
 export const fetchCampusesThunk = () => {
     return async (dispatch) => {
@@ -41,11 +38,6 @@ export const fetchCampusesThunk = () => {
     };
 };
 
-
-
-
-
-
 export const editCampusThunk = (id,campus) => {
     return async (dispatch) => {
         try {
@@ -58,11 +50,6 @@ export const editCampusThunk = (id,campus) => {
     }
     
 }
-
-
-
-
-
 
 // Thunk function for deleting a campus asynchronously
 export const deleteCampusThunk = (campusId) => {
