@@ -37,11 +37,13 @@ const Students = () => {
     };
 
     return (
-        <div className="campus-item">
+        <div className="grid-box">
         <h1>Welcome to the Students page</h1>
         <button type="button" className="btn btn-primary add-button" onClick={handleAdd}>Add Student</button>
-        <section className="campus-items">
+        <section>
+            <div className="card-grid">
             <StudentItems list={allStudents} />
+            </div>
         </section>
     </div>
 );

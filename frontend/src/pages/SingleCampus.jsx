@@ -44,7 +44,6 @@ const SingleCampus = (props) => {
     setIntCampId(parseInt(campusId.id));
   }, []);
 
-  // const campuses = fetchCampuses();
   const campusUrl = `http://localhost:8080/routes/campuses/SingleCampus/${campusId.id}`;
 
   useEffect(() => {
@@ -95,20 +94,20 @@ const SingleCampus = (props) => {
       borderRadius: "50px",
       marginBottom: "5vh"
     }}>
-    {console.log("campusId is :", campusId)}
-    <h1 className="card-heading">Learn more about {singleCampus.name}</h1>
+    <h1 className="card-heading">{singleCampus.name}</h1>
     <img src={singleCampus.imageUrl} onError={handleImageError} alt="campus image" className="singleIMG" />
-    <h2 className="card-text">Campus Name: {singleCampus.name}</h2>
-    <h2 className="card-text">Campus Address: {singleCampus.location}</h2>
-    <h2 className="card-text">Campus Description: {singleCampus.description}</h2>
-  
-    <button type="button" className="btn btn-success card-button"  id="edit" onClick={handleEdit}>
-      Edit
-    </button>
-    <button type="button" className="btn btn-danger card-button"id="delete" onClick={handleDelete}>
-      Delete
-    </button>
-    <h2 className="card-text">Students on campus</h2>
+    {/* <h2 className="card-text"><span className="card-text__label">Name:</span> {singleCampus.name}</h2> */}
+    <h2 className="card-text"><span className="card-text__label">Address:</span> {singleCampus.location}</h2>
+    <h2 className="card-text"><span className="card-text__label">Description:</span> {singleCampus.description}</h2>
+    <div className="buttons-container">
+      <button type="button" className="btn btn-success card-button" id="edit" onClick={handleEdit}>
+        Edit
+      </button>
+      <button type="button" className="btn btn-danger card-button" id="delete" onClick={handleDelete}>
+        Delete
+      </button>
+    </div>
+    <h2 className="studentsOnCampus__head">Students enrolled at <span className="studentsOnCampus__campus-name">{singleCampus.name}</span></h2>
     <StudentsOnCampus currentCampusId={intCampId} allStudents={allStudents} />
   </div>
   

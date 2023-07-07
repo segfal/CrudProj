@@ -54,18 +54,27 @@ const SingleStudent = () => {
 
   // if (studentInfo.campus.id) {
   return (
-    <div>
-      <h1>Learn more about {studentInfo.firstName} {studentInfo.lastName}</h1>
-      <img src={studentInfo.imageUrl} onError={handleImageError} alt="student image" />
-      <h2> Student Name: {studentInfo.firstName} {studentInfo.lastName}</h2> 
-      <h2> Student E-mail: {studentInfo.email} </h2>
-      <h2> Student GPA: {studentInfo.gpa} </h2>
-      <button type="button" className="btn btn-success" onClick={handleEdit}>
-        Edit
-      </button>
-      <button type="button" className="btn btn-danger" onClick={handleDelete}>
-        Delete
-      </button>
+    <div style={{
+      backgroundColor: "#fff",
+      borderRadius: "8px",
+      padding:"10vh",
+      boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
+      borderRadius: "50px",
+      marginBottom: "5vh"
+    }}>
+      <h1 className="card-heading">{studentInfo.firstName} {studentInfo.lastName}</h1>
+      <img src={studentInfo.imageUrl} onError={handleImageError} alt="student image" className="singleIMG"/>
+      {/* <h2 className="card-text"> <span className="card-text__label">Name:</span> {studentInfo.firstName} {studentInfo.lastName}</h2>  */}
+      <h2 className="card-text"> <span className="card-text__label">E-mail:</span> {studentInfo.email} </h2>
+      <h2 className="card-text"> <span className="card-text__label">GPA:</span> {studentInfo.gpa} </h2>
+      <div className="buttons-container">
+        <button type="button" className="btn btn-success card-button" id="edit" onClick={handleEdit}>
+          Edit
+        </button>
+        <button type="button" className="btn btn-danger card-button" id="delete" onClick={handleDelete}>
+          Delete
+        </button>
+      </div>
       {studentInfo.campus ? <Campus campus={studentInfo.campus}/> : <NoCampus studentInfo={studentInfo}/>}
     </div>
   )
@@ -81,10 +90,9 @@ const Campus = ({campus}) => {
     navigate(path); 
   }
   return (
-    <div>
-      <h1>This student is registered to a campus</h1>
-      <h1>{campus.name}</h1>
-      <img src={campus.imageUrl} alt="student image"></img>
+    <div className="singleStudent__campus">
+      <h2 className="singleStudent__campus-head">This student is enrolled at <span className="singleStudent__campus-name">{campus.name}</span></h2>
+      <img src={campus.imageUrl} alt="student image" className="singleStudent__campus-img"></img>
       <button type = 'button' 
         class='btn btn-primary'
         onClick = {() => handleSeeMore(campus.id)}>See More
@@ -121,9 +129,6 @@ const NoCampus = ({studentInfo}) => {
     setNewCampusId(event.target.value);
   }
 
-
-
-
   const handleAddCampus = async () => {
     // assign student's campusId the newCampusId and refresh/redirect page
     const res = await axios.put(`http://localhost:8080/routes/students/updatestudent/${studentInfo.id}`, {campusId: newCampusId});
@@ -131,8 +136,8 @@ const NoCampus = ({studentInfo}) => {
   }
 
   return (
-    <div>
-      <h1>This student is not registered to a campus</h1>
+    <div className="singleStudent__campus">
+      <h1 className="singleStudent__campus-head">This student is not enrolled at a campus</h1>
       <select onChange= {(event) => handleSelectChange(event)}>
         <option>Choose a campus</option>
         {allCampuses.map((campus) => {
@@ -144,8 +149,8 @@ const NoCampus = ({studentInfo}) => {
       </select>
       <button type = 'button' 
         class='btn btn-primary'
-        onClick = {(event) => handleAddCampus(event)}>Add to campus
-      </button>
+        onClick = {(event) => handleAddCampus(event)}>Add to Campus
+        </button>
     </div>
   )
 };

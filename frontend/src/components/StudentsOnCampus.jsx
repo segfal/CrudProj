@@ -4,15 +4,7 @@ import { useNavigate,useParams } from "react-router-dom";
 
 const StudentsOnCampus = ({ currentCampusId, allStudents }) => {
   const [id, setId] = useState([]);
-
   const navigate = useNavigate();
-  //useparams
-  ///console log current campusid and all students
-  console.log("current campus id", currentCampusId);
-
-  
-  
-  console.log("students: ", allStudents);
 
   const filterStudents = () => {
     // Assuming students holds all the students 
@@ -26,26 +18,25 @@ const StudentsOnCampus = ({ currentCampusId, allStudents }) => {
 
     const handleSeeMore = (studentId) => {
       let path = `/SingleStudent/${studentId}`; 
-    
       navigate(path); 
     }
 
     const handleImageError = (event) => {
       event.target.src = "https://i.stack.imgur.com/l60Hf.png";
     }
-
+  
   const studentsRelationship = () => {
     // Check if students have the same campus ID
     // Each campus will have a list of student IDs that contain the same ID as the campus
     console.log(filterStudents());
     if (filterStudents().length> 0) {
       return (
-        <div>
+        <div className="studentsOnCampus">
           {console.log("filtered Students: ", filterStudents())}
           {filterStudents().map((studentOnCampus) => (
-            <div key={studentOnCampus.id}>
+            <div className="studentOnCampus-item" key={studentOnCampus.id}>
               <h3>
-                Student Name: {studentOnCampus.firstName} {studentOnCampus.lastName}
+                {studentOnCampus.firstName} {studentOnCampus.lastName}
               </h3>
               <img src={studentOnCampus.imageUrl} onError={handleImageError} alt={studentOnCampus.firstName} width="200" height ="150" />
               <button type = 'button' 
@@ -57,7 +48,11 @@ const StudentsOnCampus = ({ currentCampusId, allStudents }) => {
         </div>
       );
     } else {
-      return <h1>There are no students currently registered to this campus.</h1>;
+      return (
+        <div>
+          <h1 className="noStudents-msg">There are no students currently registered to this campus. Add students to this campus by selecting an unenrolled student from the directory.</h1>
+        </div>
+      )
     }
   };
 
