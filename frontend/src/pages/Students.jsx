@@ -39,7 +39,7 @@ const Students = () => {
     return (
         <div className="campus-item">
         <h1>Welcome to the Students page</h1>
-        <button type="button" className="btn btn-primary" onClick={handleAdd}>Add Student</button>
+        <button type="button" className="btn btn-primary add-button" onClick={handleAdd}>Add Student</button>
         <section className="campus-items">
             <StudentItems list={allStudents} />
         </section>

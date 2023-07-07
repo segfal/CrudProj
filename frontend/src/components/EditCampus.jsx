@@ -17,7 +17,10 @@ const EditCampus = () => {
     description: "",
 
   });
-
+  const [nameError, setNameError] = useState("");
+  const [locationError, setLocationError] = useState("");
+  const [imageUrlError, setImageUrlError] = useState("");
+  const [descriptionError, setDescriptionError] = useState("");
   
   
   const handleChange = (event) => {
@@ -58,9 +61,23 @@ const EditCampus = () => {
     console.log(campusId);
     const id = campusId.id;
 
+    if (state.name.trim() === "") {
+      setNameError("Please enter a campus name.");
+      return;
+    }
+    if (state.location.trim() === "") {
+      setLocationError("Please enter a campus location.");
+      return;
+    }
+    if (state.imageUrl.trim() === "") {
+      setImageUrlError("Please enter a campus image URL.");
+      return;
+    }
+    if (state.description.trim() === "") {
+      setDescriptionError("Please enter a campus description.");
+      return;
+    }
 
-
-    
     dispatch(
       editCampusThunk(campusId.id,{
         id: id,
@@ -75,41 +92,71 @@ const EditCampus = () => {
   }
 
   return (
-    <div>
-   
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
-            name="name"
-            type="text"
-            value={state.name}
-            onChange={handleChange}
-          />
-          <label htmlFor="location">Location</label>
-          <input
-            name="location"
-            type="text"
-            value={state.location}
-            onChange={handleChange}
-          />
-          <label htmlFor="imageUrl">Image Url</label>
-          <input
-            name="imageUrl"
-            type="text"
-            value={state.imageUrl}
-            onChange={handleChange}
-          />
-          <label htmlFor="description">Description</label>
-          <input
-            name="description"
-            type="text"
-            value={state.description}
-            onChange={handleChange}
-          />
+    <div className="card-container">
+      <div className="card">
+        <h1 className="card-heading">Edit the campus through this form</h1>
+        <form onSubmit={handleSubmit} className="form">
+          <div className="form-group">
+            <label htmlFor="name" className="labels">Campus Name:</label>
+            <input
+              type="text"
+              placeholder="Campus Name"
+              name="name"
+              value={state.name}
+              onChange={handleChange}
+              className="form-input"
+            />
+            {nameError && (
+              <div className="alert alert-danger"> {nameError} </div>
+            )}
           </div>
-          <button type="submit">Submit</button>
+          <div className="form-group">
+            <label htmlFor="location" className="labels">Campus Address:</label>
+            <input
+              type="text"
+              placeholder="100 Campus Rd"
+              name="location"
+              value={state.location}
+              onChange={handleChange}
+              className="form-input"
+            />
+            {locationError && (
+            <div className="alert alert-danger"> {locationError} </div>
+            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="imageUrl" className="labels">Campus Image Url:</label>
+            <input
+              type="url"
+              placeholder="http://www.image.com/"
+              name="imageUrl"
+              value={state.imageUrl}
+              onChange={handleChange}
+              className="form-input"
+            />
+            {imageUrlError && (
+            <div className="alert alert-danger"> {imageUrlError} </div>
+            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="description" className="labels">Campus Description:</label>
+            <input
+              type="text"
+              placeholder="Describe this campus"
+              name="description"
+              value={state.description}
+              onChange={handleChange}
+              className="form-input"
+            />
+            {descriptionError && (
+            <div className="alert alert-danger"> {descriptionError} </div>
+            )}
+          </div>
+          <button type="submit" className="submit-button">
+            <strong> SUBMIT </strong>
+          </button>
         </form>
+      </div>
     </div>
   );
 
