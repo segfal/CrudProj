@@ -155,7 +155,7 @@ const AddCampus = () => {
             )}
         </div>
         <button type="submit" className="submit-button">
-          Submit
+          <strong> SUBMIT </strong>
         </button>
       </form>
     </div>

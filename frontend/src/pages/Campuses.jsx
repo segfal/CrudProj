@@ -44,11 +44,10 @@ const Campuses = () => {
         <div className="campus-item" >
             <h1>Welcome to the Campuses page</h1>
             <button type="button" 
-            class="btn btn-primary" 
+            className="btn btn-primary add-button" 
             onClick={handleAdd}
-            style = {{marginBottom:"5vh"}}>Add Campus</button>
-            
-            <section style={{}}>
+            >Add Campus</button>
+            <section>
             <CampusItems list={allCampuses}/>
             </section>
         </div>
