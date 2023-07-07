@@ -36,16 +36,18 @@ function CampusItems(props) {
   try {
     if (props.list && props.list.length > 0) {
       return props.list.map((campus) => (
-        <div key={campus.name}>
-          <img src={campus.imageUrl} onError={handleImageError} alt={campus.name} width="300" height="300"/>
-          <h2>{campus.name}</h2>
-          <h3>{campus.location}</h3>
-          <p>{campus.description}</p>
+        <div className="campus-item" key={campus.name}>
+          <div className="cardsForCampus">
+          <img className="campus-item__img" src={campus.imageUrl} onError={handleImageError} alt={campus.name} width="300" height="300"/>
+          <h2 className="campus-item__name">{campus.name}</h2>
+          <h3 className="campus-item__location">{campus.location}</h3>
+          <p className="campus-item__description">{campus.description}</p>
           <button type = 'button' 
-          class='btn btn-primary'
+          className='seeMore'
           id = {currentCampus}
           onClick = {() => handleSeeMore(campus.id)}>See More
           </button>
+        </div>
         </div>
       ));
     } else {

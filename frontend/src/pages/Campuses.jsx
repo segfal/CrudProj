@@ -5,6 +5,8 @@ import campusReducer from "../redux/Campus.reducer";
 import SingleCampus from "./SingleCampus";
 import CampusItems from "../components/CampusItems";
 import { useNavigate } from "react-router-dom";
+import { Card } from "react-bootstrap"; // Assuming you're using react-bootstrap
+
 import './pages.css'
 
 
@@ -44,11 +46,10 @@ const Campuses = () => {
         <div className="campus-item" >
             <h1>Welcome to the Campuses page</h1>
             <button type="button" 
-            class="btn btn-primary" 
+            className="btn btn-primary add-button" 
             onClick={handleAdd}
-            style = {{marginBottom:"5vh"}}>Add Campus</button>
-            
-            <section style={{}}>
+            >Add Campus</button>
+            <section>
             <CampusItems list={allCampuses}/>
             </section>
         </div>

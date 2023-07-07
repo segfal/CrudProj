@@ -201,7 +201,7 @@ const AddStudent = () => {
                           <div className="alert alert-danger">{gpaError}</div> )} 
                           <p style= {{textAlign:"left", color:"blue"}}>You cannot type unless you enter a number. </p>
                 </div>
-                <button type="submit" className="submit-button">Submit</button>
+                <button type="submit" className="submit-button">SUBMIT</button>
             </form>
         </div>
     </div>

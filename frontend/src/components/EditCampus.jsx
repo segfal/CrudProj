@@ -19,7 +19,8 @@ const EditCampus = () => {
   const [locationError, setLocationError] = useState("");
   const [imageUrlError, setImageUrlError] = useState("");
   const [descriptionError, setDescriptionError] = useState("");
-
+  
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "name") {
@@ -52,16 +53,23 @@ const EditCampus = () => {
     event.preventDefault();
     const id = campusId.id;
 
-    let isValid = true;
-
     if (state.name.trim() === "") {
-      setNameError("Name is required");
-      isValid = false;
-    } else {
-      setNameError("");
+      setNameError("Please enter a campus name.");
+      return;
+    }
+    if (state.location.trim() === "") {
+      setLocationError("Please enter a campus location.");
+      return;
+    }
+    if (state.imageUrl.trim() === "") {
+      setImageUrlError("Please enter a campus image URL.");
+      return;
+    }
+    if (state.description.trim() === "") {
+      setDescriptionError("Please enter a campus description.");
+      return;
     }
 
-    
     dispatch(
       editCampusThunk(campusId.id,{
         id: id,
@@ -76,56 +84,71 @@ const EditCampus = () => {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input
-            name="name"
-            type="text"
-            value={state.name}
-            onChange={handleChange}
-          />
-          {nameError && <div className="alert alert-danger">{nameError}</div>}
-        </div>
-        <div>
-          <label htmlFor="location">Location</label>
-          <input
-            name="location"
-            type="text"
-            value={state.location}
-            onChange={handleChange}
-          />
-          {locationError && (
-            <div className="alert alert-danger">{locationError}</div>
-          )}
-        </div>
-        <div>
-          <label htmlFor="imageUrl">Image URL</label>
-          <input
-            name="imageUrl"
-            type="text"
-            value={state.imageUrl}
-            onChange={handleChange}
-          />
-          {imageUrlError && (
-            <div className="alert alert-danger">{imageUrlError}</div>
-          )}
-        </div>
-        <div>
-          <label htmlFor="description">Description</label>
-          <input
-            name="description"
-            type="text"
-            value={state.description}
-            onChange={handleChange}
-          />
-          {descriptionError && (
-            <div className="alert alert-danger">{descriptionError}</div>
-          )}
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+    <div className="card-container">
+      <div className="card">
+        <h1 className="card-heading">Edit the campus through this form</h1>
+        <form onSubmit={handleSubmit} className="form">
+          <div className="form-group">
+            <label htmlFor="name" className="labels">Campus Name:</label>
+            <input
+              type="text"
+              placeholder="Campus Name"
+              name="name"
+              value={state.name}
+              onChange={handleChange}
+              className="form-input"
+            />
+            {nameError && (
+              <div className="alert alert-danger"> {nameError} </div>
+            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="location" className="labels">Campus Address:</label>
+            <input
+              type="text"
+              placeholder="100 Campus Rd"
+              name="location"
+              value={state.location}
+              onChange={handleChange}
+              className="form-input"
+            />
+            {locationError && (
+            <div className="alert alert-danger"> {locationError} </div>
+            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="imageUrl" className="labels">Campus Image Url:</label>
+            <input
+              type="url"
+              placeholder="http://www.image.com/"
+              name="imageUrl"
+              value={state.imageUrl}
+              onChange={handleChange}
+              className="form-input"
+            />
+            {imageUrlError && (
+            <div className="alert alert-danger"> {imageUrlError} </div>
+            )}
+          </div>
+          <div className="form-group">
+            <label htmlFor="description" className="labels">Campus Description:</label>
+            <input
+              type="text"
+              placeholder="Describe this campus"
+              name="description"
+              value={state.description}
+              onChange={handleChange}
+              className="form-input"
+            />
+            {descriptionError && (
+            <div className="alert alert-danger"> {descriptionError} </div>
+            )}
+          </div>
+          <button type="submit" className="submit-button">
+            <strong> SUBMIT </strong>
+          </button>
+        </form>
+      </div>
     </div>
   );
 };

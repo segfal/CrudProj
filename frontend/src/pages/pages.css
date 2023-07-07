@@ -1,15 +1,3 @@
-.campus-item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .campus-item img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-  }
   
   @media screen and (max-width: 600px) {
     .campus-item img {
@@ -89,6 +77,10 @@
   cursor: pointer;
 }
 
+.add-button {
+  margin-bottom: 20px;
+}
+
 .btn-primary:hover {
   background-color: #0056b3;
 }
@@ -142,6 +134,7 @@
 }
 .submit-button {
   margin-top: 2vh;
+  font-weight: bold;
   background: rgb(2, 0, 36);
   background: linear-gradient(
     90deg,
@@ -151,8 +144,8 @@
     rgba(0, 212, 255, 1) 100%
   );
   letter-spacing: 6px; 
-  font-weight: 1000;
   transition: background 1.9s;
+  width: 50px;
 }
 
 .submit-button:hover {
@@ -205,4 +198,103 @@
   text-align: left;
   border-radius: 2px;
   border: none;
+}
+
+/* CAMPUSES */
+
+.campus-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.campus-item__img {
+  width: 100%;
+  height: auto;
+  max-width: 100%; 
+  max-height: 300px;
+  border-radius: 8px;
+}
+
+.campus-item__name {
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.campus-item__location {
+  font-size: 24px;
+  margin: 5px 0;
+}
+
+.campus-item__description {
+  font-size: 15px;
+  margin: 5px 0;
+}
+
+  .cardsForCampus {
+    /* this stuff made everything smaller and more fit into cards */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 20px;
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 5vh;
+    /* end of that^ */
+    background-color: #fff;
+    border-radius: 8px;
+    padding:10vh;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 50px;
+    margin-bottom: 5vh;
+    flex: 0 0 calc(33.33% - 20px); /* Adjust the width and spacing between cards as needed */
+
+}
+
+.campus-item-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  flex: 0 0 calc(33.33% - 20px); /* Adjust the width and spacing between cards as needed */
+  max-width: 300px; /* Adjust the maximum width of each card as needed */
+  text-align: center;
+}
+
+.seeMore {
+  margin-top: 2vh;
+  font-weight: bold;
+  /* background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(3, 187, 245, 1) 88%,
+    rgba(0, 254, 232, 1) 96%,
+    rgba(0, 212, 255, 1) 100%
+  ); */
+  
+  letter-spacing: 6px;
+  transition: background 1.9s;
+  width: 100%; /* Adjust the width of the button as needed */
+  padding: 10px; /* Adjust the padding of the button as needed */
+}
+
+.seeMore:hover {
+  background: rgb(2, 129, 248);
+}
+
+.seeMore:not(:hover) {
+  transition: background 1.5s;
+  /* background: rgb(26, 15, 232);
+  background: linear-gradient(
+    90deg,
+    rgb(170, 169, 196) 0%,
+    rgb(96, 201, 233) 88%,
+    rgba(0, 254, 232, 1) 96%,
+    rgba(0, 212, 255, 1) 100%
+  ); */
+  background: rgb(2,0,36);
+background: linear-gradient(90deg, rgb(17, 5, 244) 0%, rgba(36,0,254,0.2480451653317577) 83%, rgba(3,229,245,1) 88%, rgba(0,58,255,0.4497258376006653) 92%);
 }
