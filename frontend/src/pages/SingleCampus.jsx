@@ -87,27 +87,31 @@ const SingleCampus = (props) => {
   }
 
   return (
-    <div>
-      {console.log("campusId is :" ,  campusId)}
-      <h1>Learn more about {singleCampus.name}</h1>
-      <img src={singleCampus.imageUrl} onError= {handleImageError} alt="campus image" />
-      <h2> Campus Name: {singleCampus.name} </h2>
-      <h2> Campus Address: {singleCampus.location} </h2>
-      <h2> Campus Description: {singleCampus.description} </h2>
-
-      <button type="button" className="btn btn-success" onClick={handleEdit}>
-        Edit
-      </button>
-      <button type="button" className="btn btn-danger" onClick={handleDelete}>
-        Delete
-      </button>
-      <h2>Students on campus</h2>
-      {/* <button type = 'button' 
-        class='btn btn-primary'
-        onClick = {(event) => handleAddCampus(event)}>Add students
-      </button> */}
-      <StudentsOnCampus currentCampusId={intCampId} allStudents={allStudents} />
-    </div>
+    <div style={{
+      backgroundColor: "#fff",
+      borderRadius: "8px",
+      padding:"10vh",
+      boxShadow: "0 10px 40px rgba(0, 0, 0, 0.1)",
+      borderRadius: "50px",
+      marginBottom: "5vh"
+    }}>
+    {console.log("campusId is :", campusId)}
+    <h1 className="card-heading">Learn more about {singleCampus.name}</h1>
+    <img src={singleCampus.imageUrl} onError={handleImageError} alt="campus image" className="singleIMG" />
+    <h2 className="card-text">Campus Name: {singleCampus.name}</h2>
+    <h2 className="card-text">Campus Address: {singleCampus.location}</h2>
+    <h2 className="card-text">Campus Description: {singleCampus.description}</h2>
+  
+    <button type="button" className="btn btn-success card-button"  id="edit" onClick={handleEdit}>
+      Edit
+    </button>
+    <button type="button" className="btn btn-danger card-button"id="delete" onClick={handleDelete}>
+      Delete
+    </button>
+    <h2 className="card-text">Students on campus</h2>
+    <StudentsOnCampus currentCampusId={intCampId} allStudents={allStudents} />
+  </div>
+  
   );
 };
 

@@ -217,6 +217,12 @@
   max-height: 300px;
   border-radius: 8px;
 }
+@media screen and (max-width: 600px) {
+  .campus-item-card .campus-item__img {
+    max-width: 100%;
+    max-height: none;
+  }
+}
 
 .campus-item__name {
   font-size: 28px;
@@ -362,4 +368,119 @@ background: linear-gradient(90deg, rgb(17, 5, 244) 0%, rgba(36,0,254,0.248045165
     rgba(3, 229, 245, 1) 88%,
     rgba(0, 58, 255, 0.45) 92%
   );
+}
+.student-item-card {
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10vh;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  margin-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.student-item__img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+}
+
+.student-item__name {
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.student-item__email {
+  font-size: 24px;
+  margin: 5px 0;
+}
+
+.student-item__gpa {
+  font-size: 15px;
+  margin: 5px 0;
+}
+
+.student-item__button {
+  margin-top: 2vh;
+  font-weight: bold;
+  letter-spacing: 6px;
+  transition: background 1.9s;
+  width: 100%;
+  padding: 10px;
+}
+
+.student-item__button:hover {
+  background: rgb(2, 129, 248);
+}
+
+.student-item__button:not(:hover) {
+  transition: background 1.5s;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgb(17, 5, 244) 0%,
+    rgba(36, 0, 254, 0.248) 83%,
+    rgba(3, 229, 245, 1) 88%,
+    rgba(0, 58, 255, 0.45) 92%
+  );
+}
+.card-heading {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.singleIMG {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  max-width: 50%; 
+  max-height: 400px;
+  border-radius: 8px;
+  margin-left: 25%;
+}
+
+
+.card-text {
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.card-button {
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgb(20, 9, 231) 0%, rgba(36,0,254,0.2480451653317577) 83%, rgba(3,245,208,1) 88%, rgba(0,58,255,0.4497258376006653) 92%);  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 35%;
+  margin-left: 10%;
+  margin-bottom: 3%;
+  margin-top: 3%;
+}
+
+.card-button:hover {
+  background-color: #0056b3;
+}
+
+#edit{
+  margin-left: 10%;
+  margin-right: 10px;
+}
+#edit:hover{
+  background-color: #0056b3;
+}
+#delete{
+  background: rgb(131,58,180);
+  background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+}
+#delete:hover{
+    background-color: red !important; /* Add !important to override any conflicting styles */
 }
