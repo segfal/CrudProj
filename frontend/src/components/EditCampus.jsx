@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams,useNavigate } from "react-router-dom";
 import { editCampusThunk } from "../redux/Campus.actions";
 import { useDispatch } from "react-redux";
+
+
 
 const EditCampus = () => {
   const navigate = useNavigate();
@@ -59,40 +61,19 @@ const EditCampus = () => {
       setNameError("");
     }
 
-    if (state.location.trim() === "") {
-      setLocationError("Location is required");
-      isValid = false;
-    } else {
-      setLocationError("");
-    }
-
-    if (state.imageUrl.trim() === "") {
-      setImageUrlError("Image URL is required");
-      isValid = false;
-    } else {
-      setImageUrlError("");
-    }
-
-    if (state.description.trim() === "") {
-      setDescriptionError("Description is required");
-      isValid = false;
-    } else {
-      setDescriptionError("");
-    }
-
-    if (isValid) {
-      dispatch(
-        editCampusThunk(campusId.id, {
-          id: id,
-          name: state.name,
-          location: state.location,
-          imageUrl: state.imageUrl,
-          description: state.description,
-        })
-      );
-      navigate(`/campuses/${id}`);
-    }
-  };
+    
+    dispatch(
+      editCampusThunk(campusId.id,{
+        id: id,
+        name: state.name,
+        location: state.location,
+        imageUrl: state.imageUrl,
+        description: state.description,
+      })
+    );
+    navigate(`/campuses/${id}`);
+    
+  }
 
   return (
     <div>
