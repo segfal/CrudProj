@@ -298,3 +298,68 @@
   background: rgb(2,0,36);
 background: linear-gradient(90deg, rgb(17, 5, 244) 0%, rgba(36,0,254,0.2480451653317577) 83%, rgba(3,229,245,1) 88%, rgba(0,58,255,0.4497258376006653) 92%);
 }
+.student-item {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+  justify-items: center;
+  align-items: center;
+  margin-bottom: 5vh;
+  /* end of that^ */
+  background-color: #fff;
+  border-radius: 8px;
+  padding:10vh;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 50px;
+  margin-bottom: 5vh;
+  flex: 0 0 calc(33.33% - 20px); /* Adjust the width and spacing between cards as needed */
+  
+}
+
+.student-item__img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 8px;
+}
+
+.student-item__name {
+  font-size: 28px;
+  margin: 10px 0;
+}
+
+.student-item__email {
+  font-size: 24px;
+  margin: 5px 0;
+}
+
+.student-item__gpa {
+  font-size: 15px;
+  margin: 5px 0;
+}
+
+.student-item__button {
+  margin-top: 2vh;
+  font-weight: bold;
+  letter-spacing: 6px;
+  transition: background 1.9s;
+  width: 100%;
+  padding: 10px;
+}
+
+.student-item__button:hover {
+  background: rgb(2, 129, 248);
+}
+
+.student-item__button:not(:hover) {
+  transition: background 1.5s;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgb(17, 5, 244) 0%,
+    rgba(36, 0, 254, 0.248) 83%,
+    rgba(3, 229, 245, 1) 88%,
+    rgba(0, 58, 255, 0.45) 92%
+  );
+}
