@@ -1,4 +1,4 @@
-# CrudProj
+# Fullstack CRUD Project: Student-Campus Direcotry
 
 The final project can be accessed here: https://64a852a648013d123d6d4784--aesthetic-hotteok-d489a7.netlify.app/
 
